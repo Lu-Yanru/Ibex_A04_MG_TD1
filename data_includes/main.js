@@ -1,7 +1,7 @@
 PennController.ResetPrefix( null );
 AddHost("https://amor.cms.hu-berlin.de/~idslfahm/ibex_bilder/PWI_BB/");
 PennController.InitiateRecorder( "https://amor.cms.hu-berlin.de/~idslfahm/recordings/Recording.php").label( "init" );
-//PennController.DebugOff()
+PennController.DebugOff()
 
 
 //order of main blocks can be changed here
