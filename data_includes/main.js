@@ -379,11 +379,11 @@ PennController.Template("Familiarization_PWI.csv", variable =>
 
 
               newCanvas("Row1", 800, 175)
-              .add (75,   0, newImage( "Bild1", variable.Bild1).size(150,150))
+              .add (75,   0, newImage( "Bild1", variable.Bild1).size(200,200))
               .add(125, 155, newText ( "Wort1", variable.Wort1).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               //.add(325,   0, newImage( "Bild2", variable.Bild2).size(150,150))
               //.add(375, 155, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(575,   0, newImage( "Bild2", variable.Bild2).size(150,150))
+              .add(575,   0, newImage( "Bild2", variable.Bild2).size(200,200))
               .add(625, 155, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               .print()
 
@@ -395,11 +395,11 @@ PennController.Template("Familiarization_PWI.csv", variable =>
               ,
 
               newCanvas("Row2", 800, 175)
-              .add( 75,   0, newImage("Bild3", variable.Bild3).size(150,150))
+              .add( 75,   0, newImage("Bild3", variable.Bild3).size(200,200))
               .add(125, 155, newText ("Wort3", variable.Wort3).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               //.add(325,   0, newImage("Bild4", variable.Bild5).size(150,150))
               //.add(375, 155, newText ("Wort4", variable.Wort5).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(575,   0, newImage("Bild4", variable.Bild4).size(150,150))
+              .add(575,   0, newImage("Bild4", variable.Bild4).size(200,200))
               .add(625, 155, newText ("Wort4", variable.Wort4).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               .print()
 
