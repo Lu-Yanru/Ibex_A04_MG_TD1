@@ -5,7 +5,7 @@ PennController.InitiateRecorder( "https://amor.cms.hu-berlin.de/~idslfahm/record
 
 
 //order of main blocks can be changed here
-PennController.Sequence("init", "familiarization",   "send", "end")
+PennController.Sequence("init", "main_SOA0ms1",   "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "break", "main_SOA100ms2", "break","main_SOA-100ms1", "break","main_SOA-100ms2", "break","main_SOA0ms1","break","main_SOA0ms2",  "send", "end" ) //order of main blocks can be changed here
 // PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "break", "main_SOA-100ms2", "break","main_SOA0ms1", "break","main_SOA0ms2", "break","main_SOA100ms1","break","main_SOA100ms2",  "send", "end" )
@@ -867,10 +867,10 @@ PennController("main_start",
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Main
-
+///////SOA0
 PennController.Template("uebung_v2.csv", variable =>
 
-    PennController("main",
+    PennController("main_SOA0ms1",
 
              newText("Distractor" , variable.distractor)
              //.settings.bold()
@@ -1022,6 +1022,797 @@ PennController.Template("uebung_v2.csv", variable =>
     .log( "Itempaar"             , variable.itempaar        )
     )
     ;
+
+
+
+
+///////SOA0
+PennController.Template("uebung_v2.csv", variable =>
+
+        PennController("main_SOA0ms2",
+
+                 newText("Distractor" , variable.distractor)
+                 //.settings.bold()
+
+                 ,
+
+                 newImage("SetupPic", variable.setup_pic)
+                 .size(300, 300)
+
+                 ,
+
+                 newImage("TargetPic", variable.target_pic)
+                 .size(300, 300)
+
+                 ,
+
+                 newCanvas("FixationCanvas", 300, 300)
+                 .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
+                 .print()
+
+                 ,
+
+                 newTimer("ShowFixation", 1000)
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getText("fixation")
+                 .remove()
+
+                 ,
+
+                 newTimer("ShowBlank", 500)
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getCanvas("FixationCanvas")
+                 .remove()
+
+                 ,
+
+                 newCanvas("SetupCanvas", 300, 300)
+                 .add(0, 0, getImage("SetupPic"))
+                 .print()
+
+                 ,
+
+                 newVoiceRecorder("SetupRecorder")
+                 .record()
+
+                 ,
+
+                 newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getCanvas("SetupCanvas")
+                 .remove()
+
+                 ,
+
+                 newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getVoiceRecorder("SetupRecorder")
+                 .stop()
+
+                 ,
+
+                 newTimer("Intertrial", 750)
+                 .start()
+                 .wait()
+
+                 ,
+
+                 newCanvas("TargetCanvas", 300, 300)
+                 .add(0, 0, getImage("TargetPic"))
+                 .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                 .print()
+
+
+                 ,
+
+                 newVoiceRecorder("TargetRecorder")
+                 .record()
+
+                 ,
+
+                 newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getCanvas("TargetCanvas")
+                 .hidden()
+
+                 ,
+
+                 newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getVoiceRecorder("TargetRecorder")
+                 .stop()
+
+                 ,
+
+                 newCanvas("space1", 1, 100)
+                 .print()
+
+                 ,
+
+                 newButton("weiter", "weiter")
+
+                 ,
+
+                 newSelector("button")
+                 .add(getButton("weiter") )
+                 .settings.keys(     " "                   )
+                 .wait()
+
+        )
+
+        .setOption("hideProgressBar", "true" )
+        .log( "ID"                   , getVar("ID")             )
+        .log( "gender"               , getVar("gender")         )
+        .log( "age"                  , getVar("age")            )
+        .log( "language"             , getVar("language")       )
+        .log( "browser"              , getVar("browser")        )
+        .log( "SetupObject"          , getVar("setup_pic")      )
+        .log( "TargetObject"         , getVar("target_pic")     )
+        .log( "Distractor"           , getVar("distractor")     )
+        .log( "SetupColor"           , variable.setup_col       )
+        .log( "TargetColor"          , variable.target_col      )
+        .log( "DistractorCondition"  , variable.distractor_cond )
+        .log( "FocusCondition"       , variable.focus_cond      )
+        .log( "Condition"            , variable.condition       )
+        .log( "Itempaar"             , variable.itempaar        )
+        )
+        ;
+
+
+
+
+///////SOA100
+PennController.Template("uebung_v2.csv", variable =>
+
+            PennController("main_SOA100ms1",
+
+                     newText("Distractor" , variable.distractor)
+                     //.settings.bold()
+
+                     ,
+
+                     newImage("SetupPic", variable.setup_pic)
+                     .size(300, 300)
+
+                     ,
+
+                     newImage("TargetPic", variable.target_pic)
+                     .size(300, 300)
+
+                     ,
+
+                     newCanvas("FixationCanvas", 300, 300)
+                     .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
+                     .print()
+
+                     ,
+
+                     newTimer("ShowFixation", 1000)
+                     .start()
+                     .wait()
+
+                     ,
+
+                     getText("fixation")
+                     .remove()
+
+                     ,
+
+                     newTimer("ShowBlank", 500)
+                     .start()
+                     .wait()
+
+                     ,
+
+                     getCanvas("FixationCanvas")
+                     .remove()
+
+                     ,
+
+                     newCanvas("SetupCanvas", 300, 300)
+                     .add(0, 0, getImage("SetupPic"))
+                     .print()
+
+                     ,
+
+                     newVoiceRecorder("SetupRecorder")
+                     .record()
+
+                     ,
+
+                     newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
+                     .start()
+                     .wait()
+
+                     ,
+
+                     getCanvas("SetupCanvas")
+                     .remove()
+
+                     ,
+
+                     newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                     .start()
+                     .wait()
+
+                     ,
+
+                     getVoiceRecorder("SetupRecorder")
+                     .stop()
+
+                     ,
+
+                     newTimer("Intertrial", 750)
+                     .start()
+                     .wait()
+
+                     ,
+
+                     newCanvas("TargetCanvas", 300, 300)
+                     .add(0, 0, getImage("TargetPic"))
+                     .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                     .print()
+
+
+                     ,
+
+                     newVoiceRecorder("TargetRecorder")
+                     .record()
+
+                     ,
+
+                     newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
+                     .start()
+                     .wait()
+
+                     ,
+
+                     getCanvas("TargetCanvas")
+                     .hidden()
+
+                     ,
+
+                     newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                     .start()
+                     .wait()
+
+                     ,
+
+                     getVoiceRecorder("TargetRecorder")
+                     .stop()
+
+                     ,
+
+                     newCanvas("space1", 1, 100)
+                     .print()
+
+                     ,
+
+                     newButton("weiter", "weiter")
+
+                     ,
+
+                     newSelector("button")
+                     .add(getButton("weiter") )
+                     .settings.keys(     " "                   )
+                     .wait()
+
+            )
+
+            .setOption("hideProgressBar", "true" )
+            .log( "ID"                   , getVar("ID")             )
+            .log( "gender"               , getVar("gender")         )
+            .log( "age"                  , getVar("age")            )
+            .log( "language"             , getVar("language")       )
+            .log( "browser"              , getVar("browser")        )
+            .log( "SetupObject"          , getVar("setup_pic")      )
+            .log( "TargetObject"         , getVar("target_pic")     )
+            .log( "Distractor"           , getVar("distractor")     )
+            .log( "SetupColor"           , variable.setup_col       )
+            .log( "TargetColor"          , variable.target_col      )
+            .log( "DistractorCondition"  , variable.distractor_cond )
+            .log( "FocusCondition"       , variable.focus_cond      )
+            .log( "Condition"            , variable.condition       )
+            .log( "Itempaar"             , variable.itempaar        )
+            )
+            ;
+
+
+
+
+///////SOA100
+PennController.Template("uebung_v2.csv", variable =>
+
+                PennController("main_SOA100ms2",
+
+                         newText("Distractor" , variable.distractor)
+                         //.settings.bold()
+
+                         ,
+
+                         newImage("SetupPic", variable.setup_pic)
+                         .size(300, 300)
+
+                         ,
+
+                         newImage("TargetPic", variable.target_pic)
+                         .size(300, 300)
+
+                         ,
+
+                         newCanvas("FixationCanvas", 300, 300)
+                         .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
+                         .print()
+
+                         ,
+
+                         newTimer("ShowFixation", 1000)
+                         .start()
+                         .wait()
+
+                         ,
+
+                         getText("fixation")
+                         .remove()
+
+                         ,
+
+                         newTimer("ShowBlank", 500)
+                         .start()
+                         .wait()
+
+                         ,
+
+                         getCanvas("FixationCanvas")
+                         .remove()
+
+                         ,
+
+                         newCanvas("SetupCanvas", 300, 300)
+                         .add(0, 0, getImage("SetupPic"))
+                         .print()
+
+                         ,
+
+                         newVoiceRecorder("SetupRecorder")
+                         .record()
+
+                         ,
+
+                         newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
+                         .start()
+                         .wait()
+
+                         ,
+
+                         getCanvas("SetupCanvas")
+                         .remove()
+
+                         ,
+
+                         newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                         .start()
+                         .wait()
+
+                         ,
+
+                         getVoiceRecorder("SetupRecorder")
+                         .stop()
+
+                         ,
+
+                         newTimer("Intertrial", 750)
+                         .start()
+                         .wait()
+
+                         ,
+
+                         newCanvas("TargetCanvas", 300, 300)
+                         .add(0, 0, getImage("TargetPic"))
+                         .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                         .print()
+
+
+                         ,
+
+                         newVoiceRecorder("TargetRecorder")
+                         .record()
+
+                         ,
+
+                         newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
+                         .start()
+                         .wait()
+
+                         ,
+
+                         getCanvas("TargetCanvas")
+                         .hidden()
+
+                         ,
+
+                         newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                         .start()
+                         .wait()
+
+                         ,
+
+                         getVoiceRecorder("TargetRecorder")
+                         .stop()
+
+                         ,
+
+                         newCanvas("space1", 1, 100)
+                         .print()
+
+                         ,
+
+                         newButton("weiter", "weiter")
+
+                         ,
+
+                         newSelector("button")
+                         .add(getButton("weiter") )
+                         .settings.keys(     " "                   )
+                         .wait()
+
+                )
+
+                .setOption("hideProgressBar", "true" )
+                .log( "ID"                   , getVar("ID")             )
+                .log( "gender"               , getVar("gender")         )
+                .log( "age"                  , getVar("age")            )
+                .log( "language"             , getVar("language")       )
+                .log( "browser"              , getVar("browser")        )
+                .log( "SetupObject"          , getVar("setup_pic")      )
+                .log( "TargetObject"         , getVar("target_pic")     )
+                .log( "Distractor"           , getVar("distractor")     )
+                .log( "SetupColor"           , variable.setup_col       )
+                .log( "TargetColor"          , variable.target_col      )
+                .log( "DistractorCondition"  , variable.distractor_cond )
+                .log( "FocusCondition"       , variable.focus_cond      )
+                .log( "Condition"            , variable.condition       )
+                .log( "Itempaar"             , variable.itempaar        )
+                )
+                ;
+
+
+
+///////SOA-100
+PennController.Template("uebung_v2.csv", variable =>
+
+                    PennController("main_SOA-100ms1",
+
+                             newText("Distractor" , variable.distractor)
+                             //.settings.bold()
+
+                             ,
+
+                             newImage("SetupPic", variable.setup_pic)
+                             .size(300, 300)
+
+                             ,
+
+                             newImage("TargetPic", variable.target_pic)
+                             .size(300, 300)
+
+                             ,
+
+                             newCanvas("FixationCanvas", 300, 300)
+                             .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
+                             .print()
+
+                             ,
+
+                             newTimer("ShowFixation", 1000)
+                             .start()
+                             .wait()
+
+                             ,
+
+                             getText("fixation")
+                             .remove()
+
+                             ,
+
+                             newTimer("ShowBlank", 500)
+                             .start()
+                             .wait()
+
+                             ,
+
+                             getCanvas("FixationCanvas")
+                             .remove()
+
+                             ,
+
+                             newCanvas("SetupCanvas", 300, 300)
+                             .add(0, 0, getImage("SetupPic"))
+                             .print()
+
+                             ,
+
+                             newVoiceRecorder("SetupRecorder")
+                             .record()
+
+                             ,
+
+                             newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
+                             .start()
+                             .wait()
+
+                             ,
+
+                             getCanvas("SetupCanvas")
+                             .remove()
+
+                             ,
+
+                             newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                             .start()
+                             .wait()
+
+                             ,
+
+                             getVoiceRecorder("SetupRecorder")
+                             .stop()
+
+                             ,
+
+                             newTimer("Intertrial", 750)
+                             .start()
+                             .wait()
+
+                             ,
+
+                             newCanvas("TargetCanvas", 300, 300)
+                             .add(0, 0, getImage("TargetPic"))
+                             .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                             .print()
+
+
+                             ,
+
+                             newVoiceRecorder("TargetRecorder")
+                             .record()
+
+                             ,
+
+                             newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
+                             .start()
+                             .wait()
+
+                             ,
+
+                             getCanvas("TargetCanvas")
+                             .hidden()
+
+                             ,
+
+                             newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                             .start()
+                             .wait()
+
+                             ,
+
+                             getVoiceRecorder("TargetRecorder")
+                             .stop()
+
+                             ,
+
+                             newCanvas("space1", 1, 100)
+                             .print()
+
+                             ,
+
+                             newButton("weiter", "weiter")
+
+                             ,
+
+                             newSelector("button")
+                             .add(getButton("weiter") )
+                             .settings.keys(     " "                   )
+                             .wait()
+
+                    )
+
+                    .setOption("hideProgressBar", "true" )
+                    .log( "ID"                   , getVar("ID")             )
+                    .log( "gender"               , getVar("gender")         )
+                    .log( "age"                  , getVar("age")            )
+                    .log( "language"             , getVar("language")       )
+                    .log( "browser"              , getVar("browser")        )
+                    .log( "SetupObject"          , getVar("setup_pic")      )
+                    .log( "TargetObject"         , getVar("target_pic")     )
+                    .log( "Distractor"           , getVar("distractor")     )
+                    .log( "SetupColor"           , variable.setup_col       )
+                    .log( "TargetColor"          , variable.target_col      )
+                    .log( "DistractorCondition"  , variable.distractor_cond )
+                    .log( "FocusCondition"       , variable.focus_cond      )
+                    .log( "Condition"            , variable.condition       )
+                    .log( "Itempaar"             , variable.itempaar        )
+                    )
+                    ;
+
+
+
+///////SOA-100
+PennController.Template("uebung_v2.csv", variable =>
+
+                        PennController("main_SOA-100ms2",
+
+                        newText("Distractor" , variable.distractor)
+                        //.settings.bold()
+
+                        ,
+
+                        newImage("SetupPic", variable.setup_pic)
+                        .size(300, 300)
+
+                        ,
+
+                        newImage("TargetPic", variable.target_pic)
+                        .size(300, 300)
+
+                        ,
+
+                        newCanvas("FixationCanvas", 300, 300)
+                        .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
+                        .print()
+
+                        ,
+
+                        newTimer("ShowFixation", 1000)
+                        .start()
+                        .wait()
+
+                        ,
+
+                        getText("fixation")
+                        .remove()
+
+                        ,
+
+                        newTimer("ShowBlank", 500)
+                        .start()
+                        .wait()
+
+                        ,
+
+                        getCanvas("FixationCanvas")
+                        .remove()
+
+                        ,
+
+                        newCanvas("SetupCanvas", 300, 300)
+                        .add(0, 0, getImage("SetupPic"))
+                        .print()
+
+                        ,
+
+                        newVoiceRecorder("SetupRecorder")
+                        .record()
+
+                        ,
+
+                        newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
+                        .start()
+                        .wait()
+
+                        ,
+
+                        getCanvas("SetupCanvas")
+                        .remove()
+
+                        ,
+
+                        newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                        .start()
+                        .wait()
+
+                        ,
+
+                        getVoiceRecorder("SetupRecorder")
+                        .stop()
+
+                        ,
+
+                        newTimer("Intertrial", 750)
+                        .start()
+                        .wait()
+
+                        ,
+
+                        newCanvas("TargetCanvas", 300, 300)
+                        .add(0, 0, getImage("TargetPic"))
+                        .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                        .print()
+
+
+                        ,
+
+                        newVoiceRecorder("TargetRecorder")
+                        .record()
+
+                        ,
+
+                        newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
+                        .start()
+                        .wait()
+
+                        ,
+
+                        getCanvas("TargetCanvas")
+                        .hidden()
+
+                        ,
+
+                        newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                        .start()
+                        .wait()
+
+                        ,
+
+                        getVoiceRecorder("TargetRecorder")
+                        .stop()
+
+                        ,
+
+                        newCanvas("space1", 1, 100)
+                        .print()
+
+                        ,
+
+                        newButton("weiter", "weiter")
+
+                        ,
+
+                        newSelector("button")
+                        .add(getButton("weiter") )
+                        .settings.keys(     " "                   )
+                        .wait()
+
+)
+  .setOption("hideProgressBar", "true" )
+  .log( "gender"               , getVar("gender")         )
+  .log( "age"                  , getVar("age")            )
+  .log( "language"             , getVar("language")       )
+  .log( "browser"              , getVar("browser")        )
+  .log( "SetupObject"          , getVar("setup_pic")      )
+  .log( "TargetObject"         , getVar("target_pic")     )
+  .log( "Distractor"           , getVar("distractor")     )
+  .log( "SetupColor"           , variable.setup_col       )
+  .log( "TargetColor"          , variable.target_col      )
+  .log( "DistractorCondition"  , variable.distractor_cond )
+  .log( "FocusCondition"       , variable.focus_cond      )
+  .log( "Condition"            , variable.condition       )
+  .log( "Itempaar"             , variable.itempaar        )
+)
+;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Break
