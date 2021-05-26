@@ -5,7 +5,7 @@ PennController.InitiateRecorder( "https://amor.cms.hu-berlin.de/~idslfahm/record
 
 
 //order of main blocks can be changed here
-PennController.Sequence("init", "main_SOA-100ms1",   "send", "end")
+PennController.Sequence("init", "question1", "question2", "question3", "question4", "question5", "question6",  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "break", "main_SOA100ms2", "break","main_SOA-100ms1", "break","main_SOA-100ms2", "break","main_SOA0ms1","break","main_SOA0ms2",  "send", "end" ) //order of main blocks can be changed here
 // PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "break", "main_SOA-100ms2", "break","main_SOA0ms1", "break","main_SOA0ms2", "break","main_SOA100ms1","break","main_SOA100ms2",  "send", "end" )
@@ -1688,153 +1688,325 @@ PennController.Template("uebung_v2.csv", variable =>
 
                         PennController("main_SOA-100ms2",
 
-                        newText("Distractor" , variable.distractor)
-                        //.settings.bold()
+                                                 newText("Distractor" , variable.distractor)
+                                                 //.settings.bold()
 
-                        ,
+                                                 ,
 
-                        newImage("SetupPic", variable.setup_pic)
-                        .size(300, 300)
+                                                 newImage("SetupPic", variable.setup_pic)
+                                                 .size(300, 300)
 
-                        ,
+                                                 ,
 
-                        newImage("TargetPic", variable.target_pic)
-                        .size(300, 300)
+                                                 newImage("TargetPic", variable.target_pic)
+                                                 .size(300, 300)
 
-                        ,
+                                                 ,
 
-                        newCanvas("FixationCanvas", 300, 300)
-                        .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
-                        .print()
+                                                 newCanvas("FixationCanvas", 300, 300)
+                                                 .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
+                                                 .print()
 
-                        ,
+                                                 ,
 
-                        newTimer("ShowFixation", 1000)
-                        .start()
-                        .wait()
+                                                 newTimer("ShowFixation", 1000)
+                                                 .start()
+                                                 .wait()
 
-                        ,
+                                                 ,
 
-                        getText("fixation")
-                        .remove()
+                                                 getText("fixation")
+                                                 .remove()
 
-                        ,
+                                                 ,
 
-                        newTimer("ShowBlank", 500)
-                        .start()
-                        .wait()
+                                                 newTimer("ShowBlank", 500)
+                                                 .start()
+                                                 .wait()
 
-                        ,
+                                                 ,
 
-                        getCanvas("FixationCanvas")
-                        .remove()
+                                                 getCanvas("FixationCanvas")
+                                                 .remove()
 
-                        ,
+                                                 ,
 
-                        newCanvas("SetupCanvas", 300, 300)
-                        .add(0, 0, getImage("SetupPic"))
-                        .print()
+                                                 newCanvas("SetupCanvas", 300, 300)
+                                                 .add(0, 0, getImage("SetupPic"))
+                                                 .print()
 
-                        ,
+                                                 ,
 
-                        newVoiceRecorder("SetupRecorder")
-                        .record()
+                                                 newVoiceRecorder("SetupRecorder")
+                                                 .record()
 
-                        ,
+                                                 ,
 
-                        newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
-                        .start()
-                        .wait()
+                                                 newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
+                                                 .start()
+                                                 .wait()
 
-                        ,
+                                                 ,
 
-                        getCanvas("SetupCanvas")
-                        .remove()
+                                                 getCanvas("SetupCanvas")
+                                                 .remove()
 
-                        ,
+                                                 ,
 
-                        newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
-                        .start()
-                        .wait()
+                                                 newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                                                 .start()
+                                                 .wait()
 
-                        ,
+                                                 ,
 
-                        getVoiceRecorder("SetupRecorder")
-                        .stop()
+                                                 getVoiceRecorder("SetupRecorder")
+                                                 .stop()
 
-                        ,
+                                                 ,
 
-                        newTimer("Intertrial", 750)
-                        .start()
-                        .wait()
+                                                 newTimer("Intertrial", 750)
+                                                 .start()
+                                                 .wait()
 
-                        ,
+                                                 ,
 
-                        newCanvas("TargetCanvas", 300, 300)
-                        .add(0, 0, getImage("TargetPic"))
-                        .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
-                        .print()
+                                                 newCanvas("TargetCanvas", 300, 300)
+                                                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                                                 .print()
+
+                                                 ,
+                                                 newTimer("ShowWord", 100) //Distraktor wird 100ms davor gezeigt
+                                                 .start()
+                                                 .wait()
+                                                 ,
+
+                                                 newVoiceRecorder("TargetRecorder")
+                                                 .record()
+
+                                                 ,
+                                                 getCanvas("TargetCanvas")
+                                                 .add(0, 0, getImage("TargetPic"))
+                                                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                                                 .print()
+                                                 ,
+
+                                                 newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
+                                                 .start()
+                                                 .wait()
+
+                                                 ,
+
+                                                 getCanvas("TargetCanvas")
+                                                 .hidden()
+
+                                                 ,
+
+                                                 newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                                                 .start()
+                                                 .wait()
+
+                                                 ,
+
+                                                 getVoiceRecorder("TargetRecorder")
+                                                 .stop()
+
+                                                 ,
+
+                                                 newCanvas("space1", 1, 100)
+                                                 .print()
+
+                                                 ,
+
+                                                 newButton("weiter", "weiter")
+
+                                                 ,
+
+                                                 newSelector("button")
+                                                 .add(getButton("weiter") )
+                                                 .settings.keys(     " "                   )
+                                                 .wait()
+
+                                        )
+
+                        .setOption("hideProgressBar", "true" )
+                        .log( "ID"                   , getVar("ID")             )
+                        .log( "gender"               , getVar("gender")         )
+                        .log( "age"                  , getVar("age")            )
+                        .log( "language"             , getVar("language")       )
+                        .log( "browser"              , getVar("browser")        )
+                        .log( "SetupObject"          , getVar("setup_pic")      )
+                        .log( "TargetObject"         , getVar("target_pic")     )
+                        .log( "Distractor"           , getVar("distractor")     )
+                        .log( "SetupColor"           , variable.setup_col       )
+                        .log( "TargetColor"          , variable.target_col      )
+                        .log( "DistractorCondition"  , variable.distractor_cond )
+                        .log( "FocusCondition"       , variable.focus_cond      )
+                        .log( "Condition"            , variable.condition       )
+                        .log( "Itempaar"             , variable.itempaar        )
+                        )
+                        ;
 
 
-                        ,
 
-                        newVoiceRecorder("TargetRecorder")
-                        .record()
 
-                        ,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Questions
 
-                        newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
-                        .start()
-                        .wait()
+PennController("question1",
 
-                        ,
+              newText("Nein", "<small>Nein [F]</small>")
+              .settings.center()
+              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
+              .settings.css("font-size", "medium")
+              ,
+              newCanvas("questioncanvas", 800, 400)
+              .add(250,50, newText("question", "Wurde ein schwarzer Tisch gezeigt?").settings.css("font-size", "large"))
+              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
+              .print()
+              ,
 
-                        getCanvas("TargetCanvas")
-                        .hidden()
+              newSelector("select")
+                .settings.add(getText("Nein"), getText("Ja"))
+                .settings.keys("F", "J")
+                .settings.log()
+                .wait()
+              ,
 
-                        ,
 
-                        newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
-                        .start()
-                        .wait()
-
-                        ,
-
-                        getVoiceRecorder("TargetRecorder")
-                        .stop()
-
-                        ,
-
-                        newCanvas("space1", 1, 100)
-                        .print()
-
-                        ,
-
-                        newButton("weiter", "weiter")
-
-                        ,
-
-                        newSelector("button")
-                        .add(getButton("weiter") )
-                        .settings.keys(     " "                   )
-                        .wait()
 
 )
-  .setOption("hideProgressBar", "true" )
-  .log( "gender"               , getVar("gender")         )
-  .log( "age"                  , getVar("age")            )
-  .log( "language"             , getVar("language")       )
-  .log( "browser"              , getVar("browser")        )
-  .log( "SetupObject"          , getVar("setup_pic")      )
-  .log( "TargetObject"         , getVar("target_pic")     )
-  .log( "Distractor"           , getVar("distractor")     )
-  .log( "SetupColor"           , variable.setup_col       )
-  .log( "TargetColor"          , variable.target_col      )
-  .log( "DistractorCondition"  , variable.distractor_cond )
-  .log( "FocusCondition"       , variable.focus_cond      )
-  .log( "Condition"            , variable.condition       )
-  .log( "Itempaar"             , variable.itempaar        )
+.setOption("hideProgressBar", "true")
+;
+
+
+
+PennController("question2",
+
+              newText("Nein", "<small>Nein [F]</small>")
+              .settings.center()
+              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
+              .settings.css("font-size", "medium")
+              ,
+              newCanvas("questioncanvas", 800, 400)
+              .add(250,50, newText("question", "Wurde ein brauner Anzug gezeigt?").settings.css("font-size", "large"))
+              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
+              .print()
+              ,
+
+              newSelector("select")
+                .settings.add(getText("Nein"), getText("Ja"))
+                .settings.keys("F", "J")
+                .settings.log()
+                .wait()
+              ,
+
+
+
 )
+.setOption("hideProgressBar", "true")
+;
+
+PennController("question3",
+
+              newText("Nein", "<small>Nein [F]</small>")
+              .settings.center()
+              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
+              .settings.css("font-size", "medium")
+              ,
+              newCanvas("questioncanvas", 800, 400)
+              .add(250,50, newText("question", "Wurde eine wei&szlig;e Raupe gezeigt?").settings.css("font-size", "large"))
+              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
+              .print()
+              ,
+
+              newSelector("select")
+                .settings.add(getText("Nein"), getText("Ja"))
+                .settings.keys("F", "J")
+                .settings.log()
+                .wait()
+              ,
+
+
+
+)
+.setOption("hideProgressBar", "true")
+;
+
+PennController("question4",
+
+              newText("Nein", "<small>Nein [F]</small>")
+              .settings.center()
+              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
+              .settings.css("font-size", "medium")
+              ,
+              newCanvas("questioncanvas", 800, 400)
+              .add(250,50, newText("question", "Wurde eine braune Nuss gezeigt?").settings.css("font-size", "large"))
+              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
+              .print()
+              ,
+
+              newSelector("select")
+                .settings.add(getText("Nein"), getText("Ja"))
+                .settings.keys("F", "J")
+                .settings.log()
+                .wait()
+              ,
+
+
+
+)
+.setOption("hideProgressBar", "true")
+;
+
+PennController("question5",
+
+              newText("Nein", "<small>Nein [F]</small>")
+              .settings.center()
+              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
+              .settings.css("font-size", "medium")
+              ,
+              newCanvas("questioncanvas", 800, 400)
+              .add(250,50, newText("question", "Wurde ein wei&szlig;er Brief gezeigt?").settings.css("font-size", "large"))
+              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
+              .print()
+              ,
+
+              newSelector("select")
+                .settings.add(getText("Nein"), getText("Ja"))
+                .settings.keys("F", "J")
+                .settings.log()
+                .wait()
+              ,
+
+
+
+)
+.setOption("hideProgressBar", "true")
+;
+
+PennController("question6",
+
+              newText("Nein", "<small>Nein [F]</small>")
+              .settings.center()
+              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
+              .settings.css("font-size", "medium")
+              ,
+              newCanvas("questioncanvas", 800, 400)
+              .add(250,50, newText("question", "Wurde ein brauner Koffer gezeigt?").settings.css("font-size", "large"))
+              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
+              .print()
+              ,
+
+              newSelector("select")
+                .settings.add(getText("Nein"), getText("Ja"))
+                .settings.keys("F", "J")
+                .settings.log()
+                .wait()
+              ,
+
+
+
+)
+.setOption("hideProgressBar", "true")
 ;
 
 
