@@ -383,8 +383,8 @@ PennController.Template("fam.csv", variable =>
               .add(230, 210, newText ( "Wort1", variable.Wort1).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               //.add(325,   0, newImage( "Bild2", variable.Bild2).size(150,150))
               //.add(375, 155, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(475,   0, newImage( "Bild2", variable.Bild2).size(200,200))
-              .add(525, 210, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
+              .add(450,   0, newImage( "Bild2", variable.Bild2).size(200,200))
+              .add(500, 210, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               .print()
 
               ,
@@ -399,8 +399,8 @@ PennController.Template("fam.csv", variable =>
               .add(230, 210, newText ("Wort3", variable.Wort3).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               //.add(325,   0, newImage("Bild4", variable.Bild5).size(150,150))
               //.add(375, 155, newText ("Wort4", variable.Wort5).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(475,   0, newImage("Bild4", variable.Bild4).size(200,200))
-              .add(525, 210, newText ("Wort4", variable.Wort4).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
+              .add(450,   0, newImage("Bild4", variable.Bild4).size(200,200))
+              .add(500, 210, newText ("Wort4", variable.Wort4).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               .print()
 
               ,
