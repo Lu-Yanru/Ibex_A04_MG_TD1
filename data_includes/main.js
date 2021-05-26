@@ -4,8 +4,12 @@ PennController.InitiateRecorder( "https://amor.cms.hu-berlin.de/~idslfahm/record
 //PennController.DebugOff()
 
 
-
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
+//order of main blocks can be changed here
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start",  "main_start",   "send", "end")
+//PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
+//PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "break", "main_SOA100ms2", "break","main_SOA-100ms1", "break","main_SOA-100ms2", "break","main_SOA0ms1","break","main_SOA0ms2",  "send", "end" ) //order of main blocks can be changed here
+// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "break", "main_SOA-100ms2", "break","main_SOA0ms1", "break","main_SOA0ms2", "break","main_SOA100ms1","break","main_SOA100ms2",  "send", "end" )
+// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA0ms1", "break", "main_SOA0ms2", "break","main_SOA100ms1", "break","main_SOA100ms2", "break","main_SOA-100ms1","break","main_SOA-100ms2",  "send", "end" )
 
 
 
@@ -344,32 +348,11 @@ PennController("hinweise",
 
 PennController("familiarization_start",
 
-              newText("familiarization_instr1", "Zun&auml;chst zeigen wir dir alle Bilder, die sp&auml;ter in dem Experiment vorkommen. Dabei erscheinen mehrere Bilder gleichzeitig auf dem Bildschirm. Unter jedem einzelnen Bild wird der Begriff stehen, mit dem du das Bild sp&auml;ter benennen sollst (z.B. &quot;Frosch&quot;, wenn das Bild einen Frosch zeigt). Betrachte die Bilder deshalb bitte aufmerksam und versuche dir die dazugeh&ouml;rigen Begriffe zu merken!")
-              .settings.css("font-size", "18px")
+              newHtml("fam", "fam_start.html")
+              .print()
 
               ,
-
-              newText("familiarization_instr2", "Nachdem du alle Bilder gesehen hast, wird es eine kurze Abfrage der Bilder geben, um zu &uuml;berpr&uuml;fen " )
-              .settings.css("font-size", "18px")
-              .settings.bold()
-
-              ,
-
-              newText("familiarization_instr3", "Unter den Bildern erscheint nach einiger Zeit der <i>weiter</i>-Knopf, mit dem du dich durch die Bilder klicken kannst. " )
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newText("familiarization_instr4", "Klicke <i>weiter</i>, um zu beginnen!")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newCanvas("text_fam", 900, 400)
-              .add( 60,   0, getText("familiarization_instr1"))
-              .add( 60, 100, getText("familiarization_instr2"))
-              .add( 60, 140, getText("familiarization_instr3"))
-              .add(300, 220, getText("familiarization_instr4"))
+              newCanvas("space1", 1, 160)
               .print()
 
               ,
@@ -398,10 +381,10 @@ PennController.Template("Familiarization_PWI.csv", variable =>
               newCanvas("Row1", 800, 175)
               .add (75,   0, newImage( "Bild1", variable.Bild1).size(150,150))
               .add(125, 155, newText ( "Wort1", variable.Wort1).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(325,   0, newImage( "Bild2", variable.Bild2).size(150,150))
-              .add(375, 155, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(575,   0, newImage( "Bild3", variable.Bild3).size(150,150))
-              .add(625, 155, newText ( "Wort3", variable.Wort3).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
+              //.add(325,   0, newImage( "Bild2", variable.Bild2).size(150,150))
+              //.add(375, 155, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
+              .add(575,   0, newImage( "Bild2", variable.Bild2).size(150,150))
+              .add(625, 155, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               .print()
 
               ,
@@ -412,12 +395,12 @@ PennController.Template("Familiarization_PWI.csv", variable =>
               ,
 
               newCanvas("Row2", 800, 175)
-              .add( 75,   0, newImage("Bild4", variable.Bild4).size(150,150))
-              .add(125, 155, newText ("Wort4", variable.Wort4).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(325,   0, newImage("Bild5", variable.Bild5).size(150,150))
-              .add(375, 155, newText ("Wort5", variable.Wort5).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(575,   0, newImage("Bild6", variable.Bild6).size(150,150))
-              .add(625, 155, newText ("Wort6", variable.Wort6).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
+              .add( 75,   0, newImage("Bild3", variable.Bild3).size(150,150))
+              .add(125, 155, newText ("Wort3", variable.Wort3).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
+              //.add(325,   0, newImage("Bild4", variable.Bild5).size(150,150))
+              //.add(375, 155, newText ("Wort4", variable.Wort5).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
+              .add(575,   0, newImage("Bild4", variable.Bild4).size(150,150))
+              .add(625, 155, newText ("Wort4", variable.Wort4).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
               .print()
 
               ,
@@ -451,10 +434,10 @@ PennController.Template("Familiarization_PWI.csv", variable =>
     .log( "Wort3"       , variable.Wort3 )
     .log( "Bild4"       , variable.Bild4 )
     .log( "Wort4"       , variable.Wort4 )
-    .log( "Bild5"       , variable.Bild5 )
-    .log( "Wort5"       , variable.Wort5 )
-    .log( "Bild6"       , variable.Bild6 )
-    .log( "Wort6"       , variable.Wort6 )
+    //.log( "Bild5"       , variable.Bild5 )
+    //.log( "Wort5"       , variable.Wort5 )
+    //.log( "Bild6"       , variable.Bild6 )
+    //.log( "Wort6"       , variable.Wort6 )
     .log( "Farbe"       , variable.Farbe )
     .log( "ID"          , getVar("ID")      )
     .log( "gender"      , getVar("gender")  )
@@ -861,36 +844,14 @@ PennController.Template("uebung_v2.csv", variable =>
 
 PennController("main_start",
 
-              newText("main_instr1", "Jetzt beginnt das eigentliche Experiment!")
-              .settings.css("font-size", "18px")
-              .settings.bold()
-
-              ,
-
-              newText("main_instr2", "Der Ablauf ist der gleiche wie gerade in der &Uuml;bung.")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newText("main_instr3", "Es wird zwischendurch drei kurze Pausen geben.")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newText("main_instr4", "Klicke <i>weiter</i>, um zu beginnen!")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newCanvas("background", 900, 400)
-              .add(300,    0, getText("main_instr1"))
-              .add(300,   30, getText("main_instr2"))
-              .add(300,   60, getText("main_instr3"))
-              .add(340,  220, getText("main_instr4"))
+              newHtml("main_start", "main_start.html")
               .print()
 
               ,
+              newCanvas("space1", 1, 160)
+              .print()
 
+              ,
               newButton("weiter", "weiter")
               .settings.center()
               .print()
@@ -912,7 +873,7 @@ PennController.Template("uebung_v2.csv", variable =>
     PennController("main",
 
              newText("Distractor" , variable.distractor)
-             .settings.bold()
+             //.settings.bold()
 
              ,
 
