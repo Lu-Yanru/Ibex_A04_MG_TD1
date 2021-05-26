@@ -5,7 +5,7 @@ PennController.InitiateRecorder( "https://amor.cms.hu-berlin.de/~idslfahm/record
 
 
 //order of main blocks can be changed here
-PennController.Sequence("init", "main_SOA0ms1",   "send", "end")
+PennController.Sequence("init", "main_SOA100ms1",   "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "break", "main_SOA100ms2", "break","main_SOA-100ms1", "break","main_SOA-100ms2", "break","main_SOA0ms1","break","main_SOA0ms2",  "send", "end" ) //order of main blocks can be changed here
 // PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "break", "main_SOA-100ms2", "break","main_SOA0ms1", "break","main_SOA0ms2", "break","main_SOA100ms1","break","main_SOA100ms2",  "send", "end" )
@@ -1274,7 +1274,6 @@ PennController.Template("uebung_v2.csv", variable =>
 
                      newCanvas("TargetCanvas", 300, 300)
                      .add(0, 0, getImage("TargetPic"))
-                     .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
                      .print()
 
 
@@ -1285,7 +1284,16 @@ PennController.Template("uebung_v2.csv", variable =>
 
                      ,
 
-                     newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
+                     newTimer("ShowWord", 100) // Nach 100ms Distraktor zeigen
+                     .start()
+                     .wait()
+                     ,
+                     getCanvas("TargetCanvas")
+                     .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                     .print()
+                     ,
+
+                     newTimer("ShowTarget", 900) // Bild wird 900 ms weiter gezeigt (1000ms insgesamt)
                      .start()
                      .wait()
 
