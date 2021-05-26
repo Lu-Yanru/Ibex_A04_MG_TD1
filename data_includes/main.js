@@ -5,7 +5,7 @@ PennController.InitiateRecorder( "https://amor.cms.hu-berlin.de/~idslfahm/record
 
 
 //order of main blocks can be changed here
-PennController.Sequence("init", "fam",  "send", "end")
+PennController.Sequence("init", "familiarization",  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "question1", "break", "main_SOA100ms2", "question2", "break","main_SOA-100ms1", "question3", "break","main_SOA-100ms2", "question4", "break","main_SOA0ms1", "question5", "break","main_SOA0ms2", "question6",  "send", "end" ) //order of main blocks can be changed here
 // PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "question3", "break", "main_SOA-100ms2", "question4", "break","main_SOA0ms1", "question5", "break","main_SOA0ms2", "question6", "break","main_SOA100ms1", "question1", "break","main_SOA100ms2", "question2",  "send", "end" )
