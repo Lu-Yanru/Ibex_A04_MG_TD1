@@ -5,11 +5,11 @@ PennController.InitiateRecorder( "https://amor.cms.hu-berlin.de/~idslfahm/record
 
 
 //order of main blocks can be changed here
-PennController.Sequence("init", "question1", "question2", "question3", "question4", "question5", "question6",  "send", "end")
+PennController.Sequence("init", "fam",  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
-//PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "break", "main_SOA100ms2", "break","main_SOA-100ms1", "break","main_SOA-100ms2", "break","main_SOA0ms1","break","main_SOA0ms2",  "send", "end" ) //order of main blocks can be changed here
-// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "break", "main_SOA-100ms2", "break","main_SOA0ms1", "break","main_SOA0ms2", "break","main_SOA100ms1","break","main_SOA100ms2",  "send", "end" )
-// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA0ms1", "break", "main_SOA0ms2", "break","main_SOA100ms1", "break","main_SOA100ms2", "break","main_SOA-100ms1","break","main_SOA-100ms2",  "send", "end" )
+//PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "question1", "break", "main_SOA100ms2", "question2", "break","main_SOA-100ms1", "question3", "break","main_SOA-100ms2", "question4", "break","main_SOA0ms1", "question5", "break","main_SOA0ms2", "question6",  "send", "end" ) //order of main blocks can be changed here
+// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "question3", "break", "main_SOA-100ms2", "question4", "break","main_SOA0ms1", "question5", "break","main_SOA0ms2", "question6", "break","main_SOA100ms1", "question1", "break","main_SOA100ms2", "question2",  "send", "end" )
+// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA0ms1","question5", "break", "main_SOA0ms2", "question6", "break","main_SOA100ms1", "question1", "break","main_SOA100ms2", "question2", "break","main_SOA-100ms1", "question3", "break","main_SOA-100ms2","question4",  "send", "end" )
 
 
 
@@ -377,7 +377,10 @@ PennController.Template("fam.csv", variable =>
 
               PennController("familiarization",
 
-
+              newCanvas("Col", 800, 5)
+              .add(390, 0, newText("Color", variable.Farbe).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman"))
+              .print()
+              ,
               newCanvas("Row1", 800, 220)
               .add (175,   0, newImage( "Bild1", variable.Bild1).size(200,200))
               .add(230, 210, newText ( "Wort1", variable.Wort1).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
