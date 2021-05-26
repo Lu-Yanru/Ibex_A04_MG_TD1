@@ -377,7 +377,7 @@ PennController.Template("fam.csv", variable =>
 
               PennController("familiarization",
 
-              newCanvas("Col", 800, 20)
+              newCanvas("Col", 800, 50)
               .add(390, 0, newText("Color", variable.Farbe).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman").settings.css("font-weight", "bold"))
               .print()
               ,
