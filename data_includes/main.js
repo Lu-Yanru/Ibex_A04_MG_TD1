@@ -619,7 +619,7 @@ PennController("test",
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice1
 
 
-PennController("practice_start",
+PennController("practice_one_start",
 
 
               newHtml("practice_one_start", "practice_one_start.html")
