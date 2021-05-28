@@ -616,58 +616,13 @@ PennController("test",
 
     ;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice1
 
 
 PennController("practice_start",
 
-              /*newText("practice_instr1", "Es folgt jetzt eine kurze &Uuml;bung, damit du dich mit dem Ablauf des Experiments vertraut machen kannst!")
-              .settings.css("font-size", "18px")
 
-              ,
-
-              newText("practice_instr2", "Dir werden immer Paare aus zwei Bildern pr&auml;sentiert, die kurz nacheinander auf dem Bildschirm erscheinen.")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newText("practice_instr3", "Deine Aufgabe ist es, beide Bilder zusammen mit ihrer Farbe zu benennen. Wenn du z.B. das Bild der Erbse siehst, sollst du sagen &quot;Die Erbse ist gr&uuml;n&quot;. Wie eben werden die Bilder immer in der entsprechenden Farbe eingef&auml;rbt sein.")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newText("practice_instr4","Auf einigen der Bildern werden zust&auml;zlich Worte stehen. Diese sollst du bei der Benennung ignorieren.")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newText("practice_instr5","Um zum n&auml;chsten Bildpaar zu gelangen, musst du die Leertaste dr&uuml;cken. Du kannst dich weiterklicken, sobald die Aufnahme f&uuml;r das zweite Bild stoppt. Es wird dann zun&auml;chst ein kleines Kreuz in der Mitte des Bildschirms erscheinen, bevor das n&auml;chste Paar gezeigt wird.")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newText("practice_instr5","Bitte benenne die Bilder so korrekt und schnell wie m&oumlglich!")
-              .settings.css("font-size", "18")
-
-              ,
-
-              newText("practice_instr6", "Klicke <i>weiter</i>, um zu beginnen!")
-              .settings.css("font-size", "18px")
-
-              ,
-
-              newCanvas("background", 900, 400)
-              .add( 60,    0, getText("practice_instr1"))
-              .add( 60,   30, getText("practice_instr2"))
-              .add( 60,   60, getText("practice_instr3"))
-              .add( 60,  120, getText("practice_instr4"))
-              .add( 60,  150, getText("practice_instr5"))
-              .add(300,  240, getText("practice_instr6"))
-              .print()
-
-              ,*/
-
-              newHtml("practice_start", "practice_start.html")
+              newHtml("practice_one_start", "practice_one_start.html")
               .print()
               ,
 
@@ -684,17 +639,13 @@ PennController("practice_start",
     ;
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice1
 
 
 PennController.Template("uebung_v2.csv", variable =>
 
-    PennController("practice",
+    PennController("practice_one",
 
-             newText("Distractor" , variable.distractor)
-             .settings.bold()
-
-             ,
 
              newImage("SetupPic", variable.setup_pic)
              .size(300, 300)
@@ -756,7 +707,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
              ,
 
-             newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+             newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
              .start()
              .wait()
 
@@ -775,7 +726,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
              newCanvas("TargetCanvas", 300, 300)
              .add(0, 0, getImage("TargetPic"))
-             .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+             //.add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
              .print()
 
 
@@ -797,7 +748,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
              ,
 
-             newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+             newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
              .start()
              .wait()
 
@@ -832,15 +783,196 @@ PennController.Template("uebung_v2.csv", variable =>
     .log( "browser"              , getVar("browser")        )
     .log( "SetupObject"          , getVar("setup_pic")      )
     .log( "TargetObject"         , getVar("target_pic")     )
-    .log( "Distractor"           , getVar("distractor")     )
+    //.log( "Distractor"           , getVar("distractor")     )
     .log( "SetupColor"           , variable.setup_col       )
     .log( "TargetColor"          , variable.target_col      )
-    .log( "DistractorCondition"  , variable.distractor_cond )
-    .log( "FocusCondition"       , variable.focus_cond      )
+    //.log( "DistractorCondition"  , variable.distractor_cond )
+    //.log( "FocusCondition"       , variable.focus_cond      )
     .log( "Condition"            , variable.condition       )
-    .log( "Itempaar"             , variable.itempaar        )
+    //.log( "Itempaar"             , variable.itempaar        )
     )
     ;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice2
+
+PennController("practice_two_start",
+
+
+                  newHtml("practice_two_start", "practice_two_start.html")
+                  .print()
+                  ,
+
+                  newButton("weiter", "weiter")
+                  .settings.center()
+                  .print()
+                  .wait()
+
+
+        )
+
+        .setOption("hideProgressBar", "true")
+
+        ;
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice2
+
+
+PennController.Template("uebung_v2.csv", variable =>
+
+        PennController("practice_two",
+
+                 newText("Distractor" , variable.distractor)
+                 //.settings.bold()
+
+                 ,
+
+                 newImage("SetupPic", variable.setup_pic)
+                 .size(300, 300)
+
+                 ,
+
+                 newImage("TargetPic", variable.target_pic)
+                 .size(300, 300)
+
+                 ,
+
+                 newCanvas("FixationCanvas", 300, 300)
+                 .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
+                 .print()
+
+                 ,
+
+                 newTimer("ShowFixation", 1000)
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getText("fixation")
+                 .remove()
+
+                 ,
+
+                 newTimer("ShowBlank", 500)
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getCanvas("FixationCanvas")
+                 .remove()
+
+                 ,
+
+                 newCanvas("SetupCanvas", 300, 300)
+                 .add(0, 0, getImage("SetupPic"))
+                 .print()
+
+                 ,
+
+                 newVoiceRecorder("SetupRecorder")
+                 .record()
+
+                 ,
+
+                 newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getCanvas("SetupCanvas")
+                 .remove()
+
+                 ,
+
+                 newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getVoiceRecorder("SetupRecorder")
+                 .stop()
+
+                 ,
+
+                 newTimer("Intertrial", 750)
+                 .start()
+                 .wait()
+
+                 ,
+
+                 newCanvas("TargetCanvas", 300, 300)
+                 .add(0, 0, getImage("TargetPic"))
+                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                 .print()
+
+
+                 ,
+
+                 newVoiceRecorder("TargetRecorder")
+                 .record()
+
+                 ,
+
+                 newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getCanvas("TargetCanvas")
+                 .hidden()
+
+                 ,
+
+                 newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
+                 .start()
+                 .wait()
+
+                 ,
+
+                 getVoiceRecorder("TargetRecorder")
+                 .stop()
+
+                 ,
+
+                 newCanvas("space1", 1, 100)
+                 .print()
+
+                 ,
+
+                 newButton("weiter", "weiter")
+
+                 ,
+
+                 newSelector("button")
+                 .add(getButton("weiter") )
+                 .settings.keys(     " "                   )
+                 .wait()
+
+        )
+
+        .setOption("hideProgressBar", "true" )
+        .log( "ID"                   , getVar("ID")             )
+        .log( "gender"               , getVar("gender")         )
+        .log( "age"                  , getVar("age")            )
+        .log( "language"             , getVar("language")       )
+        .log( "browser"              , getVar("browser")        )
+        .log( "SetupObject"          , getVar("setup_pic")      )
+        .log( "TargetObject"         , getVar("target_pic")     )
+        .log( "Distractor"           , getVar("distractor")     )
+        .log( "SetupColor"           , variable.setup_col       )
+        .log( "TargetColor"          , variable.target_col      )
+        .log( "DistractorCondition"  , variable.distractor_cond )
+        .log( "FocusCondition"       , variable.focus_cond      )
+        .log( "Condition"            , variable.condition       )
+        //.log( "Itempaar"             , variable.itempaar        )
+        )
+        ;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Main
