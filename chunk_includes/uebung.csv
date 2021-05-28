@@ -1,5 +1,5 @@
-Pic,Word,Cond
-Elefant.png,Fenster,UE
-Blume.png,Baum,UE
-Schuh.png,Socke,UE
-Uhr.png,Katze,UE
+setup_pic,setup_obj,setup_col,target_pic,target_obj,target_col,condition
+Geige_braun.png,Geige,braun,Iglu_weiss.png,Iglu,weiss,ue
+Salat_gruen.png,Salat,gruen,Mund_rot.png,Mund,rot,ue
+Pokal_gold.png,Pokal,gold,Ring_gold.png,Ring,gold,ue
+Klavier_schwarz.png,Klavier,schwarz,Zahn_weiss.png,Zahn,weiss,ue

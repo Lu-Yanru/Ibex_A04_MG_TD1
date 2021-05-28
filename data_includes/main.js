@@ -5,7 +5,7 @@ PennController.DebugOff()
 
 
 //order of main blocks can be changed here
-PennController.Sequence("init", "familiarization",  "send", "end")
+PennController.Sequence("init", "practice_one", "practice_two",  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "question1", "question2", "break", "main_SOA100ms2", "question3", "question4", "break","main_SOA-100ms1", "question5","question6", "break","main_SOA-100ms2", "question7","question8", "break","main_SOA0ms1", "question9", "question10", "break","main_SOA0ms2",  "send", "end" ) //order of main blocks can be changed here
 // PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "question5", "question6", "break", "main_SOA-100ms2", "question7", "question8", "break","main_SOA0ms1", "question9", "question10", "break","main_SOA0ms2", "question3","question4", "break","main_SOA100ms1", "question1", "question2", "break","main_SOA100ms2", "send", "end" )
@@ -642,7 +642,7 @@ PennController("practice_start",
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice1
 
 
-PennController.Template("uebung_v2.csv", variable =>
+PennController.Template("uebung.csv", variable =>
 
     PennController("practice_one",
 
@@ -819,7 +819,7 @@ PennController("practice_two_start",
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice2
 
 
-PennController.Template("uebung_v2.csv", variable =>
+PennController.Template("uebung2.csv", variable =>
 
         PennController("practice_two",
 
@@ -967,8 +967,8 @@ PennController.Template("uebung_v2.csv", variable =>
         .log( "Distractor"           , getVar("distractor")     )
         .log( "SetupColor"           , variable.setup_col       )
         .log( "TargetColor"          , variable.target_col      )
-        .log( "DistractorCondition"  , variable.distractor_cond )
-        .log( "FocusCondition"       , variable.focus_cond      )
+        //.log( "DistractorCondition"  , variable.distractor_cond )
+        //.log( "FocusCondition"       , variable.focus_cond      )
         .log( "Condition"            , variable.condition       )
         //.log( "Itempaar"             , variable.itempaar        )
         )
