@@ -5,11 +5,11 @@ PennController.DebugOff()
 
 
 //order of main blocks can be changed here
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "practice_one_start", "practice_two_start",  "send", "end")
+PennController.Sequence("init", "main_SOA0ms1", "question1", "question2",  "send", "end")
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
-//PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "question1", "question2", "break", "main_SOA100ms2", "question3", "question4", "break","main_SOA-100ms1", "question5","question6", "break","main_SOA-100ms2", "question7","question8", "break","main_SOA0ms1", "question9", "question10", "break","main_SOA0ms2",  "send", "end" ) //order of main blocks can be changed here
-// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "question5", "question6", "break", "main_SOA-100ms2", "question7", "question8", "break","main_SOA0ms1", "question9", "question10", "break","main_SOA0ms2", "question3","question4", "break","main_SOA100ms1", "question1", "question2", "break","main_SOA100ms2", "send", "end" )
-// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA0ms1","question7", "question8" "break", "main_SOA0ms2", "question9","question10", "break","main_SOA100ms1", "question1", "question2", "break","main_SOA100ms2", "question3","question4", "break","main_SOA-100ms1", "question5","quesion6", "break","main_SOA-100ms2",  "send", "end" )
+//PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "question1", "question2", "break", "main_SOA100ms2", "question3", "question4", "break","main_SOA-100ms1", "question5","question6", "break","main_SOA-100ms2", "question7","question8", "break","main_SOA0ms1", "question9", "question10", "break","main_SOA0ms2",  "send", "end" ) //order of main blocks can be changed here
+// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "question5", "question6", "break", "main_SOA-100ms2", "question7", "question8", "break","main_SOA0ms1", "question9", "question10", "break","main_SOA0ms2", "question3","question4", "break","main_SOA100ms1", "question1", "question2", "break","main_SOA100ms2", "send", "end" )
+// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA0ms1","question7", "question8" "break", "main_SOA0ms2", "question9","question10", "break","main_SOA100ms1", "question1", "question2", "break","main_SOA100ms2", "question3","question4", "break","main_SOA-100ms1", "question5","quesion6", "break","main_SOA-100ms2",  "send", "end" )
 
 
 
@@ -1072,7 +1072,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
              ,
 
-             newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+             newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
              .start()
              .wait()
 
@@ -1091,7 +1091,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
              newCanvas("TargetCanvas", 300, 300)
              .add(0, 0, getImage("TargetPic"))
-             .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+             .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
              .print()
 
 
@@ -1113,7 +1113,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
              ,
 
-             newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+             newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
              .start()
              .wait()
 
@@ -1231,7 +1231,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                  ,
 
-                 newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                 newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                  .start()
                  .wait()
 
@@ -1250,7 +1250,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                  newCanvas("TargetCanvas", 300, 300)
                  .add(0, 0, getImage("TargetPic"))
-                 .add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
                  .print()
 
 
@@ -1272,7 +1272,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                  ,
 
-                 newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                 newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                  .start()
                  .wait()
 
@@ -1390,7 +1390,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                      ,
 
-                     newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                     newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                      .start()
                      .wait()
 
@@ -1439,7 +1439,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                      ,
 
-                     newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                     newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                      .start()
                      .wait()
 
@@ -1557,7 +1557,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                                  ,
 
-                                 newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                                 newTimer("RecordSetup", 1500) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
                                  .start()
                                  .wait()
 
@@ -1606,7 +1606,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                                  ,
 
-                                 newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                                 newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                                  .start()
                                  .wait()
 
@@ -1723,7 +1723,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                              ,
 
-                             newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                             newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                              .start()
                              .wait()
 
@@ -1771,7 +1771,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                              ,
 
-                             newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                             newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                              .start()
                              .wait()
 
@@ -1888,7 +1888,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                                                  ,
 
-                                                 newTimer("RecordSetup", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                                                 newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                                                  .start()
                                                  .wait()
 
@@ -1936,7 +1936,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                                                  ,
 
-                                                 newTimer("RecordTarget", 1000) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
+                                                 newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
                                                  .start()
                                                  .wait()
 
