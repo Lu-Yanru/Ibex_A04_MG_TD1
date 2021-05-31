@@ -1003,7 +1003,7 @@ PennController("main_start",
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Main
 ///////SOA0
-PennController.Template("uebung_v2.csv", variable =>
+PennController.Template("rand1-1-ibex.csv", variable =>
 
     PennController("main_SOA0ms1",
 
@@ -1151,10 +1151,11 @@ PennController.Template("uebung_v2.csv", variable =>
     .log( "Distractor"           , getVar("distractor")     )
     .log( "SetupColor"           , variable.setup_col       )
     .log( "TargetColor"          , variable.target_col      )
+    .log("DistractorColor"       , variable.distractor_col  )
     .log( "DistractorCondition"  , variable.distractor_cond )
     .log( "FocusCondition"       , variable.focus_cond      )
     .log( "Condition"            , variable.condition       )
-    .log( "Itempaar"             , variable.itempaar        )
+    //.log( "Itempaar"             , variable.itempaar        )
     )
     ;
 
@@ -1162,7 +1163,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
 
 ///////SOA0
-PennController.Template("uebung_v2.csv", variable =>
+PennController.Template("rand1-2-ibex.csv", variable =>
 
         PennController("main_SOA0ms2",
 
@@ -1310,10 +1311,11 @@ PennController.Template("uebung_v2.csv", variable =>
         .log( "Distractor"           , getVar("distractor")     )
         .log( "SetupColor"           , variable.setup_col       )
         .log( "TargetColor"          , variable.target_col      )
+        .log("DistractorColor"       , variable.distractor_col  )
         .log( "DistractorCondition"  , variable.distractor_cond )
         .log( "FocusCondition"       , variable.focus_cond      )
         .log( "Condition"            , variable.condition       )
-        .log( "Itempaar"             , variable.itempaar        )
+        //.log( "Itempaar"             , variable.itempaar        )
         )
         ;
 
@@ -1321,7 +1323,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
 
 ///////SOA100
-PennController.Template("uebung_v2.csv", variable =>
+PennController.Template("rand2-1-ibex.csv", variable =>
 
             PennController("main_SOA100ms1",
 
@@ -1477,10 +1479,11 @@ PennController.Template("uebung_v2.csv", variable =>
             .log( "Distractor"           , getVar("distractor")     )
             .log( "SetupColor"           , variable.setup_col       )
             .log( "TargetColor"          , variable.target_col      )
+            .log("DistractorColor"       , variable.distractor_col  )
             .log( "DistractorCondition"  , variable.distractor_cond )
             .log( "FocusCondition"       , variable.focus_cond      )
             .log( "Condition"            , variable.condition       )
-            .log( "Itempaar"             , variable.itempaar        )
+            //.log( "Itempaar"             , variable.itempaar        )
             )
             ;
 
@@ -1488,7 +1491,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
 
 ///////SOA100
-PennController.Template("uebung_v2.csv", variable =>
+PennController.Template("rand2-2-ibex.csv", variable =>
 
                         PennController("main_SOA100ms2",
 
@@ -1644,17 +1647,18 @@ PennController.Template("uebung_v2.csv", variable =>
                         .log( "Distractor"           , getVar("distractor")     )
                         .log( "SetupColor"           , variable.setup_col       )
                         .log( "TargetColor"          , variable.target_col      )
+                        .log("DistractorColor"       , variable.distractor_col  )
                         .log( "DistractorCondition"  , variable.distractor_cond )
                         .log( "FocusCondition"       , variable.focus_cond      )
                         .log( "Condition"            , variable.condition       )
-                        .log( "Itempaar"             , variable.itempaar        )
+                        //.log( "Itempaar"             , variable.itempaar        )
                         )
                         ;
 
 
 
 ///////SOA-100
-PennController.Template("uebung_v2.csv", variable =>
+PennController.Template("rand3-1-ibex.csv", variable =>
 
                     PennController("main_SOA-100ms1",
 
@@ -1809,17 +1813,18 @@ PennController.Template("uebung_v2.csv", variable =>
                     .log( "Distractor"           , getVar("distractor")     )
                     .log( "SetupColor"           , variable.setup_col       )
                     .log( "TargetColor"          , variable.target_col      )
+                    .log("DistractorColor"       , variable.distractor_col  )
                     .log( "DistractorCondition"  , variable.distractor_cond )
                     .log( "FocusCondition"       , variable.focus_cond      )
                     .log( "Condition"            , variable.condition       )
-                    .log( "Itempaar"             , variable.itempaar        )
+                    //.log( "Itempaar"             , variable.itempaar        )
                     )
                     ;
 
 
 
 ///////SOA-100
-PennController.Template("uebung_v2.csv", variable =>
+PennController.Template("rand3-2-ibex.csv", variable =>
 
                         PennController("main_SOA-100ms2",
 
@@ -1974,10 +1979,11 @@ PennController.Template("uebung_v2.csv", variable =>
                         .log( "Distractor"           , getVar("distractor")     )
                         .log( "SetupColor"           , variable.setup_col       )
                         .log( "TargetColor"          , variable.target_col      )
+                        .log("DistractorColor"       , variable.distractor_col  )
                         .log( "DistractorCondition"  , variable.distractor_cond )
                         .log( "FocusCondition"       , variable.focus_cond      )
                         .log( "Condition"            , variable.condition       )
-                        .log( "Itempaar"             , variable.itempaar        )
+                        //.log( "Itempaar"             , variable.itempaar        )
                         )
                         ;
 
