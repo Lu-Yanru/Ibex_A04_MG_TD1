@@ -907,7 +907,7 @@ PennController.Template("uebung2.csv", variable =>
 
                  newCanvas("TargetCanvas", 300, 300)
                  .add(0, 0, getImage("TargetPic"))
-                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
                  .print()
 
 
@@ -1091,7 +1091,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
              newCanvas("TargetCanvas", 300, 300)
              .add(0, 0, getImage("TargetPic"))
-             .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+             .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
              .print()
 
 
@@ -1250,7 +1250,7 @@ PennController.Template("uebung_v2.csv", variable =>
 
                  newCanvas("TargetCanvas", 300, 300)
                  .add(0, 0, getImage("TargetPic"))
-                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
+                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
                  .print()
 
 
@@ -1424,7 +1424,7 @@ PennController.Template("uebung_v2.csv", variable =>
                      .wait()
                      ,
                      getCanvas("TargetCanvas")
-                     .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                     .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
                      .print()
                      ,
 
@@ -1591,7 +1591,7 @@ PennController.Template("uebung_v2.csv", variable =>
                                  .wait()
                                  ,
                                  getCanvas("TargetCanvas")
-                                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
                                  .print()
                                  ,
 
@@ -1741,7 +1741,7 @@ PennController.Template("uebung_v2.csv", variable =>
                              ,
 
                              newCanvas("TargetCanvas", 300, 300)
-                             .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                             .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
                              .print()
 
                              ,
@@ -1756,7 +1756,7 @@ PennController.Template("uebung_v2.csv", variable =>
                              ,
                              getCanvas("TargetCanvas")
                              .add(0, 0, getImage("TargetPic"))
-                             .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                             .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
                              .print()
                              ,
 
@@ -1906,7 +1906,7 @@ PennController.Template("uebung_v2.csv", variable =>
                                                  ,
 
                                                  newCanvas("TargetCanvas", 300, 300)
-                                                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                                                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
                                                  .print()
 
                                                  ,
@@ -1921,7 +1921,7 @@ PennController.Template("uebung_v2.csv", variable =>
                                                  ,
                                                  getCanvas("TargetCanvas")
                                                  .add(0, 0, getImage("TargetPic"))
-                                                 .add(110, 120, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman"))
+                                                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
                                                  .print()
                                                  ,
 
