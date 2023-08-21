@@ -497,13 +497,13 @@ PennController.Template("uebung.csv", variable =>
              .settings.center()
              .print()
              .wait(getScale("hoeflich").test.selected()
-                  .and(getScale("freundlich").test.selected(),
-                  .and(getScale("entspannt").test.selected(),
-                  .and(getScale("arrogant").test.selected(),
-                  .and(getScale("pedantisch").test.selected(),
-                  .and(getScale("gebildet").test.selected(),
-                  .and(getScale("wortgewandt").test.selected(),
-                  .and(getScale("formell").test.selected(),
+                  .and(getScale("freundlich").test.selected()
+                  .and(getScale("entspannt").test.selected()
+                  .and(getScale("arrogant").test.selected()
+                  .and(getScale("pedantisch").test.selected()
+                  .and(getScale("gebildet").test.selected()
+                  .and(getScale("wortgewandt").test.selected()
+                  .and(getScale("formell").test.selected()
                   )
                   )
                   )
