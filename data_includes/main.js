@@ -351,7 +351,7 @@ PennController.Template("uebung.csv", variable =>
              ,
 
              newText("frage", "Welche Eigenschaften w&uuml;rdest du Person B zuschreiben?")
-             .settings.css("font-size", "18px")
+             //.settings.css("font-size", "18px")
              ,
 
              newScale("hoeflich", 6)
@@ -363,6 +363,11 @@ PennController.Template("uebung.csv", variable =>
              .log("first", "last")
              ,
 
+             newCanvas("hoeflichCanvas", 1000, 40)
+             .add(0,0, getScale("hoeflich"))
+             .print()
+             ,
+
              newScale("freundlich", 6)
              .button()
              .radio()
@@ -370,6 +375,11 @@ PennController.Template("uebung.csv", variable =>
              .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
+             ,
+
+             newCanvas("freundlichCanvas", 1000, 40)
+             .add(0,0, getScale("freundlich"))
+             .print()
              ,
 
              newScale("entspannt", 6)
@@ -381,6 +391,11 @@ PennController.Template("uebung.csv", variable =>
              .log("first", "last")
              ,
 
+             newCanvas("entspanntCanvas", 1000, 40)
+             .add(0,0, getScale("entspannt"))
+             .print()
+             ,
+
              newScale("arrogant", 6)
              .button()
              .radio()
@@ -388,6 +403,11 @@ PennController.Template("uebung.csv", variable =>
              .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
+             ,
+
+             newCanvas("arrogantCanvas", 1000, 40)
+             .add(0,0, getScale("arrogant"))
+             .print()
              ,
 
              newScale("pedantisch", 6)
@@ -399,6 +419,11 @@ PennController.Template("uebung.csv", variable =>
              .log("first", "last")
              ,
 
+             newCanvas("pedantischCanvas", 1000, 40)
+             .add(0,0, getScale("pedantisch"))
+             .print()
+             ,
+
              newScale("gebildet", 6)
              .button()
              .radio()
@@ -406,6 +431,11 @@ PennController.Template("uebung.csv", variable =>
              .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
+             ,
+
+             newCanvas("gebildetCanvas", 1000, 40)
+             .add(0,0, getScale("gebildet"))
+             .print()
              ,
 
              newScale("wortgewandt", 6)
@@ -417,6 +447,11 @@ PennController.Template("uebung.csv", variable =>
              .log("first", "last")
              ,
 
+             newCanvas("wortgewandtCanvas", 1000, 40)
+             .add(0,0, getScale("wortgewandt"))
+             .print()
+             ,
+
              newScale("formell", 6)
              .button()
              .radio()
@@ -426,20 +461,30 @@ PennController.Template("uebung.csv", variable =>
              .log("first", "last")
              ,
 
-             newCanvas("canvas", 600, 600)
+             newCanvas("formellCanvas", 1000, 40)
+             .add(0,0, getScale("formell"))
+             .print()
+             ,
+
+             newCanvas("canvas", 1000, 200)
              .add(0, 20, getText("sa"))
              .add(0, 40, getText("sb"))
              .add(0, 160, getText("frage"))
-             .add(0, 200, getScale("hoeflich"))
-             .add(0, 240, getScale("freundlich"))
-             .add(0, 280, getScale("entspannt"))
-             .add(0, 320, getScale("arrogant"))
-             .add(0, 360, getScale("pedantisch"))
-             .add(0, 400, getScale("gebildet"))
-             .add(0, 440, getScale("wortgewandt"))
-             .add(0, 480, getScale("formell"))
+             //.add(0, 200, getScale("hoeflich"))
+             //.add(0, 240, getScale("freundlich"))
+             //.add(0, 280, getScale("entspannt"))
+             //.add(0, 320, getScale("arrogant"))
+             //.add(0, 360, getScale("pedantisch"))
+             //.add(0, 400, getScale("gebildet"))
+             //.add(0, 440, getScale("wortgewandt"))
+             //.add(0, 480, getScale("formell"))
              .print()
 
+             ,
+             newSelector("shuffle")
+             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getScale("formellCanvas"))
+             .shuffle()
+             .disableClicks()
              ,
 
              newButton("weiter", "weiter")
