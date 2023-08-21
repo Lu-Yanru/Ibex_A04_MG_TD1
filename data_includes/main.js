@@ -354,6 +354,22 @@ PennController.Template("uebung.csv", variable =>
              //.settings.css("font-size", "18px")
              ,
 
+             newCanvas("canvas", 1000, 200)
+             .add(0, 20, getText("sa"))
+             .add(0, 40, getText("sb"))
+             .add(0, 160, getText("frage"))
+             //.add(0, 200, getScale("hoeflich"))
+             //.add(0, 240, getScale("freundlich"))
+             //.add(0, 280, getScale("entspannt"))
+             //.add(0, 320, getScale("arrogant"))
+             //.add(0, 360, getScale("pedantisch"))
+             //.add(0, 400, getScale("gebildet"))
+             //.add(0, 440, getScale("wortgewandt"))
+             //.add(0, 480, getScale("formell"))
+             .print()
+
+             ,
+
              newScale("hoeflich", 6)
              .button()
              .radio()
@@ -466,31 +482,29 @@ PennController.Template("uebung.csv", variable =>
              .print()
              ,
 
-             newCanvas("canvas", 1000, 200)
-             .add(0, 20, getText("sa"))
-             .add(0, 40, getText("sb"))
-             .add(0, 160, getText("frage"))
-             //.add(0, 200, getScale("hoeflich"))
-             //.add(0, 240, getScale("freundlich"))
-             //.add(0, 280, getScale("entspannt"))
-             //.add(0, 320, getScale("arrogant"))
-             //.add(0, 360, getScale("pedantisch"))
-             //.add(0, 400, getScale("gebildet"))
-             //.add(0, 440, getScale("wortgewandt"))
-             //.add(0, 480, getScale("formell"))
-             .print()
-
-             ,
              newSelector("shuffle")
              .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getScale("formellCanvas"))
              .shuffle()
              .disableClicks()
              ,
 
+             newCanvas("space", 1, 100)
+             .print()
+
+             ,
+
              newButton("weiter", "weiter")
              .settings.center()
              .print()
-             .wait()
+             .wait(getScale("hoeflich").test.selected(),
+                  getScale("freundlich").test.selected(),
+                  getScale("entspannt").test.selected(),
+                  getScale("arrogant").test.selected(),
+                  getScale("pedantisch").test.selected(),
+                  getScale("gebildet").test.selected(),
+                  getScale("wortgewandt").test.selected(),
+                  getScale("formell").test.selected(),
+             )
 
     )
 
