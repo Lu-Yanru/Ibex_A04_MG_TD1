@@ -350,17 +350,86 @@ PennController.Template("uebung.csv", variable =>
 
              ,
 
+             newText("frage", "Welche Eigenschaften würdest du Person B zuschreiben?")
+             .settings.css("font-size", "18px")
+             ,
+
              newScale("hoeflich", 6)
              .button()
-             .before(newText("hoeflichtext1", "sehr h&ouml;flich"))
-             .after(newText("hoeflichtext1" "sehr unh&ouml;flich"))
+             .before(newText("hoeflichtext1", "überhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .after(newText("hoeflichtext1", "sehr h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsposition("top")
+             .log("first", "last")
+             ,
+
+             newScale("freundlich", 6)
+             .button()
+             .before(newText("freundlichtext1", "überhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsposition("top")
+             .log("first", "last")
+             ,
+
+             newScale("entspannt", 6)
+             .button()
+             .before(newText("entspannttext1", "überhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .after(newText("entspannttext1", "sehr entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsposition("top")
+             .log("first", "last")
+             ,
+
+             newScale("arrogant", 6)
+             .button()
+             .before(newText("arroganttext1", "überhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsposition("top")
+             .log("first", "last")
+             ,
+
+             newScale("pedantisch", 6)
+             .button()
+             .before(newText("pedantischtext1", "überhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .after(newText("pedantischtext1", "sehr pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsposition("top")
+             .log("first", "last")
+             ,
+
+             newScale("gebildet", 6)
+             .button()
+             .before(newText("gebildettext1", "überhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsposition("top")
+             .log("first", "last")
+             ,
+
+             newScale("wortgewandt", 6)
+             .button()
+             .before(newText("wortgewandttext1", "überhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .after(newText("wortgewandttext1", "sehr wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsposition("top")
+             .log("first", "last")
+             ,
+
+             newScale("formell", 6)
+             .button()
+             .before(newText("formelltext1", "überhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .after(newText("formelltext1", "sehr formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsposition("top")
              .log("first", "last")
              ,
 
              newCanvas("gendercanvas", 600, 600)
              .add(0, 20, getText("sa"))
-             .add(0, 23, getText("sb"))
-             .add(0, 30, getScale("hoeflich"))
+             .add(0, 40, getText("sb"))
+             .add(0, 80, getText("frage"))
+             .add(0, 100, getScale("hoeflich"))
+             .add(0, 120, getScale("freundlich"))
+             .add(0, 140, getScale("entspannt"))
+             .add(0, 160, getScale("arrogant"))
+             .add(0, 180, getScale("pedantisch"))
+             .add(0, 200, getScale("gebildet"))
+             .add(0, 220, getScale("wortgewandt"))
+             .add(0, 240, getScale("formell"))
              .print()
 
              ,
