@@ -1,0 +1,33 @@
+filler_nr,sa,sb,cond,control
+F1,A: Gehst du heute Abend zur Party?,B: Ich gehe als Pirat.,filler,NA
+F2,A: Hast du schon Pläne fürs Wochenende?,B: Wir können gerne zusammen was machen.,filler,freundlich
+F3,A: Kannst du kochen?,"B: Ja, Rührei und so.",filler,informell_entspannt
+F4,A: Ist Maria gerade in der Stadt?,B: Sie kommt erst am Wochenende.,filler,NA
+F5,A: Welche Musik hörst du am liebsten?,B: Ich mag Pop-Musik sehr gerne.,filler,NA
+F6,A: Wann soll ich heute Abend da sein?,B: Das Essen beginnt um Punkt Acht.,filler,pedantisch
+F7,A: Hat Paul irgendwelche Allergien?,B: Das muss ich ihn fragen.,filler,NA
+F8,A: Wohin fährst du dieses Jahr in den Urlaub?,B: Nach Schweden wahrscheinlich.,filler,NA
+F9,A: Hast du die Blumen schon gegossen?,B: Gleich.,filler,unfreundlich_informell
+F10,A: Ist dein Telefon kaputt?,B: Es ist mir ins Klo gefallen.,filler,NA
+F11,A: Wo liegt Myanmar?,B: Soll ich googlen?,filler,NA
+F12,A: Trinkst du Alkohol?,"B: Nein, im Moment nicht.",filler,NA
+F13,A: Haben Sie die Unterlagen vergessen?,"B: Nein, Herr Schmitt bringt sie zu Ihnen.",filler,gebildet
+F14,A: Bist du Peter?,"B: Ja, warum?",filler,NA
+F15,A: Ist Peter mit Bad putzen drann?,B: Ich dachte Peter muss die Küche machen.,filler,NA
+F16,A: Hat Erika dir das Buch zurückgegeben?,B: Nein noch nicht.,filler,NA
+F17,A: Wo lang geht es zum Hauptbahnhof?,B: Das wüsste ich auch gerne.,filler,NA
+F18,A: Wie viel kosten die Erdbeeren?,B: 2 Euro die Schale.,filler,NA
+F19,A: Wo fährt der Bus ab?,B: An der Ersatzhaltestelle 20 Meter in die Richtung.,filler,NA
+F20,A: Wie lange arbeitet Stefan schon hier.,"B: Bestimmt 20 Jahre, oder?",filler,NA
+F21,A: Wie berechnet man den Umfang eines Kreises?,B: War da nicht was mit Pi?,filler,NA
+F22,A: Kommt Mark zu Annas Geburtstag?,"B: Bestimmt, er kommt jedes Jahr.",filler,NA
+F23,A: Hat Sarah dieses Bild gemalt?,B: Sie hat es in Italien gekauft.,filler,NA
+F24,A: Wer hat meinen Turm umgeschmissen?,B: Ich habe es gesehen. Es war Frederik.,filler,NA
+F25,A: Warum ist Petra nicht da?,B: Sie ist im Urlaub in Frankreich.,filler,NA
+F26,A: Wann wurde dieses Haus erbaut?,B: Über der Tür steht 1900.,filler,NA
+F27,A: Wann wollen wir uns morgen treffen?,B: So gegen Sechs.,filler,informell_entspannt
+F28,A: Was machst du so in deiner Freizeit?,"B: Ich liebe es, zu malen und zu lesen.",filler,NA
+F29,A: Kannst du mir noch die Unterlagen schicken?,B: Das mache ich nach der Besprechung.,filler,NA
+F30,A: Wie lange sind Felix und Marie schon zusammen?,B: Seit vier Jahren.,filler,NA
+F31,A: Wie funktioniert die neue Kaffeemaschine?,B: Weiß ich leider auch nicht.,filler,NA
+F32,A: Gefällt dir das neue Album?,B: Es ist nicht sein bestes. ,filler,NA

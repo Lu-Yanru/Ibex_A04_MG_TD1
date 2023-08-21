@@ -1,8 +1,33 @@
-Pic,Word,Cond,Group
-Apfel.png,Birne,alt,1
-Brot.png,Kamm,noalt,1
-Hose.png,Bluse,alt,1
-Ring.png,Bein,noalt,1
-Stift.png,Lineal,alt,1
-Tasse.png,Teller,alt,1
-Tisch.png,Brille,noalt,1
+item_nr,sa,sb,cond,cond_drop,cond_arg,subj,subj_gen,obj_gen,obj_num,mod
+I1,A: Hast du letzte Woche den Brief geschrieben?,B: Kann ihn morgen schreiben.,drop_subj,drop,subj,1sg,NA,m,sg,können
+I2,A: Hast du letzte Woche den Brief geschrieben?,B: Ich kann ihn morgen schreiben.,nodrop_subj,nodrop,subj,1sg,NA,m,sg,können
+I3,A: Hast du letzte Woche den Brief geschrieben?,B: Kann ich morgen schreiben.,drop_obj,drop,obj,1sg,NA,m,sg,können
+I4,A: Hast du letzte Woche den Brief geschrieben?,B: Den kann ich morgen schreiben.,nodrop_obj,nodrop,obj,1sg,NA,m,sg,können
+I5,A: Hast du dieses Jahr deine Steuern gemacht?,B: Soll sie diesen Monat machen.,drop_subj,drop,subj,1sg,NA,NA,pl,sollen
+I6,A: Hast du dieses Jahr deine Steuern gemacht?,B: Ich soll sie diesen Monat machen.,nodrop_subj,nodrop,subj,1sg,NA,NA,pl,sollen
+I7,A: Hast du dieses Jahr deine Steuern gemacht?,B: Soll ich diesen Monat machen.,drop_obj,drop,obj,1sg,NA,NA,pl,sollen
+I8,A: Hast du dieses Jahr deine Steuern gemacht?,B: Die soll ich diesen Monat machen.,nodrop_obj,nodrop,obj,1sg,NA,NA,pl,sollen
+I9,A: Hast du heute die Spaghetti gegessen?,B: Will sie heute Abend essen.,drop_subj,drop,subj,1sg,NA,NA,pl,wollen
+I10,A: Hast du heute die Spaghetti gegessen?,B: Ich will sie heute Abend essen.,nodrop_subj,nodrop,subj,1sg,NA,NA,pl,wollen
+I11,A: Hast du heute die Spaghetti gegessen?,B: Will ich heute Abend essen.,drop_obj,drop,obj,1sg,NA,NA,pl,wollen
+I12,A: Hast du heute die Spaghetti gegessen?,B: Die will ich heute Abend essen.,nodrop_obj,nodrop,obj,1sg,NA,NA,pl,wollen
+I13,A: Hast du gestern das Spiel ausprobiert?,B: Darf es morgen ausprobieren.,drop_subj,drop,subj,1sg,NA,n,sg,dürfen
+I14,A: Hast du gestern das Spiel ausprobiert?,B: Ich darf es morgen ausprobieren. ,nodrop_subj,nodrop,subj,1sg,NA,n,sg,dürfen
+I15,A: Hast du gestern das Spiel ausprobiert?,B: Darf ich morgen ausprobieren.,drop_obj,drop,obj,1sg,NA,n,sg,dürfen
+I16,A: Hast du gestern das Spiel ausprobiert?,B: Das darf ich morgen ausprobieren.,nodrop_obj,nodrop,obj,1sg,NA,n,sg,dürfen
+I17,A: Hat Peter neulich das Regal gebaut?,B: Soll es später bauen.,drop_subj,drop,subj,3sg,m,n,sg,sollen
+I18,A: Hat Peter neulich das Regal gebaut?,B: Er soll es später bauen.,nodrop_subj,nodrop,subj,3sg,m,n,sg,sollen
+I19,A: Hat Peter neulich das Regal gebaut?,B: Soll er später bauen.,drop_obj,drop,obj,3sg,m,n,sg,sollen
+I20,A: Hat Peter neulich das Regal gebaut?,B: Das soll er später bauen.,nodrop_obj,nodrop,obj,3sg,m,n,sg,sollen
+I21,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Darf sie morgen abgeben.,drop_subj,drop,subj,3sg,m,f,sg,dürfen
+I22,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Er darf sie morgen abgeben.,nodrop_subj,nodrop,subj,3sg,m,f,sg,dürfen
+I23,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Darf er morgen abgeben.,drop_obj,drop,obj,3sg,m,f,sg,dürfen
+I24,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Die darf er morgen abgeben.,nodrop_obj,nodrop,obj,3sg,m,f,sg,dürfen
+I25,A: Hat Sarah letzte Woche das Fahrrad repariert?,B: Will es diese Woche reparieren.,drop_subj,drop,subj,3sg,f,n,sg,wollen
+I26,A: Hat Sarah letzte Woche das Fahrrad repariert?,B: Sie will es diese Woche reparieren.,nodrop_subj,nodrop,subj,3sg,f,n,sg,wollen
+I27,A: Hat Sarah letzte Woche das Fahrrad repariert?,B: Will sie diese Woche reparieren.,drop_obj,drop,obj,3sg,f,n,sg,wollen
+I28,A: Hat Sarah letzte Woche das Fahrrad repariert?,B: Das will sie diese Woche reparieren.,nodrop_obj,nodrop,obj,3sg,f,n,sg,wollen
+I29,A: Hat Paula am Wochenende den Film gesehen?,B: Will ihn diese Woche sehen.,drop_subj,drop,subj,3sg,f,m,sg,wollen
+I30,A: Hat Paula am Wochenende den Film gesehen?,B: Sie will ihn diese Woche sehen.,nodrop_subj,nodrop,subj,3sg,f,m,sg,wollen
+I31,A: Hat Paula am Wochenende den Film gesehen?,B: Will sie diese Woche sehen.,drop_obj,drop,obj,3sg,f,m,sg,wollen
+I32,A: Hat Paula am Wochenende den Film gesehen?,B: Den will sie diese Woche sehen.,nodrop_obj,nodrop,obj,3sg,f,m,sg,wollen

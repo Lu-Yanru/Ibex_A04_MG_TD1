@@ -1,17 +1,10 @@
 PennController.ResetPrefix( null );
 AddHost("https://amor.cms.hu-berlin.de/~idslfahm/ibex_bilder/PWI_BB/");
-PennController.InitiateRecorder( "https://amor.cms.hu-berlin.de/~idslfahm/recordings/Recording.php").label( "init" );
 PennController.DebugOff()
 
 
 
-//PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_start", "practice", "main_start",   sepWithN("break", "main", 4)   ,  "send", "end")
-
-
-//order of main blocks can be changed here
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA100ms1", "question1", "question2", "break", "main_SOA100ms2", "question3", "question4", "break","main_SOA-100ms1", "question5","question6", "break","main_SOA-100ms2", "question7","question8", "break","main_SOA0ms1", "question9", "question10", "break","main_SOA0ms2",  "send", "end" )
-// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA-100ms1", "question5", "question6", "break", "main_SOA-100ms2", "question7", "question8", "break","main_SOA0ms1", "question9", "question10", "break","main_SOA0ms2", "question3","question4", "break","main_SOA100ms1", "question1", "question2", "break","main_SOA100ms2", "send", "end" )
-// PennController.Sequence("init", "intro", "PersonalData", "hinweise", "familiarization_start", "familiarization", "test", "practice_one_start", randomize("practice_one"), "practice_two_start", randomize("practice_two"), "main_start",  "main_SOA0ms1","question7", "question8", "break", "main_SOA0ms2", "question9","question10", "break","main_SOA100ms1", "question1", "question2", "break","main_SOA100ms2", "question3","question4", "break","main_SOA-100ms1", "question5","question6", "break","main_SOA-100ms2",  "send", "end" )
+PennController.Sequence("init", "intro", randomize("practice"), "send", "end" )
 
 
 
@@ -68,23 +61,6 @@ PennController("PersonalData",
                ,
 
                newCanvas("space2", 1, 10)
-               .print()
-
-               ,
-
-               newTextInput("ID", "")
-               .settings.log()
-
-               ,
-
-               newText("IDtext", "Clickworker ID:")
-               .settings.css("font-size", "18px")
-
-               ,
-
-               newCanvas("IDcanvas", 600, 45)
-               .add(0, 20, getText("IDtext"))
-               .add(200, 23, getTextInput("ID"))
                .print()
 
                ,
@@ -255,12 +231,6 @@ PennController("PersonalData",
                            ) //ende browser scale
 
 
-                      .and(getTextInput("ID")
-                        .test.text(/^\d+$/)
-                           )
-
-
-
                      .success()
                      .failure(
 
@@ -274,12 +244,6 @@ PennController("PersonalData",
                              ) //ende failure
 
                     ) // ende wait
-
-               ,
-
-               newVar("ID")
-               .settings.global()
-               .set( getTextInput("ID") )
 
                ,
 
@@ -308,7 +272,6 @@ PennController("PersonalData",
      )
 
     .setOption("hideProgressBar", "true")
-    .log( "ID" ,       getVar("ID"))
     .log( "gender" ,   getVar("gender"))
     .log( "age" ,      getVar("age"))
     .log( "language" , getVar("language"))
@@ -345,280 +308,8 @@ PennController("hinweise",
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Familiarization_Start
 
-
-PennController("familiarization_start",
-
-              newHtml("fam", "fam_start.html")
-              .print()
-
-              ,
-              newCanvas("space1", 1, 160)
-              .print()
-
-              ,
-
-              newButton("weiter", "weiter")
-              .center()
-              .print()
-              .wait()
-
-
-    )
-
-   .setOption("hideProgressBar", "true")
-
-    ;
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Familiarization
-
-
-PennController.Template("fam.csv", variable =>
-
-              PennController("familiarization",
-
-              newCanvas("Col", 800, 35)
-              .add(390, 0, newText("Color", variable.Farbe).settings.css("font-size", "25px").settings.css("font-family", "Times New Roman").settings.css("font-weight", "bold"))
-              .print()
-              ,
-              newCanvas("Row1", 800, 220)
-              .add (175,   0, newImage( "Bild1", variable.Bild1).size(200,200))
-              .add(230, 210, newText ( "Wort1", variable.Wort1).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              //.add(325,   0, newImage( "Bild2", variable.Bild2).size(150,150))
-              //.add(375, 155, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(450,   0, newImage( "Bild2", variable.Bild2).size(200,200))
-              .add(500, 210, newText ( "Wort2", variable.Wort2).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .print()
-
-              ,
-
-              newCanvas("space1", 1, 25)
-              .print()
-
-              ,
-
-              newCanvas("Row2", 800, 220)
-              .add( 175,   0, newImage("Bild3", variable.Bild3).size(200,200))
-              .add(230, 210, newText ("Wort3", variable.Wort3).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              //.add(325,   0, newImage("Bild4", variable.Bild5).size(150,150))
-              //.add(375, 155, newText ("Wort4", variable.Wort5).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .add(450,   0, newImage("Bild4", variable.Bild4).size(200,200))
-              .add(500, 210, newText ("Wort4", variable.Wort4).settings.css("font-size", "20px").settings.css("font-family", "Times New Roman") )
-              .print()
-
-              ,
-
-              newTimer("presentpic", 7000)
-              .start()
-              .wait()
-
-              ,
-
-              newCanvas("space2", 1, 25)
-              .print()
-
-              ,
-
-              newButton("weiter", "weiter")
-              .center()
-              .print()
-              .wait()
-
-
-    )
-
-
-    .setOption("hideProgressBar", "true")
-    .log( "Bild1"       , variable.Bild1 )     //die logs braucht man eigentlich nur, wenn Reihenfolge bzw. Anordnung zwischen den Probanden variiert
-    .log( "Wort1"       , variable.Wort1 )
-    .log( "Bild2"       , variable.Bild2 )
-    .log( "Wort2"       , variable.Wort2 )
-    .log( "Bild3"       , variable.Bild3 )
-    .log( "Wort3"       , variable.Wort3 )
-    .log( "Bild4"       , variable.Bild4 )
-    .log( "Wort4"       , variable.Wort4 )
-    //.log( "Bild5"       , variable.Bild5 )
-    //.log( "Wort5"       , variable.Wort5 )
-    //.log( "Bild6"       , variable.Bild6 )
-    //.log( "Wort6"       , variable.Wort6 )
-    .log( "Farbe"       , variable.Farbe )
-    .log( "ID"          , getVar("ID")      )
-    .log( "gender"      , getVar("gender")  )
-    .log( "age"         , getVar("age")     )
-    .log( "language"    , getVar("language"))
-    .log( "browser"     , getVar("browser") )
-
-   )
-   ;
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Test_familiarization
-
-PennController("test",
-
-
-              newText("Bitte w&auml;hle f&uuml;r alle Objekte aus, ob sie vorkamen (&quot;ja&quot;) oder nicht (&quot;nein&quot;)")
-              .settings.css("font-size", "18px")
-              .print()
-
-              ,
-
-              newCanvas("space1", 1, 10)
-              .print()
-
-              ,
-
-              newText("<b>Du musst erst alle Angaben machen, bevor du auf <i>weiter</i> klickst, da das Experiment sonst abgebrochen wird!</b>")
-              .settings.css("font-size", "18px")
-              .print()
-
-              ,
-
-              newCanvas("space2", 1, 20)
-              .print()
-
-              ,
-
-              newScale("Zunge","ja", "nein").labelsPosition("right")
-              .settings.log("last")
-
-              ,
-
-              newCanvas("zungecanvas", 800, 40)
-              .add(300, 10, newText("zungetext", "Zunge:").settings.css("font-size", "18px"))
-              .add(420, 13, getScale("Zunge"))
-              .print()
-
-              ,
-
-              newScale("Frosch","ja", "nein").labelsPosition("right")
-              .settings.log("last")
-
-              ,
-
-              newCanvas("froschcanvas", 800, 40)
-              .add(300, 10, newText("froschtext", "Frosch:").settings.css("font-size", "18px"))
-              .add(420, 13, getScale("Frosch"))
-              .print()
-
-              ,
-
-              newScale("Nest","ja", "nein").labelsPosition("right")
-              .settings.log("last")
-
-              ,
-
-              newCanvas("nestcanvas", 800, 40)
-              .add(300, 10, newText("nesttext", "Nest:").settings.css("font-size", "18px"))
-              .add(420, 13, getScale("Nest"))
-              .print()
-
-              ,
-
-              newScale("Reifen","ja", "nein").labelsPosition("right")
-              .settings.log("last")
-
-              ,
-
-              newCanvas("reifencanvas", 800, 40)
-              .add(300, 10, newText("reifentext", "Reifen:").settings.css("font-size", "18px"))
-              .add(420, 13, getScale("Reifen"))
-              .print()
-
-              ,
-
-              newScale("Kette", "ja", "nein").labelsPosition("right")
-              .settings.log("last")
-
-              ,
-
-              newCanvas("kettecanvas", 800, 40)
-              .add(300, 10, newText("kettetext", "Kette:").settings.css("font-size", "18px"))
-              .add(420, 13, getScale("Kette"))
-              .print()
-
-              ,
-
-              newScale("Gespenst", "ja", "nein").labelsPosition("right")
-              .settings.log("last")
-
-              ,
-
-              newCanvas("gespenstcanvas", 800, 40)
-              .add(300, 10, newText("gespensttext", "Gespenst:").settings.css("font-size", "18px"))
-              .add(420, 13, getScale("Gespenst"))
-              .print()
-
-              ,
-
-              newCanvas("space", 1, 90)
-              .print()
-
-              ,
-
-              newButton("weiter", "weiter")
-               .settings.center()
-               .print()
-               .wait( getScale("Zunge")
-                      .test.selected("nein")
-                        .or(getScale("Zunge")
-                        .test.selected("ja")
-                     )
-                      .and( getScale("Frosch")
-                            .test.selected("nein")
-                              .or(getScale("Frosch")
-                              .test.selected("ja")
-                              ))
-                      .and( getScale("Nest")
-                            .test.selected("nein")
-                              .or(getScale("Nest")
-                              .test.selected("ja")
-                              ))
-                      .and( getScale("Reifen")
-                            .test.selected("nein")
-                              .or(getScale("Reifen")
-                              .test.selected("ja")
-                              ))
-                      .and( getScale("Kette")
-                            .test.selected("nein")
-                              .or(getScale("Kette")
-                              .test.selected("ja")
-                              ))
-                      .and( getScale("Gespenst")
-                            .test.selected("nein")
-                              .or(getScale("Gespenst")
-                              .test.selected("ja")
-                              ))
-
-
-                     .success() //continue as normal
-                     .failure(  // otherwise, remove all canvases and display the "bye" text
-                         getButton("weiter")
-                         .remove()
-                         ,
-                         newText("bye", "Da du nicht  f&uuml;r alle Objekte eine Angabe gemacht hast, kannst du leider nicht an der Studie teilnehmen.")
-                         .color("red")
-                         .print()
-
-                              ) // ende failure
-
-                    ) //ende wait
-
-             ) // ende penncontroller
-
-    .setOption("hideProgressBar", "true")
-    .log( "ID"       , getVar("ID")      )
-    .log( "gender"   , getVar("gender")  )
-    .log( "age"      , getVar("age")     )
-    .log( "language" , getVar("language"))
-    .log( "browser"  , getVar("browser") )
-
-    ;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice1
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice
 
 
 PennController("practice_one_start",
@@ -646,335 +337,52 @@ PennController("practice_one_start",
 
 PennController.Template("uebung.csv", variable =>
 
-    PennController("practice_one",
+    PennController("practice",
 
 
-             newImage("SetupPic", variable.setup_pic)
-             .size(300, 300)
-
-             ,
-
-             newImage("TargetPic", variable.target_pic)
-             .size(300, 300)
+             newText("sa", variable.sa)
+             .settings.css("font-size", "18px")
 
              ,
 
-             newCanvas("FixationCanvas", 300, 300)
-             .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
-             .print()
+             newText("sb", variable.sb)
+             .settings.css("font-size", "18px")
 
              ,
 
-             newTimer("ShowFixation", 1000)
-             .start()
-             .wait()
-
+             newScale("hoeflich", 6)
+             .button()
+             .before(newText("hoeflichtext1", "sehr h&ouml;flich"))
+             .after(newText("hoeflichtext1" "sehr unh&ouml;flich"))
+             .log("first", "last")
              ,
 
-             getText("fixation")
-             .remove()
-
-             ,
-
-             newTimer("ShowBlank", 500)
-             .start()
-             .wait()
-
-             ,
-
-             getCanvas("FixationCanvas")
-             .remove()
-
-             ,
-
-             newCanvas("SetupCanvas", 300, 300)
-             .add(0, 0, getImage("SetupPic"))
-             .print()
-
-             ,
-
-             newVoiceRecorder("SetupRecorder")
-             .record()
-
-             ,
-
-             newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
-             .start()
-             .wait()
-
-             ,
-
-             getCanvas("SetupCanvas")
-             .remove()
-
-             ,
-
-             newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-             .start()
-             .wait()
-
-             ,
-
-             getVoiceRecorder("SetupRecorder")
-             .stop()
-
-             ,
-
-             newTimer("Intertrial", 750)
-             .start()
-             .wait()
-
-             ,
-
-             newCanvas("TargetCanvas", 300, 300)
-             .add(0, 0, getImage("TargetPic"))
-             //.add(110, 140, getText("Distractor").settings.css("font-size", "30px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
-             .print()
-
-
-             ,
-
-             newVoiceRecorder("TargetRecorder")
-             .record()
-
-             ,
-
-             newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
-             .start()
-             .wait()
-
-             ,
-
-             getCanvas("TargetCanvas")
-             .hidden()
-
-             ,
-
-             newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-             .start()
-             .wait()
-
-             ,
-
-             getVoiceRecorder("TargetRecorder")
-             .stop()
-
-             ,
-
-             newCanvas("space1", 1, 100)
+             newCanvas("gendercanvas", 600, 600)
+             .add(0, 20, getText("sa"))
+             .add(0, 23, getText("sb"))
+             .add(0, 30, getScale("hoeflich"))
              .print()
 
              ,
 
              newButton("weiter", "weiter")
-
-             ,
-
-             newSelector("button")
-             .add(getButton("weiter") )
-             .settings.keys(     " "                   )
+             .settings.center()
+             .print()
              .wait()
 
     )
 
     .setOption("hideProgressBar", "true" )
-    .log( "ID"                   , getVar("ID")             )
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
     .log( "browser"              , getVar("browser")        )
-    .log( "SetupObject"          , getVar("setup_pic")      )
-    .log( "TargetObject"         , getVar("target_pic")     )
-    //.log( "Distractor"           , getVar("distractor")     )
-    .log( "SetupColor"           , variable.setup_col       )
-    .log( "TargetColor"          , variable.target_col      )
-    //.log( "DistractorCondition"  , variable.distractor_cond )
-    //.log( "FocusCondition"       , variable.focus_cond      )
-    .log( "Condition"            , variable.condition       )
-    //.log( "Itempaar"             , variable.itempaar        )
+    .log("itemnr"                , variable.uebung_nr       )
+    .log( "condition"            , variable.cond       )
+    .log( "control"            , variable.control       )
     )
     ;
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice2
-
-PennController("practice_two_start",
-
-
-                  newHtml("practice_two_start", "practice_two_start.html")
-                  .print()
-                  ,
-
-                  newButton("weiter", "weiter")
-                  .settings.center()
-                  .print()
-                  .wait()
-
-
-        )
-
-        .setOption("hideProgressBar", "true")
-
-        ;
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice2
-
-
-PennController.Template("uebung2.csv", variable =>
-
-        PennController("practice_two",
-
-                 newText("Distractor" , variable.distractor)
-                 //.settings.bold()
-
-                 ,
-
-                 newImage("SetupPic", variable.setup_pic)
-                 .size(300, 300)
-
-                 ,
-
-                 newImage("TargetPic", variable.target_pic)
-                 .size(300, 300)
-
-                 ,
-
-                 newCanvas("FixationCanvas", 300, 300)
-                 .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
-                 .print()
-
-                 ,
-
-                 newTimer("ShowFixation", 1000)
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getText("fixation")
-                 .remove()
-
-                 ,
-
-                 newTimer("ShowBlank", 500)
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getCanvas("FixationCanvas")
-                 .remove()
-
-                 ,
-
-                 newCanvas("SetupCanvas", 300, 300)
-                 .add(0, 0, getImage("SetupPic"))
-                 .print()
-
-                 ,
-
-                 newVoiceRecorder("SetupRecorder")
-                 .record()
-
-                 ,
-
-                 newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getCanvas("SetupCanvas")
-                 .remove()
-
-                 ,
-
-                 newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getVoiceRecorder("SetupRecorder")
-                 .stop()
-
-                 ,
-
-                 newTimer("Intertrial", 750)
-                 .start()
-                 .wait()
-
-                 ,
-
-                 newCanvas("TargetCanvas", 300, 300)
-                 .add(0, 0, getImage("TargetPic"))
-                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
-                 .print()
-
-
-                 ,
-
-                 newVoiceRecorder("TargetRecorder")
-                 .record()
-
-                 ,
-
-                 newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getCanvas("TargetCanvas")
-                 .hidden()
-
-                 ,
-
-                 newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getVoiceRecorder("TargetRecorder")
-                 .stop()
-
-                 ,
-
-                 newCanvas("space1", 1, 100)
-                 .print()
-
-                 ,
-
-                 newButton("weiter", "weiter")
-
-                 ,
-
-                 newSelector("button")
-                 .add(getButton("weiter") )
-                 .settings.keys(     " "                   )
-                 .wait()
-
-        )
-
-        .setOption("hideProgressBar", "true" )
-        .log( "ID"                   , getVar("ID")             )
-        .log( "gender"               , getVar("gender")         )
-        .log( "age"                  , getVar("age")            )
-        .log( "language"             , getVar("language")       )
-        .log( "browser"              , getVar("browser")        )
-        .log( "SetupObject"          , getVar("setup_pic")      )
-        .log( "TargetObject"         , getVar("target_pic")     )
-        .log( "Distractor"           , getVar("distractor")     )
-        .log( "SetupColor"           , variable.setup_col       )
-        .log( "TargetColor"          , variable.target_col      )
-        //.log( "DistractorCondition"  , variable.distractor_cond )
-        //.log( "FocusCondition"       , variable.focus_cond      )
-        .log( "Condition"            , variable.condition       )
-        //.log( "Itempaar"             , variable.itempaar        )
-        )
-        ;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Main
