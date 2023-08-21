@@ -358,7 +358,7 @@ PennController.Template("uebung.csv", variable =>
              .button()
              .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("hoeflichtext1", "sehr h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsposition("top")
+             .labelsPosition("top")
              .log("first", "last")
              ,
 
@@ -366,7 +366,7 @@ PennController.Template("uebung.csv", variable =>
              .button()
              .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsposition("top")
+             .labelsPosition("top")
              .log("first", "last")
              ,
 
@@ -374,7 +374,7 @@ PennController.Template("uebung.csv", variable =>
              .button()
              .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("entspannttext1", "sehr entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsposition("top")
+             .labelsPosition("top")
              .log("first", "last")
              ,
 
@@ -382,7 +382,7 @@ PennController.Template("uebung.csv", variable =>
              .button()
              .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsposition("top")
+             .labelsPosition("top")
              .log("first", "last")
              ,
 
@@ -390,7 +390,7 @@ PennController.Template("uebung.csv", variable =>
              .button()
              .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("pedantischtext1", "sehr pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsposition("top")
+             .labelsPosition("top")
              .log("first", "last")
              ,
 
@@ -398,7 +398,7 @@ PennController.Template("uebung.csv", variable =>
              .button()
              .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsposition("top")
+             .labelsPosition("top")
              .log("first", "last")
              ,
 
@@ -406,7 +406,7 @@ PennController.Template("uebung.csv", variable =>
              .button()
              .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("wortgewandttext1", "sehr wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsposition("top")
+             .labelsPosition("top")
              .log("first", "last")
              ,
 
@@ -414,7 +414,7 @@ PennController.Template("uebung.csv", variable =>
              .button()
              .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("formelltext1", "sehr formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsposition("top")
+             .labelsPosition("top")
              .log("first", "last")
              ,
 
