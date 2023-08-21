@@ -350,13 +350,13 @@ PennController.Template("uebung.csv", variable =>
 
              ,
 
-             newText("frage", "Welche Eigenschaften würdest du Person B zuschreiben?")
+             newText("frage", "Welche Eigenschaften w&uuml;rdest du Person B zuschreiben?")
              .settings.css("font-size", "18px")
              ,
 
              newScale("hoeflich", 6)
              .button()
-             .before(newText("hoeflichtext1", "überhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("hoeflichtext1", "sehr h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsposition("top")
              .log("first", "last")
@@ -364,7 +364,7 @@ PennController.Template("uebung.csv", variable =>
 
              newScale("freundlich", 6)
              .button()
-             .before(newText("freundlichtext1", "überhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsposition("top")
              .log("first", "last")
@@ -372,7 +372,7 @@ PennController.Template("uebung.csv", variable =>
 
              newScale("entspannt", 6)
              .button()
-             .before(newText("entspannttext1", "überhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("entspannttext1", "sehr entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsposition("top")
              .log("first", "last")
@@ -380,7 +380,7 @@ PennController.Template("uebung.csv", variable =>
 
              newScale("arrogant", 6)
              .button()
-             .before(newText("arroganttext1", "überhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsposition("top")
              .log("first", "last")
@@ -388,7 +388,7 @@ PennController.Template("uebung.csv", variable =>
 
              newScale("pedantisch", 6)
              .button()
-             .before(newText("pedantischtext1", "überhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("pedantischtext1", "sehr pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsposition("top")
              .log("first", "last")
@@ -396,7 +396,7 @@ PennController.Template("uebung.csv", variable =>
 
              newScale("gebildet", 6)
              .button()
-             .before(newText("gebildettext1", "überhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsposition("top")
              .log("first", "last")
@@ -404,7 +404,7 @@ PennController.Template("uebung.csv", variable =>
 
              newScale("wortgewandt", 6)
              .button()
-             .before(newText("wortgewandttext1", "überhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("wortgewandttext1", "sehr wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsposition("top")
              .log("first", "last")
@@ -412,13 +412,13 @@ PennController.Template("uebung.csv", variable =>
 
              newScale("formell", 6)
              .button()
-             .before(newText("formelltext1", "überhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .after(newText("formelltext1", "sehr formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsposition("top")
              .log("first", "last")
              ,
 
-             newCanvas("gendercanvas", 600, 600)
+             newCanvas("canvas", 600, 600)
              .add(0, 20, getText("sa"))
              .add(0, 40, getText("sb"))
              .add(0, 80, getText("frage"))
