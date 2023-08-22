@@ -482,7 +482,7 @@ PennController.Template("uebung.csv", variable =>
              .print()
              ,
 
-             newSelector("shuffle")
+             newSelector("shuffle") // shuffle the positions of the scales
              .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getScale("formellCanvas"))
              .shuffle()
              .disableClicks()
@@ -511,7 +511,26 @@ PennController.Template("uebung.csv", variable =>
                   )
                   )
                   )
-           )
+           )// cannot click weiter until all scales are selected
+
+           newTimer("timeout", 1000)
+           .start()
+           ,
+
+           getButton("weiter")
+           .callback(getButton("weiter").test.selected()
+                    .success(getTimer("timeout").stop())
+                    .failure(
+                      newText("failure", "Bitte bewert Person B schneller!").print(),
+                      getSelector("shuffle").remove()
+                    )
+
+         )
+           ,
+
+           getTimer("timeout")
+           .wait()
+           ,
 
     )
 
