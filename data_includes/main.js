@@ -1080,21 +1080,21 @@ PennController("question",
               .settings.css("font-size", "18px")
               ,
 
-              newCanvas("questioncanvas", 1000, 400)
+              newText("q", "Welche weitere Eigenschaften würdest du noch Person B zuschreiben?")
+              .
+              ,
+
+              newCanvas("questioncanvas", 1000, 200)
               .add(0,20, getText("bspa"))
-              .add(0,40, getText("bspa"))
+              .add(0,40, getText("bspb"))
+              .add(0,160, getText("q"))
               .print()
               ,
 
-              newCanvas("blank", 1, 10)
-              .print()
-
-              ,
-
-              newTextInput("adj", "Welche weitere Eigenschaften würdest du noch Person B zuschreiben?")
+              newTextInput("adj")
               .log()
               .lines(0)
-              .size(400, 200)
+              .size(600, 400)
               .print()
               ,
 
@@ -1115,7 +1115,11 @@ PennController("question",
 
 PennController("other",
 
-              newTextInput("feedback", "Hier kannst du Kommentare und Feedbacks f&uuml;r dieses Experiment eingeben:")
+              newText("qf", "Hier kannst du Kommentare und Feedbacks f&uuml;r dieses Experiment eingeben:")
+              .print()
+              ,
+              
+              newTextInput("feedback")
               .log()
               .lines(0)
               .size(400, 200)
