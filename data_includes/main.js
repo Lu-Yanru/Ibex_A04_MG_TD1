@@ -4,7 +4,7 @@ PennController.DebugOff()
 
 
 
-PennController.Sequence("init", "intro", randomize("practice"), "send", "end" )
+PennController.Sequence("init", "intro", randomize("practice"), shuffle(randomize("fillers"), randomize("items")) , "send", "end" )
 
 
 
@@ -332,7 +332,7 @@ PennController("practice_one_start",
     ;
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice1
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice
 
 
 PennController.Template("uebung.csv", variable =>
@@ -483,7 +483,7 @@ PennController.Template("uebung.csv", variable =>
              ,
 
              newSelector("shuffle") // shuffle the positions of the scales
-             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getScale("formellCanvas"))
+             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
              .shuffle()
              .disableClicks()
              ,
@@ -493,8 +493,45 @@ PennController.Template("uebung.csv", variable =>
 
              ,
 
+             newText("faster", "Bitte schneller bewerten!")
+             ,
+
+             newTimer("timeout", 20000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
+             .start()
+             .log()
+             .callback(getCanvas("canvas")
+                      .remove()
+                      ,
+                      getCanvas("hoeflichCanvas")
+                      .remove()
+                      ,
+                      getCanvas("freundlichCanvas")
+                      .remove()
+                      ,
+                      getCanvas("entspanntCanvas")
+                      .remove()
+                      ,
+                      getCanvas("arrogantCanvas")
+                      .remove()
+                      ,
+                      getCanvas("pedantischCanvas")
+                      .remove(),
+                      getCanvas("gebildetCanvas")
+                      .remove()
+                      ,
+                      getCanvas("wortgewandtCanvas")
+                      .remove()
+                      ,
+                      getCanvas("formellCanvas")
+                      .remove()
+                      ,
+                    )
+             .callback(getText("faster").print())
+             ,
+
              newButton("weiter", "weiter")
              .settings.center()
+             .log()
              .print()
              .wait(getScale("hoeflich").test.selected()
                   .and(getScale("freundlich").test.selected()
@@ -512,25 +549,9 @@ PennController.Template("uebung.csv", variable =>
                   )
                   )
            )// cannot click weiter until all scales are selected
-
-           newTimer("timeout", 1000)
-           .start()
+           .callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
            ,
 
-           getButton("weiter")
-           .callback(getButton("weiter").test.selected()
-                    .success(getTimer("timeout").stop())
-                    .failure(
-                      newText("failure", "Bitte bewert Person B schneller!").print(),
-                      getSelector("shuffle").remove()
-                    )
-
-         )
-           ,
-
-           getTimer("timeout")
-           .wait()
-           ,
 
     )
 
@@ -539,7 +560,7 @@ PennController.Template("uebung.csv", variable =>
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
     .log( "browser"              , getVar("browser")        )
-    .log("itemnr"                , variable.uebung_nr       )
+    .log("uebungnr"                , variable.uebung_nr       )
     .log( "condition"            , variable.cond       )
     .log( "control"            , variable.control       )
     )
@@ -574,991 +595,476 @@ PennController("main_start",
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Main
-///////SOA0
-PennController.Template("rand1-1-ibex.csv", variable =>
 
-    PennController("main_SOA0ms1",
+PennController.Template("items.csv", variable =>
 
-             newText("Distractor" , variable.distractor)
-             //.settings.bold()
+    PennController("items",
 
-             ,
 
-             newImage("SetupPic", variable.setup_pic)
-             .size(300, 300)
+             newText("sa", variable.sa)
+             .settings.css("font-size", "18px")
 
              ,
 
-             newImage("TargetPic", variable.target_pic)
-             .size(300, 300)
+             newText("sb", variable.sb)
+             .settings.css("font-size", "18px")
 
              ,
 
-             newCanvas("FixationCanvas", 300, 300)
-             .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
+             newText("frage", "Welche Eigenschaften w&uuml;rdest du Person B zuschreiben?")
+             //.settings.css("font-size", "18px")
+             ,
+
+             newCanvas("canvas", 1000, 200)
+             .add(0, 20, getText("sa"))
+             .add(0, 40, getText("sb"))
+             .add(0, 160, getText("frage"))
+             //.add(0, 200, getScale("hoeflich"))
+             //.add(0, 240, getScale("freundlich"))
+             //.add(0, 280, getScale("entspannt"))
+             //.add(0, 320, getScale("arrogant"))
+             //.add(0, 360, getScale("pedantisch"))
+             //.add(0, 400, getScale("gebildet"))
+             //.add(0, 440, getScale("wortgewandt"))
+             //.add(0, 480, getScale("formell"))
              .print()
 
              ,
 
-             newTimer("ShowFixation", 1000)
-             .start()
-             .wait()
-
+             newScale("hoeflich", 6)
+             .button()
+             .radio()
+             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("hoeflichtext1", "sehr h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
              ,
 
-             getText("fixation")
-             .remove()
-
+             newCanvas("hoeflichCanvas", 1000, 40)
+             .add(0,0, getScale("hoeflich"))
+             .print()
              ,
 
-             newTimer("ShowBlank", 500)
-             .start()
-             .wait()
-
+             newScale("freundlich", 6)
+             .button()
+             .radio()
+             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
              ,
 
-             getCanvas("FixationCanvas")
-             .remove()
-
+             newCanvas("freundlichCanvas", 1000, 40)
+             .add(0,0, getScale("freundlich"))
+             .print()
              ,
 
-             newCanvas("SetupCanvas", 300, 300)
-             .add(0, 0, getImage("SetupPic"))
+             newScale("entspannt", 6)
+             .button()
+             .radio()
+             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("entspannttext1", "sehr entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("entspanntCanvas", 1000, 40)
+             .add(0,0, getScale("entspannt"))
+             .print()
+             ,
+
+             newScale("arrogant", 6)
+             .button()
+             .radio()
+             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("arrogantCanvas", 1000, 40)
+             .add(0,0, getScale("arrogant"))
+             .print()
+             ,
+
+             newScale("pedantisch", 6)
+             .button()
+             .radio()
+             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("pedantischtext1", "sehr pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("pedantischCanvas", 1000, 40)
+             .add(0,0, getScale("pedantisch"))
+             .print()
+             ,
+
+             newScale("gebildet", 6)
+             .button()
+             .radio()
+             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("gebildetCanvas", 1000, 40)
+             .add(0,0, getScale("gebildet"))
+             .print()
+             ,
+
+             newScale("wortgewandt", 6)
+             .button()
+             .radio()
+             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("wortgewandttext1", "sehr wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("wortgewandtCanvas", 1000, 40)
+             .add(0,0, getScale("wortgewandt"))
+             .print()
+             ,
+
+             newScale("formell", 6)
+             .button()
+             .radio()
+             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("formelltext1", "sehr formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("formellCanvas", 1000, 40)
+             .add(0,0, getScale("formell"))
+             .print()
+             ,
+
+             newSelector("shuffle") // shuffle the positions of the scales
+             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+             .shuffle()
+             .disableClicks()
+             ,
+
+             newCanvas("space", 1, 100)
              .print()
 
              ,
 
-             newVoiceRecorder("SetupRecorder")
-             .record()
-
+             newText("faster", "Bitte schneller bewerten!")
              ,
 
-             newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
+             newTimer("timeout", 20000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
              .start()
-             .wait()
-
-             ,
-
-             getCanvas("SetupCanvas")
-             .remove()
-
-             ,
-
-             newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-             .start()
-             .wait()
-
-             ,
-
-             getVoiceRecorder("SetupRecorder")
-             .stop()
-
-             ,
-
-             newTimer("Intertrial", 750)
-             .start()
-             .wait()
-
-             ,
-
-             newCanvas("TargetCanvas", 300, 300)
-             .add(0, 0, getImage("TargetPic"))
-             .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
-             .print()
-
-
-             ,
-
-             newVoiceRecorder("TargetRecorder")
-             .record()
-
-             ,
-
-             newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
-             .start()
-             .wait()
-
-             ,
-
-             getCanvas("TargetCanvas")
-             .hidden()
-
-             ,
-
-             newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-             .start()
-             .wait()
-
-             ,
-
-             getVoiceRecorder("TargetRecorder")
-             .stop()
-
-             ,
-
-             newCanvas("space1", 1, 100)
-             .print()
-
+             .log()
+             .callback(getCanvas("canvas")
+                      .remove()
+                      ,
+                      getCanvas("hoeflichCanvas")
+                      .remove()
+                      ,
+                      getCanvas("freundlichCanvas")
+                      .remove()
+                      ,
+                      getCanvas("entspanntCanvas")
+                      .remove()
+                      ,
+                      getCanvas("arrogantCanvas")
+                      .remove()
+                      ,
+                      getCanvas("pedantischCanvas")
+                      .remove(),
+                      getCanvas("gebildetCanvas")
+                      .remove()
+                      ,
+                      getCanvas("wortgewandtCanvas")
+                      .remove()
+                      ,
+                      getCanvas("formellCanvas")
+                      .remove()
+                      ,
+                    )
+             .callback(getText("faster").print())
              ,
 
              newButton("weiter", "weiter")
+             .settings.center()
+             .log()
+             .print()
+             .wait(getScale("hoeflich").test.selected()
+                  .and(getScale("freundlich").test.selected()
+                  .and(getScale("entspannt").test.selected()
+                  .and(getScale("arrogant").test.selected()
+                  .and(getScale("pedantisch").test.selected()
+                  .and(getScale("gebildet").test.selected()
+                  .and(getScale("wortgewandt").test.selected()
+                  .and(getScale("formell").test.selected()
+                  )
+                  )
+                  )
+                  )
+                  )
+                  )
+                  )
+           )// cannot click weiter until all scales are selected
+           .callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
+           ,
 
-             ,
-
-             newSelector("button")
-             .add(getButton("weiter") )
-             .settings.keys(     " "                   )
-             .wait()
 
     )
 
     .setOption("hideProgressBar", "true" )
-    .log( "ID"                   , getVar("ID")             )
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
     .log( "browser"              , getVar("browser")        )
-    .log( "SetupObject"          , getVar("setup_pic")      )
-    .log( "TargetObject"         , getVar("target_pic")     )
-    .log( "Distractor"           , getVar("distractor")     )
-    .log( "SetupColor"           , variable.setup_col       )
-    .log( "TargetColor"          , variable.target_col      )
-    .log("DistractorColor"       , variable.distractor_col  )
-    .log( "DistractorCondition"  , variable.distractor_cond )
-    .log( "FocusCondition"       , variable.focus_cond      )
-    .log( "Condition"            , variable.condition       )
-    //.log( "Itempaar"             , variable.itempaar        )
+    .log("itemnr"                , variable.item_nr       )
+    .log( "condition"            , variable.cond       )
+    .log( "conddrop"            , variable.cond_drop       )
+    .log("condarg"              , variable.cond_arg    )
+    .log("subj"                 , variable.subj )
+    .log("subjgen"                 , variable.subj_gen )
+    .log("objgen"                  , variable.obj_gen )
+    .log("objnum"                 , variable.obj_num )
+    .log("mod"                 , variable.mod )
     )
     ;
 
-
-
-
-///////SOA0
-PennController.Template("rand1-2-ibex.csv", variable =>
-
-        PennController("main_SOA0ms2",
-
-                 newText("Distractor" , variable.distractor)
-                 //.settings.bold()
-
-                 ,
-
-                 newImage("SetupPic", variable.setup_pic)
-                 .size(300, 300)
-
-                 ,
-
-                 newImage("TargetPic", variable.target_pic)
-                 .size(300, 300)
-
-                 ,
-
-                 newCanvas("FixationCanvas", 300, 300)
-                 .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
-                 .print()
-
-                 ,
-
-                 newTimer("ShowFixation", 1000)
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getText("fixation")
-                 .remove()
-
-                 ,
-
-                 newTimer("ShowBlank", 500)
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getCanvas("FixationCanvas")
-                 .remove()
-
-                 ,
-
-                 newCanvas("SetupCanvas", 300, 300)
-                 .add(0, 0, getImage("SetupPic"))
-                 .print()
-
-                 ,
-
-                 newVoiceRecorder("SetupRecorder")
-                 .record()
-
-                 ,
-
-                 newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getCanvas("SetupCanvas")
-                 .remove()
-
-                 ,
-
-                 newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getVoiceRecorder("SetupRecorder")
-                 .stop()
-
-                 ,
-
-                 newTimer("Intertrial", 750)
-                 .start()
-                 .wait()
-
-                 ,
-
-                 newCanvas("TargetCanvas", 300, 300)
-                 .add(0, 0, getImage("TargetPic"))
-                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman")) // SOA = 0ms --> Uebung fuer jeweilige SOA anpassen?
-                 .print()
-
-
-                 ,
-
-                 newVoiceRecorder("TargetRecorder")
-                 .record()
-
-                 ,
-
-                 newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getCanvas("TargetCanvas")
-                 .hidden()
-
-                 ,
-
-                 newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                 .start()
-                 .wait()
-
-                 ,
-
-                 getVoiceRecorder("TargetRecorder")
-                 .stop()
-
-                 ,
-
-                 newCanvas("space1", 1, 100)
-                 .print()
-
-                 ,
-
-                 newButton("weiter", "weiter")
-
-                 ,
-
-                 newSelector("button")
-                 .add(getButton("weiter") )
-                 .settings.keys(     " "                   )
-                 .wait()
-
-        )
-
-        .setOption("hideProgressBar", "true" )
-        .log( "ID"                   , getVar("ID")             )
-        .log( "gender"               , getVar("gender")         )
-        .log( "age"                  , getVar("age")            )
-        .log( "language"             , getVar("language")       )
-        .log( "browser"              , getVar("browser")        )
-        .log( "SetupObject"          , getVar("setup_pic")      )
-        .log( "TargetObject"         , getVar("target_pic")     )
-        .log( "Distractor"           , getVar("distractor")     )
-        .log( "SetupColor"           , variable.setup_col       )
-        .log( "TargetColor"          , variable.target_col      )
-        .log("DistractorColor"       , variable.distractor_col  )
-        .log( "DistractorCondition"  , variable.distractor_cond )
-        .log( "FocusCondition"       , variable.focus_cond      )
-        .log( "Condition"            , variable.condition       )
-        //.log( "Itempaar"             , variable.itempaar        )
-        )
-        ;
-
-
-
-
-///////SOA100
-PennController.Template("rand2-1-ibex.csv", variable =>
-
-            PennController("main_SOA100ms1",
-
-                     newText("Distractor" , variable.distractor)
-                     //.settings.bold()
-
-                     ,
-
-                     newImage("SetupPic", variable.setup_pic)
-                     .size(300, 300)
-
-                     ,
-
-                     newImage("TargetPic", variable.target_pic)
-                     .size(300, 300)
-
-                     ,
-
-                     newCanvas("FixationCanvas", 300, 300)
-                     .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
-                     .print()
-
-                     ,
-
-                     newTimer("ShowFixation", 1000)
-                     .start()
-                     .wait()
-
-                     ,
-
-                     getText("fixation")
-                     .remove()
-
-                     ,
-
-                     newTimer("ShowBlank", 500)
-                     .start()
-                     .wait()
-
-                     ,
-
-                     getCanvas("FixationCanvas")
-                     .remove()
-
-                     ,
-
-                     newCanvas("SetupCanvas", 300, 300)
-                     .add(0, 0, getImage("SetupPic"))
-                     .print()
-
-                     ,
-
-                     newVoiceRecorder("SetupRecorder")
-                     .record()
-
-                     ,
-
-                     newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
-                     .start()
-                     .wait()
-
-                     ,
-
-                     getCanvas("SetupCanvas")
-                     .remove()
-
-                     ,
-
-                     newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                     .start()
-                     .wait()
-
-                     ,
-
-                     getVoiceRecorder("SetupRecorder")
-                     .stop()
-
-                     ,
-
-                     newTimer("Intertrial", 750)
-                     .start()
-                     .wait()
-
-                     ,
-
-                     newCanvas("TargetCanvas", 300, 300)
-                     .add(0, 0, getImage("TargetPic"))
-                     .print()
-
-
-                     ,
-
-                     newVoiceRecorder("TargetRecorder")
-                     .record()
-
-                     ,
-
-                     newTimer("ShowWord", 100) // Nach 100ms Distraktor zeigen
-                     .start()
-                     .wait()
-                     ,
-                     getCanvas("TargetCanvas")
-                     .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
-                     .print()
-                     ,
-
-                     newTimer("ShowTarget", 900) // Bild wird 900 ms weiter gezeigt (1000ms insgesamt)
-                     .start()
-                     .wait()
-
-                     ,
-
-                     getCanvas("TargetCanvas")
-                     .hidden()
-
-                     ,
-
-                     newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                     .start()
-                     .wait()
-
-                     ,
-
-                     getVoiceRecorder("TargetRecorder")
-                     .stop()
-
-                     ,
-
-                     newCanvas("space1", 1, 100)
-                     .print()
-
-                     ,
-
-                     newButton("weiter", "weiter")
-
-                     ,
-
-                     newSelector("button")
-                     .add(getButton("weiter") )
-                     .settings.keys(     " "                   )
-                     .wait()
-
-            )
-
-            .setOption("hideProgressBar", "true" )
-            .log( "ID"                   , getVar("ID")             )
-            .log( "gender"               , getVar("gender")         )
-            .log( "age"                  , getVar("age")            )
-            .log( "language"             , getVar("language")       )
-            .log( "browser"              , getVar("browser")        )
-            .log( "SetupObject"          , getVar("setup_pic")      )
-            .log( "TargetObject"         , getVar("target_pic")     )
-            .log( "Distractor"           , getVar("distractor")     )
-            .log( "SetupColor"           , variable.setup_col       )
-            .log( "TargetColor"          , variable.target_col      )
-            .log("DistractorColor"       , variable.distractor_col  )
-            .log( "DistractorCondition"  , variable.distractor_cond )
-            .log( "FocusCondition"       , variable.focus_cond      )
-            .log( "Condition"            , variable.condition       )
-            //.log( "Itempaar"             , variable.itempaar        )
-            )
-            ;
-
-
-
-
-///////SOA100
-PennController.Template("rand2-2-ibex.csv", variable =>
-
-                        PennController("main_SOA100ms2",
-
-                                 newText("Distractor" , variable.distractor)
-                                 //.settings.bold()
-
-                                 ,
-
-                                 newImage("SetupPic", variable.setup_pic)
-                                 .size(300, 300)
-
-                                 ,
-
-                                 newImage("TargetPic", variable.target_pic)
-                                 .size(300, 300)
-
-                                 ,
-
-                                 newCanvas("FixationCanvas", 300, 300)
-                                 .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
-                                 .print()
-
-                                 ,
-
-                                 newTimer("ShowFixation", 1000)
-                                 .start()
-                                 .wait()
-
-                                 ,
-
-                                 getText("fixation")
-                                 .remove()
-
-                                 ,
-
-                                 newTimer("ShowBlank", 500)
-                                 .start()
-                                 .wait()
-
-                                 ,
-
-                                 getCanvas("FixationCanvas")
-                                 .remove()
-
-                                 ,
-
-                                 newCanvas("SetupCanvas", 300, 300)
-                                 .add(0, 0, getImage("SetupPic"))
-                                 .print()
-
-                                 ,
-
-                                 newVoiceRecorder("SetupRecorder")
-                                 .record()
-
-                                 ,
-
-                                 newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
-                                 .start()
-                                 .wait()
-
-                                 ,
-
-                                 getCanvas("SetupCanvas")
-                                 .remove()
-
-                                 ,
-
-                                 newTimer("RecordSetup", 1500) // Recording geht noch 1000 ms weiter -> insgesamt also 2000ms
-                                 .start()
-                                 .wait()
-
-                                 ,
-
-                                 getVoiceRecorder("SetupRecorder")
-                                 .stop()
-
-                                 ,
-
-                                 newTimer("Intertrial", 750)
-                                 .start()
-                                 .wait()
-
-                                 ,
-
-                                 newCanvas("TargetCanvas", 300, 300)
-                                 .add(0, 0, getImage("TargetPic"))
-                                 .print()
-
-
-                                 ,
-
-                                 newVoiceRecorder("TargetRecorder")
-                                 .record()
-
-                                 ,
-
-                                 newTimer("ShowWord", 100) // Nach 100ms Distraktor zeigen
-                                 .start()
-                                 .wait()
-                                 ,
-                                 getCanvas("TargetCanvas")
-                                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
-                                 .print()
-                                 ,
-
-                                 newTimer("ShowTarget", 900) // Bild wird 900 ms weiter gezeigt (1000ms insgesamt)
-                                 .start()
-                                 .wait()
-
-                                 ,
-
-                                 getCanvas("TargetCanvas")
-                                 .hidden()
-
-                                 ,
-
-                                 newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                                 .start()
-                                 .wait()
-
-                                 ,
-
-                                 getVoiceRecorder("TargetRecorder")
-                                 .stop()
-
-                                 ,
-
-                                 newCanvas("space1", 1, 100)
-                                 .print()
-
-                                 ,
-
-                                 newButton("weiter", "weiter")
-
-                                 ,
-
-                                 newSelector("button")
-                                 .add(getButton("weiter") )
-                                 .settings.keys(     " "                   )
-                                 .wait()
-
-                        )
-
-                        .setOption("hideProgressBar", "true" )
-                        .log( "ID"                   , getVar("ID")             )
-                        .log( "gender"               , getVar("gender")         )
-                        .log( "age"                  , getVar("age")            )
-                        .log( "language"             , getVar("language")       )
-                        .log( "browser"              , getVar("browser")        )
-                        .log( "SetupObject"          , getVar("setup_pic")      )
-                        .log( "TargetObject"         , getVar("target_pic")     )
-                        .log( "Distractor"           , getVar("distractor")     )
-                        .log( "SetupColor"           , variable.setup_col       )
-                        .log( "TargetColor"          , variable.target_col      )
-                        .log("DistractorColor"       , variable.distractor_col  )
-                        .log( "DistractorCondition"  , variable.distractor_cond )
-                        .log( "FocusCondition"       , variable.focus_cond      )
-                        .log( "Condition"            , variable.condition       )
-                        //.log( "Itempaar"             , variable.itempaar        )
-                        )
-                        ;
-
-
-
-///////SOA-100
-PennController.Template("rand3-1-ibex.csv", variable =>
-
-                    PennController("main_SOA-100ms1",
-
-                             newText("Distractor" , variable.distractor)
-                             //.settings.bold()
-
-                             ,
-
-                             newImage("SetupPic", variable.setup_pic)
-                             .size(300, 300)
-
-                             ,
-
-                             newImage("TargetPic", variable.target_pic)
-                             .size(300, 300)
-
-                             ,
-
-                             newCanvas("FixationCanvas", 300, 300)
-                             .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
-                             .print()
-
-                             ,
-
-                             newTimer("ShowFixation", 1000)
-                             .start()
-                             .wait()
-
-                             ,
-
-                             getText("fixation")
-                             .remove()
-
-                             ,
-
-                             newTimer("ShowBlank", 500)
-                             .start()
-                             .wait()
-
-                             ,
-
-                             getCanvas("FixationCanvas")
-                             .remove()
-
-                             ,
-
-                             newCanvas("SetupCanvas", 300, 300)
-                             .add(0, 0, getImage("SetupPic"))
-                             .print()
-
-                             ,
-
-                             newVoiceRecorder("SetupRecorder")
-                             .record()
-
-                             ,
-
-                             newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
-                             .start()
-                             .wait()
-
-                             ,
-
-                             getCanvas("SetupCanvas")
-                             .remove()
-
-                             ,
-
-                             newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                             .start()
-                             .wait()
-
-                             ,
-
-                             getVoiceRecorder("SetupRecorder")
-                             .stop()
-
-                             ,
-
-                             newTimer("Intertrial", 750)
-                             .start()
-                             .wait()
-
-                             ,
-
-                             newCanvas("TargetCanvas", 300, 300)
-                             .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
-                             .print()
-
-                             ,
-                             newTimer("ShowWord", 100) //Distraktor wird 100ms davor gezeigt
-                             .start()
-                             .wait()
-                             ,
-
-                             newVoiceRecorder("TargetRecorder")
-                             .record()
-
-                             ,
-                             getCanvas("TargetCanvas")
-                             .add(0, 0, getImage("TargetPic"))
-                             .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
-                             .print()
-                             ,
-
-                             newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
-                             .start()
-                             .wait()
-
-                             ,
-
-                             getCanvas("TargetCanvas")
-                             .hidden()
-
-                             ,
-
-                             newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                             .start()
-                             .wait()
-
-                             ,
-
-                             getVoiceRecorder("TargetRecorder")
-                             .stop()
-
-                             ,
-
-                             newCanvas("space1", 1, 100)
-                             .print()
-
-                             ,
-
-                             newButton("weiter", "weiter")
-
-                             ,
-
-                             newSelector("button")
-                             .add(getButton("weiter") )
-                             .settings.keys(     " "                   )
-                             .wait()
-
+///////////////////////// Fillers
+
+PennController.Template("fillers.csv", variable =>
+
+    PennController("fillers",
+
+
+             newText("sa", variable.sa)
+             .settings.css("font-size", "18px")
+
+             ,
+
+             newText("sb", variable.sb)
+             .settings.css("font-size", "18px")
+
+             ,
+
+             newText("frage", "Welche Eigenschaften w&uuml;rdest du Person B zuschreiben?")
+             //.settings.css("font-size", "18px")
+             ,
+
+             newCanvas("canvas", 1000, 200)
+             .add(0, 20, getText("sa"))
+             .add(0, 40, getText("sb"))
+             .add(0, 160, getText("frage"))
+             //.add(0, 200, getScale("hoeflich"))
+             //.add(0, 240, getScale("freundlich"))
+             //.add(0, 280, getScale("entspannt"))
+             //.add(0, 320, getScale("arrogant"))
+             //.add(0, 360, getScale("pedantisch"))
+             //.add(0, 400, getScale("gebildet"))
+             //.add(0, 440, getScale("wortgewandt"))
+             //.add(0, 480, getScale("formell"))
+             .print()
+
+             ,
+
+             newScale("hoeflich", 6)
+             .button()
+             .radio()
+             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("hoeflichtext1", "sehr h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("hoeflichCanvas", 1000, 40)
+             .add(0,0, getScale("hoeflich"))
+             .print()
+             ,
+
+             newScale("freundlich", 6)
+             .button()
+             .radio()
+             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("freundlichCanvas", 1000, 40)
+             .add(0,0, getScale("freundlich"))
+             .print()
+             ,
+
+             newScale("entspannt", 6)
+             .button()
+             .radio()
+             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("entspannttext1", "sehr entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("entspanntCanvas", 1000, 40)
+             .add(0,0, getScale("entspannt"))
+             .print()
+             ,
+
+             newScale("arrogant", 6)
+             .button()
+             .radio()
+             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("arrogantCanvas", 1000, 40)
+             .add(0,0, getScale("arrogant"))
+             .print()
+             ,
+
+             newScale("pedantisch", 6)
+             .button()
+             .radio()
+             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("pedantischtext1", "sehr pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("pedantischCanvas", 1000, 40)
+             .add(0,0, getScale("pedantisch"))
+             .print()
+             ,
+
+             newScale("gebildet", 6)
+             .button()
+             .radio()
+             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("gebildetCanvas", 1000, 40)
+             .add(0,0, getScale("gebildet"))
+             .print()
+             ,
+
+             newScale("wortgewandt", 6)
+             .button()
+             .radio()
+             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("wortgewandttext1", "sehr wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("wortgewandtCanvas", 1000, 40)
+             .add(0,0, getScale("wortgewandt"))
+             .print()
+             ,
+
+             newScale("formell", 6)
+             .button()
+             .radio()
+             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("formelltext1", "sehr formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .labelsPosition("top")
+             .log("first", "last")
+             ,
+
+             newCanvas("formellCanvas", 1000, 40)
+             .add(0,0, getScale("formell"))
+             .print()
+             ,
+
+             newSelector("shuffle") // shuffle the positions of the scales
+             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+             .shuffle()
+             .disableClicks()
+             ,
+
+             newCanvas("space", 1, 100)
+             .print()
+
+             ,
+
+             newText("faster", "Bitte schneller bewerten!")
+             ,
+
+             newTimer("timeout", 20000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
+             .start()
+             .log()
+             .callback(getCanvas("canvas")
+                      .remove()
+                      ,
+                      getCanvas("hoeflichCanvas")
+                      .remove()
+                      ,
+                      getCanvas("freundlichCanvas")
+                      .remove()
+                      ,
+                      getCanvas("entspanntCanvas")
+                      .remove()
+                      ,
+                      getCanvas("arrogantCanvas")
+                      .remove()
+                      ,
+                      getCanvas("pedantischCanvas")
+                      .remove(),
+                      getCanvas("gebildetCanvas")
+                      .remove()
+                      ,
+                      getCanvas("wortgewandtCanvas")
+                      .remove()
+                      ,
+                      getCanvas("formellCanvas")
+                      .remove()
+                      ,
                     )
+             .callback(getText("faster").print())
+             ,
 
-                    .setOption("hideProgressBar", "true" )
-                    .log( "ID"                   , getVar("ID")             )
-                    .log( "gender"               , getVar("gender")         )
-                    .log( "age"                  , getVar("age")            )
-                    .log( "language"             , getVar("language")       )
-                    .log( "browser"              , getVar("browser")        )
-                    .log( "SetupObject"          , getVar("setup_pic")      )
-                    .log( "TargetObject"         , getVar("target_pic")     )
-                    .log( "Distractor"           , getVar("distractor")     )
-                    .log( "SetupColor"           , variable.setup_col       )
-                    .log( "TargetColor"          , variable.target_col      )
-                    .log("DistractorColor"       , variable.distractor_col  )
-                    .log( "DistractorCondition"  , variable.distractor_cond )
-                    .log( "FocusCondition"       , variable.focus_cond      )
-                    .log( "Condition"            , variable.condition       )
-                    //.log( "Itempaar"             , variable.itempaar        )
-                    )
-                    ;
+             newButton("weiter", "weiter")
+             .settings.center()
+             .log()
+             .print()
+             .wait(getScale("hoeflich").test.selected()
+                  .and(getScale("freundlich").test.selected()
+                  .and(getScale("entspannt").test.selected()
+                  .and(getScale("arrogant").test.selected()
+                  .and(getScale("pedantisch").test.selected()
+                  .and(getScale("gebildet").test.selected()
+                  .and(getScale("wortgewandt").test.selected()
+                  .and(getScale("formell").test.selected()
+                  )
+                  )
+                  )
+                  )
+                  )
+                  )
+                  )
+           )// cannot click weiter until all scales are selected
+           .callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
+           ,
 
 
+    )
 
-///////SOA-100
-PennController.Template("rand3-2-ibex.csv", variable =>
-
-                        PennController("main_SOA-100ms2",
-
-                                                 newText("Distractor" , variable.distractor)
-                                                 //.settings.bold()
-
-                                                 ,
-
-                                                 newImage("SetupPic", variable.setup_pic)
-                                                 .size(300, 300)
-
-                                                 ,
-
-                                                 newImage("TargetPic", variable.target_pic)
-                                                 .size(300, 300)
-
-                                                 ,
-
-                                                 newCanvas("FixationCanvas", 300, 300)
-                                                 .add(150, 150, newText("fixation", "+").settings.bold().settings.css("font-size", "xx-large"))
-                                                 .print()
-
-                                                 ,
-
-                                                 newTimer("ShowFixation", 1000)
-                                                 .start()
-                                                 .wait()
-
-                                                 ,
-
-                                                 getText("fixation")
-                                                 .remove()
-
-                                                 ,
-
-                                                 newTimer("ShowBlank", 500)
-                                                 .start()
-                                                 .wait()
-
-                                                 ,
-
-                                                 getCanvas("FixationCanvas")
-                                                 .remove()
-
-                                                 ,
-
-                                                 newCanvas("SetupCanvas", 300, 300)
-                                                 .add(0, 0, getImage("SetupPic"))
-                                                 .print()
-
-                                                 ,
-
-                                                 newVoiceRecorder("SetupRecorder")
-                                                 .record()
-
-                                                 ,
-
-                                                 newTimer("ShowSetup", 1000) // Bild wird 1000 ms gezeigt
-                                                 .start()
-                                                 .wait()
-
-                                                 ,
-
-                                                 getCanvas("SetupCanvas")
-                                                 .remove()
-
-                                                 ,
-
-                                                 newTimer("RecordSetup", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                                                 .start()
-                                                 .wait()
-
-                                                 ,
-
-                                                 getVoiceRecorder("SetupRecorder")
-                                                 .stop()
-
-                                                 ,
-
-                                                 newTimer("Intertrial", 750)
-                                                 .start()
-                                                 .wait()
-
-                                                 ,
-
-                                                 newCanvas("TargetCanvas", 300, 300)
-                                                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
-                                                 .print()
-
-                                                 ,
-                                                 newTimer("ShowWord", 100) //Distraktor wird 100ms davor gezeigt
-                                                 .start()
-                                                 .wait()
-                                                 ,
-
-                                                 newVoiceRecorder("TargetRecorder")
-                                                 .record()
-
-                                                 ,
-                                                 getCanvas("TargetCanvas")
-                                                 .add(0, 0, getImage("TargetPic"))
-                                                 .add(110, 120, getText("Distractor").settings.css("font-size", "40px").settings.css("font-family", "Times New Roman"))
-                                                 .print()
-                                                 ,
-
-                                                 newTimer("ShowTarget", 1000) // Bild wird 1000 ms gezeigt
-                                                 .start()
-                                                 .wait()
-
-                                                 ,
-
-                                                 getCanvas("TargetCanvas")
-                                                 .hidden()
-
-                                                 ,
-
-                                                 newTimer("RecordTarget", 1500) // Recording geht noch 1500 ms weiter -> insgesamt also 2500ms
-                                                 .start()
-                                                 .wait()
-
-                                                 ,
-
-                                                 getVoiceRecorder("TargetRecorder")
-                                                 .stop()
-
-                                                 ,
-
-                                                 newCanvas("space1", 1, 100)
-                                                 .print()
-
-                                                 ,
-
-                                                 newButton("weiter", "weiter")
-
-                                                 ,
-
-                                                 newSelector("button")
-                                                 .add(getButton("weiter") )
-                                                 .settings.keys(     " "                   )
-                                                 .wait()
-
-                                        )
-
-                        .setOption("hideProgressBar", "true" )
-                        .log( "ID"                   , getVar("ID")             )
-                        .log( "gender"               , getVar("gender")         )
-                        .log( "age"                  , getVar("age")            )
-                        .log( "language"             , getVar("language")       )
-                        .log( "browser"              , getVar("browser")        )
-                        .log( "SetupObject"          , getVar("setup_pic")      )
-                        .log( "TargetObject"         , getVar("target_pic")     )
-                        .log( "Distractor"           , getVar("distractor")     )
-                        .log( "SetupColor"           , variable.setup_col       )
-                        .log( "TargetColor"          , variable.target_col      )
-                        .log("DistractorColor"       , variable.distractor_col  )
-                        .log( "DistractorCondition"  , variable.distractor_cond )
-                        .log( "FocusCondition"       , variable.focus_cond      )
-                        .log( "Condition"            , variable.condition       )
-                        //.log( "Itempaar"             , variable.itempaar        )
-                        )
-                        ;
-
+    .setOption("hideProgressBar", "true" )
+    .log( "gender"               , getVar("gender")         )
+    .log( "age"                  , getVar("age")            )
+    .log( "language"             , getVar("language")       )
+    .log( "browser"              , getVar("browser")        )
+    .log("fillernr"                , variable.filler_nr       )
+    .log( "condition"            , variable.cond       )
+    .log( "control"            , variable.control       )
+    )
+    ;
 
 
 
@@ -1886,18 +1392,7 @@ PennController("end",
 
     ,
 
-    newText("Code",  "Wichtiger Hinweis:  <br /> Bitte kopiere den folgenden Code und f&uuml;ge ihn in das daf&uuml;r vorgesehene Feld innerhalb deines Clickworker-Aufgabenformulars ein. <br /> Ohne die Eingabe dieses Codes kann eine Gutschrift deines Honorars nicht erfolgen!")
-    .settings.css("font-size", "large")
-    .print()
-
-    ,
-
-     newCanvas("empty7", 1, 5)
-    .print()
-
-    ,
-
-    newText("Code2", "<b> Code: PWIBB1 </b>")
+    newText("close",  "Jetzt kannst du das Fenster schließen.")
     .settings.css("font-size", "large")
     .print()
 
