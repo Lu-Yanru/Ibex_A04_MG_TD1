@@ -86,7 +86,7 @@ PennController("PersonalData",
 
                newDropDown("gender", "")
                .settings.log("last")
-               .add( "weiblich" , "m&auml;nnlich" , "divers" )
+               .add( "weiblich" , "m&auml;nnlich" , "divers", "keine Angabe" )
 
                ,
 
@@ -105,8 +105,7 @@ PennController("PersonalData",
 
                newDropDown("age", "")
                .settings.log("last")
-               .add( "17 oder j&uuml;nger" , "18" , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33 oder &auml;lter" )
-
+               .add( "17 oder j&uuml;nger" , "18" , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41" "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99",  "100 oder &auml;lter" )
                ,
 
                newText("agetext", "Alter:")
@@ -119,6 +118,57 @@ PennController("PersonalData",
                .add(200, 23, getDropDown("age"))
                .print()
 
+               ,
+
+               newText("educationtext", "H&ouml;chste Bildungsabschluss:")
+               .settings.css("font-size", "18px")
+               ,
+
+               newDropDown("education", "")
+               .settings.log("last")
+               .add("Hauptschulabschluss und qualifizierender Hauptschulabschluss",
+               "Mittlerer Schulabschluss (Realschulabschluss und vergleichbare Schulabschl&uuml;sse)",
+               "Fachhochschulreife (allgemeine oder fachgebundene Fachhochschulreife)",
+               "Abitur (allgemeine oder fachgebundene Hochschulreife)",
+               "Berufsausbildung",
+               "Hochschulabschluss (Universit&auml;t, Fachhochschule)")
+               ,
+
+               newCanvas("educationcanvas", 600, 35)
+               .add(0, 20, getText("educationtext"))
+               .add(200, 23, getDropDown("education"))
+               .print()
+               ,
+
+               newText("bundeslandtext", "Bundesland:")
+               .settings.css("font-size", "18px")
+               ,
+
+               newDropDown("bundesland", "")
+               .setting.log("last")
+               .add("Baden-W&uuml;rttemberg",
+                "Bayern",
+                "Berlin",
+                "Brandenburg",
+                "Bremen",
+                "Hamburg",
+                "Hessen",
+                "Mecklenburg-Vorpommern",
+                "Niedersachsen",
+                "Nordrhein-Westfalen",
+                "Rheinland-Pfalz",
+                "Saarland",
+                "Sachsen",
+                "Sachsen-Anhalt",
+                "Schleswig-Holstein",
+                "Th&uuml;ringen"
+                )
+               ,
+
+               newCanvas("bundeslandcanvas", 600, 35)
+               .add(0, 20, getText(bundeslandtext))
+               .add(200, 23, getDropDown("bundesland"))
+               .print()
                ,
 
                newDropDown("browser", "")
@@ -148,49 +198,14 @@ PennController("PersonalData",
                .settings.center()
                .print()
                .wait(getDropDown("age")
-                     .test.selected("18")
-                     .or( getDropDown("age")
-                        .test.selected("19")
-                        .or( getDropDown("age")
-                           .test.selected("20")
-                           .or( getDropDown("age")
-                             .test.selected("21")
-                             .or( getDropDown("age")
-                               .test.selected("22")
-                               .or( getDropDown("age")
-                                 .test.selected("23")
-                                 .or( getDropDown("age")
-                                   .test.selected("24")
-                                   .or( getDropDown("age")
-                                     .test.selected("25")
-                                     .or( getDropDown("age")
-                                       .test.selected("26")
-                                       .or( getDropDown("age")
-                                         .test.selected("27")
-                                         .or( getDropDown("age")
-                                           .test.selected("28")
-                                           .or( getDropDown("age")
-                                            .test.selected("29")
-                                            .or( getDropDown("age")
-                                              .test.selected("30")
-                                              .or( getDropDown("age")
-                                                .test.selected("31")
-                                                .or( getDropDown("age")
-                                                  .test.selected("32")
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )
-                                                  )// ende age scale
+                      .testNot.selected("17 oder j&uuml;nger")
+                      .and(getDropDown("age")
+                        .testNot.selected("100 oder &auml;lter")
+                      )// ende age scale
+
+                    .and(getDropDown("gender")
+                      .test.selected()
+                    ) //ende gender scale
 
 
                      .and(getDropDown("language")
@@ -201,33 +216,16 @@ PennController("PersonalData",
                           )
                           ) //ende language scale
 
-                     .and(getDropDown("gender")
-                       .test.selected("m&auml;nnlich")
-                       .or(getDropDown("gender")
-                         .test.selected("weiblich")
-                         .or(getDropDown("gender")
-                           .test.selected("divers")
-                          )
-                          )
-                          ) //ende gender scale
+                     .and(getDropDown("education")
+                       .test.selected()
+                        ) //ende education scale
+
+                     .and(getDropDown("bundesland")
+                       .test.selected()
+                     ) //ende bundesland scale
 
                       .and(getDropDown("browser")
-                        .test.selected("Safari")
-                        .or(getDropDown("browser")
-                          .test.selected("Firefox")
-                          .or(getDropDown("browser")
-                            .test.selected("Chrome")
-                            .or(getDropDown("browser")
-                              .test.selected("Internet Explorer")
-                              .or(getDropDown("browser")
-                                .test.selected("Microsoft Edge")
-                                .or(getDropDown("browser")
-                                  .test.selected("anderer")
-                           )
-                           )
-                           )
-                           )
-                           )
+                        .test.selected()
                            ) //ende browser scale
 
 
@@ -237,7 +235,7 @@ PennController("PersonalData",
                          getButton("weiter")
                          .remove()
                          ,
-                         newText("bye", "Du kannst leider nicht an dem Experiment teilnehmen, da deine Angaben nicht mit denen bei Clickworker &uuml;bereinstimmen oder du nicht alle Angaben eingegeben hast.")
+                         newText("bye", "Du kannst leider nicht an dem Experiment teilnehmen, da du die Vorasusetzungen f&uuml;r die Teilnahme nicht erf&uuml;llst oder du nicht alle Angaben eingegeben hast.")
                          .color("red")
                          .print()
 
@@ -255,7 +253,7 @@ PennController("PersonalData",
 
                newVar("age")
                .settings.global()
-               .set( getDropDown("age") )
+               .set( getTextInput("age") )
 
                ,
 
