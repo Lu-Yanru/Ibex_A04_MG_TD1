@@ -531,7 +531,8 @@ PennController.Template("uebung.csv", variable =>
              .settings.center()
              .log()
              .print()
-             .wait(getScale("hoeflich").test.selected()
+             .wait(getTimer("timeout").test.ended()
+                  .or(getScale("hoeflich").test.selected()
                   .and(getScale("freundlich").test.selected()
                   .and(getScale("entspannt").test.selected()
                   .and(getScale("arrogant").test.selected()
@@ -546,7 +547,8 @@ PennController.Template("uebung.csv", variable =>
                   )
                   )
                   )
-           )// cannot click weiter until all scales are selected
+                  )
+           )// cannot click weiter until all scales are selected or when the timer ended
            .callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
            ,
 
@@ -792,7 +794,8 @@ PennController.Template("items.csv", variable =>
              .settings.center()
              .log()
              .print()
-             .wait(getScale("hoeflich").test.selected()
+             .wait(getTimer("timeout").test.ended()
+                  .or(getScale("hoeflich").test.selected()
                   .and(getScale("freundlich").test.selected()
                   .and(getScale("entspannt").test.selected()
                   .and(getScale("arrogant").test.selected()
@@ -807,7 +810,8 @@ PennController.Template("items.csv", variable =>
                   )
                   )
                   )
-           )// cannot click weiter until all scales are selected
+                  )
+           )// cannot click weiter until all scales are selected or when the timer ended
            .callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
            ,
 
@@ -1031,7 +1035,8 @@ PennController.Template("fillers.csv", variable =>
              .settings.center()
              .log()
              .print()
-             .wait(getScale("hoeflich").test.selected()
+             .wait(getTimer("timeout").test.ended()
+                  .or(getScale("hoeflich").test.selected()
                   .and(getScale("freundlich").test.selected()
                   .and(getScale("entspannt").test.selected()
                   .and(getScale("arrogant").test.selected()
@@ -1046,7 +1051,8 @@ PennController.Template("fillers.csv", variable =>
                   )
                   )
                   )
-           )// cannot click weiter until all scales are selected
+                  )
+           )// cannot click weiter until all scales are selected or when the timer ended
            .callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
            ,
 
