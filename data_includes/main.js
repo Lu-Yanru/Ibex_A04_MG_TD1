@@ -4,7 +4,7 @@ PennController.DebugOff()
 
 
 
-PennController.Sequence("init", "intro", randomize("practice"), "main_start", shuffle(randomize("fillers"), randomize("items")) , "question", "other", "send", "end" )
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", randomize("practice"), "main_start", shuffle(randomize("fillers"), randomize("items")) , "question", "other", "send", "end" )
 
 
 
@@ -79,7 +79,7 @@ PennController("PersonalData",
 
                newCanvas("languagecanvas", 600, 35)
                .add(0, 20, getText("languagetext"))
-               .add(200, 23, getDropDown("language"))
+               .add(250, 23, getDropDown("language"))
                .print()
 
                ,
@@ -97,15 +97,15 @@ PennController("PersonalData",
 
                newCanvas("gendercanvas", 600, 35)
                .add(0, 20, getText("gendertext"))
-               .add(200, 23, getDropDown("gender"))
+               .add(250, 23, getDropDown("gender"))
                .print()
 
                ,
 
 
-               newDropDown("age", "")
-               .settings.log("last")
-               .add( "17 oder j&uuml;nger" , "18" , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41" "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99",  "100 oder &auml;lter" )
+               newTextInput("age", "")
+               .settings.log()
+               //.add( "17 oder j&uuml;nger" , "18" , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41" "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99",  "100 oder &auml;lter" )
                ,
 
                newText("agetext", "Alter:")
@@ -115,7 +115,7 @@ PennController("PersonalData",
 
                newCanvas("agecanvas", 600, 35)
                .add(0, 20, getText("agetext"))
-               .add(200, 23, getDropDown("age"))
+               .add(250, 23, getTextInput("age"))
                .print()
 
                ,
@@ -136,7 +136,7 @@ PennController("PersonalData",
 
                newCanvas("educationcanvas", 600, 35)
                .add(0, 20, getText("educationtext"))
-               .add(200, 23, getDropDown("education"))
+               .add(250, 23, getDropDown("education"))
                .print()
                ,
 
@@ -145,7 +145,7 @@ PennController("PersonalData",
                ,
 
                newDropDown("bundesland", "")
-               .setting.log("last")
+               .settings.log("last")
                .add("Baden-W&uuml;rttemberg",
                 "Bayern",
                 "Berlin",
@@ -166,8 +166,8 @@ PennController("PersonalData",
                ,
 
                newCanvas("bundeslandcanvas", 600, 35)
-               .add(0, 20, getText(bundeslandtext))
-               .add(200, 23, getDropDown("bundesland"))
+               .add(0, 20, getText("bundeslandtext"))
+               .add(250, 23, getDropDown("bundesland"))
                .print()
                ,
 
@@ -184,7 +184,7 @@ PennController("PersonalData",
 
                newCanvas("browsercanvas", 600, 35)
                .add(0, 20, getText("browsertext"))
-               .add(200, 23, getDropDown("browser"))
+               .add(250, 23, getDropDown("browser"))
                .print()
 
                ,
@@ -197,11 +197,8 @@ PennController("PersonalData",
                newButton("weiter", "weiter")
                .settings.center()
                .print()
-               .wait(getDropDown("age")
-                      .testNot.selected("17 oder j&uuml;nger")
-                      .and(getDropDown("age")
-                        .testNot.selected("100 oder &auml;lter")
-                      )// ende age scale
+               .wait(getTextInput("age")
+                      .test.text(/^\d+$/) // ende age input
 
                     .and(getDropDown("gender")
                       .test.selected()
