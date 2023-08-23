@@ -4,7 +4,7 @@ PennController.DebugOff()
 
 
 
-PennController.Sequence("init", "intro", randomize("practice"), shuffle(randomize("fillers"), randomize("items")) , "send", "end" )
+PennController.Sequence("init", "intro", randomize("practice"), "main_start", shuffle(randomize("fillers"), randomize("items")) , "question", "other", "send", "end" )
 
 
 
@@ -1070,267 +1070,71 @@ PennController.Template("fillers.csv", variable =>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Questions
 
-PennController("question1",
+PennController("question",
 
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
+              newText("bspa", "A: Hat Maria das Auto gestern verkauft?")
+              .settings.css("font-size", "18px")
               ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde ein schwarzer Tisch gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
+
+              newText("bspb", "B: Muss sie heute verkaufen.")
+              .settings.css("font-size", "18px")
+              ,
+
+              newCanvas("questioncanvas", 1000, 400)
+              .add(0,20, getText("bspa"))
+              .add(0,40, getText("bspa"))
               .print()
               ,
 
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
+              newCanvas("blank", 1, 10)
+              .print()
+
               ,
+
+              newTextInput("adj", "Welche weitere Eigenschaften würdest du noch Person B zuschreiben?")
+              .log()
+              .lines(0)
+              .size(400, 200)
+              .print()
+              ,
+
+              newButton("weiter", "weiter")
+              .print()
+              .wait()
 
 
 
 )
 .setOption("hideProgressBar", "true")
+.log( "gender"               , getVar("gender")         )
+.log( "age"                  , getVar("age")            )
+.log( "language"             , getVar("language")       )
+.log( "browser"              , getVar("browser")        )
 ;
 
 
-PennController("question2",
+PennController("other",
 
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde eine braune Nuss gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
+              newTextInput("feedback", "Hier kannst du Kommentare und Feedbacks f&uuml;r dieses Experiment eingeben:")
+              .log()
+              .lines(0)
+              .size(400, 200)
               .print()
               ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
+              newButton("weiter", "weiter")
+              .print()
+              .wait()
 
 
 
 )
 .setOption("hideProgressBar", "true")
+.log( "gender"               , getVar("gender")         )
+.log( "age"                  , getVar("age")            )
+.log( "language"             , getVar("language")       )
+.log( "browser"              , getVar("browser")        )
 ;
 
-PennController("question3",
-
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde ein wei&szlig;er Brief gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
-              .print()
-              ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
-
-
-
-)
-.setOption("hideProgressBar", "true")
-;
-
-
-PennController("question4",
-
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde ein brauner Anzug gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
-              .print()
-              ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
-
-
-
-)
-.setOption("hideProgressBar", "true")
-;
-
-PennController("question5",
-
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde eine wei&szlig;e Raupe gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
-              .print()
-              ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
-
-
-
-)
-.setOption("hideProgressBar", "true")
-;
-
-PennController("question6",
-
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde eine braune Geige gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
-              .print()
-              ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
-
-
-
-)
-.setOption("hideProgressBar", "true")
-;
-
-PennController("question7",
-
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde ein schwarzer Ring gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
-              .print()
-              ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
-
-
-
-)
-.setOption("hideProgressBar", "true")
-;
-
-PennController("question8",
-
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde eine rote Krone gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
-              .print()
-              ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
-
-
-
-)
-.setOption("hideProgressBar", "true")
-;
-
-PennController("question9",
-
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde ein schwarzes Klavier gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
-              .print()
-              ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
-
-
-
-)
-.setOption("hideProgressBar", "true")
-;
-
-PennController("question10",
-
-              newText("Nein", "<small>Nein [F]</small>")
-              .settings.center()
-              .settings.after(newText("Ja", "<small>Ja [J]</small>").settings.css("padding-left", "100pt").settings.css("font-size", "18px"))
-              .settings.css("font-size", "medium")
-              ,
-              newCanvas("questioncanvas", 800, 400)
-              .add(250,50, newText("question", "Wurde ein roter Reifen gezeigt?").settings.css("font-size", "large"))
-              .add(270,150, getText("Nein").settings.css("font-size", "18px"))
-              .print()
-              ,
-
-              newSelector("select")
-                .settings.add(getText("Nein"), getText("Ja"))
-                .settings.keys("F", "J")
-                .settings.log()
-                .wait()
-              ,
-
-
-
-)
-.setOption("hideProgressBar", "true")
-;
 
 
 
@@ -1392,7 +1196,7 @@ PennController("end",
 
     ,
 
-    newText("close",  "Jetzt kannst du das Fenster schließen.")
+    newText("close",  "Jetzt kannst du das Fenster schlie&szlig;en.")
     .settings.css("font-size", "large")
     .print()
 
