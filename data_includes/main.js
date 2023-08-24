@@ -260,6 +260,16 @@ PennController("PersonalData",
 
                ,
 
+               newVar("education")
+               .settings.global()
+               .set(getDropDown("education"))
+               ,
+
+               newVar("bundesland")
+               .settings.global()
+               .set(getDropDown("bundesland"))
+               ,
+
                newVar("browser")
                .settings.global()
                .set( getDropDown("browser") )
@@ -270,6 +280,8 @@ PennController("PersonalData",
     .log( "gender" ,   getVar("gender"))
     .log( "age" ,      getVar("age"))
     .log( "language" , getVar("language"))
+    .log("education", getVar("education"))
+    .log("bundesland", getVar("bundesland"))
     .log( "browser" ,  getVar("browser"))
 
 
@@ -556,6 +568,8 @@ PennController.Template("uebung.csv", variable =>
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
+    .log("education"            , getVar("education"))
+    .log("bundesland"           , getVar("bundesland"))
     .log( "browser"              , getVar("browser")        )
     .log("uebungnr"                , variable.uebung_nr       )
     .log( "condition"            , variable.cond       )
@@ -819,6 +833,8 @@ PennController.Template("items.csv", variable =>
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
+    .log("education"            , getVar("education"))
+    .log("bundesland"           , getVar("bundesland"))
     .log( "browser"              , getVar("browser")        )
     .log("itemnr"                , variable.item_nr       )
     .log( "condition"            , variable.cond       )
@@ -826,9 +842,11 @@ PennController.Template("items.csv", variable =>
     .log("condarg"              , variable.cond_arg    )
     .log("subj"                 , variable.subj )
     .log("subjgen"                 , variable.subj_gen )
+    .log("obj"                   ,variable.obj)
     .log("objgen"                  , variable.obj_gen )
     .log("objnum"                 , variable.obj_num )
     .log("mod"                 , variable.mod )
+    .log("v"                    ,variable.v)
     )
     ;
 
@@ -1060,6 +1078,8 @@ PennController.Template("fillers.csv", variable =>
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
+    .log("education"             , getVar("education"))
+    .log("bundesland"            , getVar("bundesland"))
     .log( "browser"              , getVar("browser")        )
     .log("fillernr"                , variable.filler_nr       )
     .log( "condition"            , variable.cond       )
@@ -1114,6 +1134,8 @@ PennController("question",
 .log( "gender"               , getVar("gender")         )
 .log( "age"                  , getVar("age")            )
 .log( "language"             , getVar("language")       )
+.log("education"            , getVar("education"))
+.log("bundesland"           , getVar("bundesland"))
 .log( "browser"              , getVar("browser")        )
 ;
 
@@ -1152,6 +1174,8 @@ PennController("other",
 .log( "gender"               , getVar("gender")         )
 .log( "age"                  , getVar("age")            )
 .log( "language"             , getVar("language")       )
+.log("education"             , getVar("education"))
+.log("bundesland"            , getVar("bundesland"))
 .log( "browser"              , getVar("browser")        )
 ;
 
