@@ -1,8 +1,8 @@
 item_nr,sa,sb,cond,cond_drop,cond_arg,subj,subj_gen,obj,obj_gen,obj_num,mod,v
-I1,A: Hast du letzte Woche den Brief geschrieben?,B: Kann ihn morgen schreiben.,drop_subj,drop,subj,1sg,NA,Brief,m,sg,können,schreiben
-I2,A: Hast du letzte Woche den Brief geschrieben?,B: Ich kann ihn morgen schreiben.,nodrop_subj,nodrop,subj,1sg,NA,Brief,m,sg,können,schreiben
-I3,A: Hast du letzte Woche den Brief geschrieben?,B: Kann ich morgen schreiben.,drop_obj,drop,obj,1sg,NA,Brief,m,sg,können,schreiben
-I4,A: Hast du letzte Woche den Brief geschrieben?,B: Den kann ich morgen schreiben.,nodrop_obj,nodrop,obj,1sg,NA,Brief,m,sg,können,schreiben
+I1,A: Hast du letzte Woche den Brief geschrieben?,B: Kann ihn morgen schreiben.,drop_subj,drop,subj,1sg,NA,Brief,m,sg,koennen,schreiben
+I2,A: Hast du letzte Woche den Brief geschrieben?,B: Ich kann ihn morgen schreiben.,nodrop_subj,nodrop,subj,1sg,NA,Brief,m,sg,koennen,schreiben
+I3,A: Hast du letzte Woche den Brief geschrieben?,B: Kann ich morgen schreiben.,drop_obj,drop,obj,1sg,NA,Brief,m,sg,koennen,schreiben
+I4,A: Hast du letzte Woche den Brief geschrieben?,B: Den kann ich morgen schreiben.,nodrop_obj,nodrop,obj,1sg,NA,Brief,m,sg,koennen,schreiben
 I5,A: Hast du dieses Jahr deine Steuern gemacht?,B: Soll sie diesen Monat machen.,drop_subj,drop,subj,1sg,NA,Steuern,NA,pl,sollen,machen
 I6,A: Hast du dieses Jahr deine Steuern gemacht?,B: Ich soll sie diesen Monat machen.,nodrop_subj,nodrop,subj,1sg,NA,Steuern,NA,pl,sollen,machen
 I7,A: Hast du dieses Jahr deine Steuern gemacht?,B: Soll ich diesen Monat machen.,drop_obj,drop,obj,1sg,NA,Steuern,NA,pl,sollen,machen
@@ -12,17 +12,17 @@ I10,A: Hast du heute die Spaghetti gegessen?,B: Ich will sie heute Abend essen.,
 I11,A: Hast du heute die Spaghetti gegessen?,B: Will ich heute Abend essen.,drop_obj,drop,obj,1sg,NA,Spaghetti,NA,pl,wollen,essen
 I12,A: Hast du heute die Spaghetti gegessen?,B: Die will ich heute Abend essen.,nodrop_obj,nodrop,obj,1sg,NA,Spaghetti,NA,pl,wollen,essen
 I13,A: Hast du gestern das Spiel ausprobiert?,B: Darf es morgen ausprobieren.,drop_subj,drop,subj,1sg,NA,Spiel,n,sg,dürfen,ausprobieren
-I14,A: Hast du gestern das Spiel ausprobiert?,B: Ich darf es morgen ausprobieren. ,nodrop_subj,nodrop,subj,1sg,NA,Spiel,n,sg,dürfen,ausprobieren
-I15,A: Hast du gestern das Spiel ausprobiert?,B: Darf ich morgen ausprobieren.,drop_obj,drop,obj,1sg,NA,Spiel,n,sg,dürfen,ausprobieren
-I16,A: Hast du gestern das Spiel ausprobiert?,B: Das darf ich morgen ausprobieren.,nodrop_obj,nodrop,obj,1sg,NA,Spiel,n,sg,dürfen,ausprobieren
+I14,A: Hast du gestern das Spiel ausprobiert?,B: Ich darf es morgen ausprobieren. ,nodrop_subj,nodrop,subj,1sg,NA,Spiel,n,sg,duerfen,ausprobieren
+I15,A: Hast du gestern das Spiel ausprobiert?,B: Darf ich morgen ausprobieren.,drop_obj,drop,obj,1sg,NA,Spiel,n,sg,duerfen,ausprobieren
+I16,A: Hast du gestern das Spiel ausprobiert?,B: Das darf ich morgen ausprobieren.,nodrop_obj,nodrop,obj,1sg,NA,Spiel,n,sg,duerfen,ausprobieren
 I17,A: Hat Peter neulich das Regal gebaut?,B: Soll es später bauen.,drop_subj,drop,subj,3sg,m,Regal,n,sg,sollen,bauen
 I18,A: Hat Peter neulich das Regal gebaut?,B: Er soll es später bauen.,nodrop_subj,nodrop,subj,3sg,m,Regal,n,sg,sollen,bauen
 I19,A: Hat Peter neulich das Regal gebaut?,B: Soll er später bauen.,drop_obj,drop,obj,3sg,m,Regal,n,sg,sollen,bauen
 I20,A: Hat Peter neulich das Regal gebaut?,B: Das soll er später bauen.,nodrop_obj,nodrop,obj,3sg,m,Regal,n,sg,sollen,bauen
-I21,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Darf sie morgen abgeben.,drop_subj,drop,subj,3sg,m,Hausarbeit,f,sg,dürfen,abgeben
-I22,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Er darf sie morgen abgeben.,nodrop_subj,nodrop,subj,3sg,m,Hausarbeit,f,sg,dürfen,abgeben
-I23,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Darf er morgen abgeben.,drop_obj,drop,obj,3sg,m,Hausarbeit,f,sg,dürfen,abgeben
-I24,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Die darf er morgen abgeben.,nodrop_obj,nodrop,obj,3sg,m,Hausarbeit,f,sg,dürfen,abgeben
+I21,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Darf sie morgen abgeben.,drop_subj,drop,subj,3sg,m,Hausarbeit,f,sg,duerfen,abgeben
+I22,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Er darf sie morgen abgeben.,nodrop_subj,nodrop,subj,3sg,m,Hausarbeit,f,sg,duerfen,abgeben
+I23,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Darf er morgen abgeben.,drop_obj,drop,obj,3sg,m,Hausarbeit,f,sg,duerfen,abgeben
+I24,A: Hat Lukas heute die Hausarbeit abgegeben?,B: Die darf er morgen abgeben.,nodrop_obj,nodrop,obj,3sg,m,Hausarbeit,f,sg,duerfen,abgeben
 I25,A: Hat Sarah letzte Woche das Fahrrad repariert?,B: Will es diese Woche reparieren.,drop_subj,drop,subj,3sg,f,Fahrrad,n,sg,wollen,reparieren
 I26,A: Hat Sarah letzte Woche das Fahrrad repariert?,B: Sie will es diese Woche reparieren.,nodrop_subj,nodrop,subj,3sg,f,Fahrrad,n,sg,wollen,reparieren
 I27,A: Hat Sarah letzte Woche das Fahrrad repariert?,B: Will sie diese Woche reparieren.,drop_obj,drop,obj,3sg,f,Fahrrad,n,sg,wollen,reparieren
