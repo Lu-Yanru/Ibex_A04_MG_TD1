@@ -1,10 +1,10 @@
 PennController.ResetPrefix( null );
-AddHost("https://amor.cms.hu-berlin.de/~idslfahm/ibex_bilder/PWI_BB/");
+//AddHost("https://amor.cms.hu-berlin.de/~idslfahm/ibex_bilder/PWI_BB/");
 PennController.DebugOff()
 
 
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", randomize("practice"), "main_start", shuffle(randomize("fillers"), randomize("items")) , "question", "other", "send", "end" )
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", shuffle(randomize("fillers"), randomize("items")) , "question", "other", "send", "end" )
 
 
 
@@ -36,7 +36,7 @@ PennController("intro",
     ;
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Clickworker ID
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// demographic info
 
 
 PennController("PersonalData",
@@ -307,7 +307,7 @@ PennController("hinweise",
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice
 
 
-PennController("practice_one_start",
+PennController("practice_start",
 
 
               newHtml("practice_one_start", "practice_one_start.html")
@@ -345,7 +345,7 @@ PennController.Template("uebung.csv", variable =>
 
              ,
 
-             newText("frage", "Welche Eigenschaften w&uuml;rdest du Person B zuschreiben?")
+             newText("frage", "Inwieweit w&uuml;rdest du Person B die folgenden Eigenschaften zuschreiben?")
              //.settings.css("font-size", "18px")
              ,
 
@@ -608,7 +608,7 @@ PennController.Template("items.csv", variable =>
 
              ,
 
-             newText("frage", "Welche Eigenschaften w&uuml;rdest du Person B zuschreiben?")
+             newText("frage", "Inwieweit w&uuml;rdest du Person B die folgenden Eigenschaften zuschreiben?")
              //.settings.css("font-size", "18px")
              ,
 
@@ -849,7 +849,7 @@ PennController.Template("fillers.csv", variable =>
 
              ,
 
-             newText("frage", "Welche Eigenschaften w&uuml;rdest du Person B zuschreiben?")
+             newText("frage", "Inwieweit w&uuml;rdest du Person B die folgenden Eigenschaften zuschreiben?")
              //.settings.css("font-size", "18px")
              ,
 
@@ -1081,7 +1081,7 @@ PennController("question",
               .settings.css("font-size", "18px")
               ,
 
-              newText("q", "Welche weitere Eigenschaften w&uuml;rdest du noch Person B zuschreiben?")
+              newText("q", "Welche weitere Eigenschaften w&uuml;rdest du Person B noch zuschreiben?")
               ,
 
               newCanvas("questioncanvas", 1000, 200)
