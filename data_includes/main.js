@@ -26,6 +26,7 @@ PennController("intro",
 
              newButton("weiter", "weiter")
              .center()
+             .settings.css("font-size", "20px")
              .print()
              .wait()
 
@@ -140,7 +141,7 @@ PennController("PersonalData",
                .print()
                ,
 
-               newText("bundeslandtext", "Bundesland:")
+               newText("bundeslandtext", "Wo hast du 10 oder mehr Jahre gelebt:")
                .settings.css("font-size", "18px")
                ,
 
@@ -162,6 +163,7 @@ PennController("PersonalData",
                 "Sachsen-Anhalt",
                 "Schleswig-Holstein",
                 "Th&uuml;ringen"
+                "Anderer Ort"
                 )
                ,
 
@@ -196,6 +198,7 @@ PennController("PersonalData",
 
                newButton("weiter", "weiter")
                .settings.center()
+               .settings.css("font-size", "20px")
                .print()
                .wait(getTextInput("age")
                       .test.text(/^\d+$/) // ende age input
@@ -304,6 +307,7 @@ PennController("hinweise",
 
              newButton("weiter", "weiter")
              .center()
+             .settings.css("font-size", "20px")
              .print()
              .wait()
 
@@ -328,6 +332,7 @@ PennController("practice_start",
 
               newButton("weiter", "weiter")
               .settings.center()
+              .settings.css("font-size", "20px")
               .print()
               .wait()
 
@@ -503,7 +508,7 @@ PennController.Template("uebung.csv", variable =>
              newText("faster", "Bitte schneller bewerten!")
              ,
 
-             newTimer("timeout", 20000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
+             newTimer("timeout", 60000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
              .start()
              .log()
              .callback(getCanvas("canvas")
@@ -538,6 +543,7 @@ PennController.Template("uebung.csv", variable =>
 
              newButton("weiter", "weiter")
              .settings.center()
+             .settings.css("font-size", "20px")
              .log()
              .print()
              .wait(getTimer("timeout").test.ended()
@@ -593,6 +599,7 @@ PennController("main_start",
               ,
               newButton("weiter", "weiter")
               .settings.center()
+              .settings.css("font-size", "20px")
               .print()
               .wait()
 
@@ -768,7 +775,7 @@ PennController.Template("items.csv", variable =>
              newText("faster", "Bitte schneller bewerten!")
              ,
 
-             newTimer("timeout", 20000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
+             newTimer("timeout", 60000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
              .start()
              .log()
              .callback(getCanvas("canvas")
@@ -803,6 +810,7 @@ PennController.Template("items.csv", variable =>
 
              newButton("weiter", "weiter")
              .settings.center()
+             .settings.css("font-size", "20px")
              .log()
              .print()
              .wait(getTimer("timeout").test.ended()
@@ -1013,7 +1021,7 @@ PennController.Template("fillers.csv", variable =>
              newText("faster", "Bitte schneller bewerten!")
              ,
 
-             newTimer("timeout", 20000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
+             newTimer("timeout", 60000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
              .start()
              .log()
              .callback(getCanvas("canvas")
@@ -1048,6 +1056,7 @@ PennController.Template("fillers.csv", variable =>
 
              newButton("weiter", "weiter")
              .settings.center()
+             .settings.css("font-size", "20px")
              .log()
              .print()
              .wait(getTimer("timeout").test.ended()
@@ -1124,6 +1133,7 @@ PennController("question",
               ,
 
               newButton("weiter", "weiter")
+              .settings.css("font-size", "20px")
               .print()
               .wait()
 
@@ -1164,6 +1174,7 @@ PennController("other",
               ,
 
               newButton("weiter", "weiter")
+              .settings.css("font-size", "20px")
               .print()
               .wait()
 
@@ -1214,6 +1225,7 @@ PennController("break",
 
               newButton("weiter", "weiter")
               .center()
+              .settings.css("font-size", "20px")
               .print()
               .wait()
 
