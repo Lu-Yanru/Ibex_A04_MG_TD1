@@ -128,7 +128,7 @@ PennController("PersonalData",
 
                newCanvas("agecanvas", 600, 35)
                .add(0, 20, getText("agetext"))
-               .add(350, 23, getTextInput("age"))
+               .add(350, 23, getDropDown("age"))
                .print()
 
                ,
@@ -153,7 +153,7 @@ PennController("PersonalData",
                .print()
                ,
 
-               newText("bundeslandtext", "Wo hast du 10 oder mehr Jahre gelebt:")
+               newText("bundeslandtext", "Wo hast du 10 oder mehr Jahre gelebt?")
                .settings.css("font-size", "18px")
                ,
 
@@ -190,8 +190,8 @@ PennController("PersonalData",
                newCanvas("bundeslandcanvas", 600, 35)
                .add(0, 20, getText("bundeslandtext"))
                .add(350, 23, getDropDown("bundesland"))
-               .add(450, 20, getText("orttext"))
-               .add(500, 23, getTextInput("ort"))
+               .add(550, 20, getText("orttext"))
+               .add(680, 23, getTextInput("ort"))
                .print()
                ,
 
@@ -246,6 +246,8 @@ PennController("PersonalData",
 
                      .and(getDropDown("bundesland")
                        .test.selected()
+                       .or(getTextInput("ort")
+                              .test.text(/^.+$/)
                      ) //ende bundesland scale
 
                       .and(getDropDown("browser")
@@ -277,7 +279,7 @@ PennController("PersonalData",
 
                newVar("age")
                .settings.global()
-               .set( getTextInput("age") )
+               .set( getDropDown("age") )
 
                ,
 
@@ -535,33 +537,34 @@ PennController.Template("uebung.csv", variable =>
              newTimer("timeout", 60000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
              .start()
              .log()
-             .callback(getCanvas("canvas")
-                      .remove()
-                      ,
-                      getCanvas("hoeflichCanvas")
-                      .remove()
-                      ,
-                      getCanvas("freundlichCanvas")
-                      .remove()
-                      ,
-                      getCanvas("entspanntCanvas")
-                      .remove()
-                      ,
-                      getCanvas("arrogantCanvas")
-                      .remove()
-                      ,
-                      getCanvas("pedantischCanvas")
-                      .remove(),
-                      getCanvas("gebildetCanvas")
-                      .remove()
-                      ,
-                      getCanvas("wortgewandtCanvas")
-                      .remove()
-                      ,
-                      getCanvas("formellCanvas")
-                      .remove()
-                      ,
-                    )
+             //.callback(getCanvas("canvas")
+            //          .remove()
+            //          ,
+            //          getCanvas("hoeflichCanvas")
+            //          .remove()
+            //          ,
+            //          getCanvas("freundlichCanvas")
+            //          .remove()
+            //          ,
+            //          getCanvas("entspanntCanvas")
+            //          .remove()
+            //          ,
+            //          getCanvas("arrogantCanvas")
+            //          .remove()
+            //          ,
+            //          getCanvas("pedantischCanvas")
+            //          .remove()
+            //          ,
+            //          getCanvas("gebildetCanvas")
+            //          .remove()
+            //          ,
+            //          getCanvas("wortgewandtCanvas")
+            //          .remove()
+            //          ,
+            //          getCanvas("formellCanvas")
+            //          .remove()
+            //          ,
+            //        )
              .callback(getText("faster").print())
              ,
 
@@ -1158,6 +1161,7 @@ PennController("question",
 
               newButton("weiter", "weiter")
               .settings.css("font-size", "20px")
+              .center()
               .print()
               .wait()
 
@@ -1177,6 +1181,7 @@ PennController("question",
 PennController("other",
 
               newText("qf", "Hier kannst du Kommentare und Feedbacks f&uuml;r dieses Experiment eingeben:")
+              .center()
               .print()
               ,
 
@@ -1189,6 +1194,7 @@ PennController("other",
               .log()
               .lines(0)
               .size(600, 200)
+              .center()
               .print()
               ,
 
@@ -1199,6 +1205,7 @@ PennController("other",
 
               newButton("weiter", "weiter")
               .settings.css("font-size", "20px")
+              .center()
               .print()
               .wait()
 
