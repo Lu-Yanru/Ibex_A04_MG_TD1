@@ -80,7 +80,7 @@ PennController("PersonalData",
 
                newCanvas("languagecanvas", 600, 35)
                .add(0, 20, getText("languagetext"))
-               .add(250, 23, getDropDown("language"))
+               .add(350, 23, getDropDown("language"))
                .print()
 
                ,
@@ -98,15 +98,27 @@ PennController("PersonalData",
 
                newCanvas("gendercanvas", 600, 35)
                .add(0, 20, getText("gendertext"))
-               .add(250, 23, getDropDown("gender"))
+               .add(350, 23, getDropDown("gender"))
                .print()
 
                ,
 
 
-               newTextInput("age", "")
-               .settings.log()
+               //newTextInput("age", "")
+               //.settings.log()
                //.add( "17 oder j&uuml;nger" , "18" , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41" "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99",  "100 oder &auml;lter" )
+               newDropDown("age", "")
+               .settings.log("last")
+               .add("17 oder j&uuml;nger",
+               "18-25",
+               "26-35",
+               "36-45",
+               "46-55",
+               "56-65",
+               "66-75",
+               "76-85",
+               "86-95",
+               "96 oder &auml;lter")
                ,
 
                newText("agetext", "Alter:")
@@ -116,7 +128,7 @@ PennController("PersonalData",
 
                newCanvas("agecanvas", 600, 35)
                .add(0, 20, getText("agetext"))
-               .add(250, 23, getTextInput("age"))
+               .add(350, 23, getTextInput("age"))
                .print()
 
                ,
@@ -137,7 +149,7 @@ PennController("PersonalData",
 
                newCanvas("educationcanvas", 600, 35)
                .add(0, 20, getText("educationtext"))
-               .add(250, 23, getDropDown("education"))
+               .add(350, 23, getDropDown("education"))
                .print()
                ,
 
@@ -163,13 +175,23 @@ PennController("PersonalData",
                 "Sachsen-Anhalt",
                 "Schleswig-Holstein",
                 "Th&uuml;ringen"
-                "Anderer Ort"
+                //"Anderer Ort"
                 )
+               ,
+
+               newText("orttext", "Anderer Ort:")
+               .settings.css("font-size", "18px")
+               ,
+
+               newTextInput("ort", "")
+               .settings.log()
                ,
 
                newCanvas("bundeslandcanvas", 600, 35)
                .add(0, 20, getText("bundeslandtext"))
-               .add(250, 23, getDropDown("bundesland"))
+               .add(350, 23, getDropDown("bundesland"))
+               .add(450, 20, getText("orttext"))
+               .add(500, 23, getTextInput("ort"))
                .print()
                ,
 
@@ -186,7 +208,7 @@ PennController("PersonalData",
 
                newCanvas("browsercanvas", 600, 35)
                .add(0, 20, getText("browsertext"))
-               .add(250, 23, getDropDown("browser"))
+               .add(350, 23, getDropDown("browser"))
                .print()
 
                ,
@@ -200,8 +222,10 @@ PennController("PersonalData",
                .settings.center()
                .settings.css("font-size", "20px")
                .print()
-               .wait(getTextInput("age")
-                      .test.text(/^\d+$/) // ende age input
+               .wait(//getTextInput("age")
+                      //.test.text(/^\d+$/) // ende age input
+                      getDropDown("age")
+                      .testNot.selected("17 oder j&uuml;nger")
 
                     .and(getDropDown("gender")
                       .test.selected()
