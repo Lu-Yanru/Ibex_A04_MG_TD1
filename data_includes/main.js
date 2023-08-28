@@ -398,10 +398,10 @@ PennController.Template("uebung.csv", variable =>
              //.settings.css("font-size", "18px")
              ,
 
-             newCanvas("canvas", 1000, 200)
+             newCanvas("canvas", 1000, 150)
              .add(0, 20, getText("sa"))
              .add(0, 40, getText("sb"))
-             .add(0, 160, getText("frage"))
+             .add(0, 100, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
              //.add(0, 280, getScale("entspannt"))
@@ -417,13 +417,13 @@ PennController.Template("uebung.csv", variable =>
              newScale("hoeflich", 6)
              .button()
              .radio()
-             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("hoeflichtext1", "sehr h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("hoeflichtext1", "sehr h&ouml;flich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("hoeflichCanvas", 1000, 40)
+             newCanvas("hoeflichCanvas", 1000, 70)
              .add(0,0, getScale("hoeflich"))
              .print()
              ,
@@ -431,13 +431,13 @@ PennController.Template("uebung.csv", variable =>
              newScale("freundlich", 6)
              .button()
              .radio()
-             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("freundlichtext1", "sehr freundlich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("freundlichCanvas", 1000, 40)
+             newCanvas("freundlichCanvas", 1000, 70)
              .add(0,0, getScale("freundlich"))
              .print()
              ,
@@ -445,13 +445,13 @@ PennController.Template("uebung.csv", variable =>
              newScale("entspannt", 6)
              .button()
              .radio()
-             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("entspannttext1", "sehr entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("entspannttext1", "sehr entspannt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("entspanntCanvas", 1000, 40)
+             newCanvas("entspanntCanvas", 1000, 70)
              .add(0,0, getScale("entspannt"))
              .print()
              ,
@@ -459,13 +459,13 @@ PennController.Template("uebung.csv", variable =>
              newScale("arrogant", 6)
              .button()
              .radio()
-             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("arroganttext1", "sehr arrogant"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("arrogantCanvas", 1000, 40)
+             newCanvas("arrogantCanvas", 1000, 70)
              .add(0,0, getScale("arrogant"))
              .print()
              ,
@@ -473,13 +473,13 @@ PennController.Template("uebung.csv", variable =>
              newScale("pedantisch", 6)
              .button()
              .radio()
-             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("pedantischtext1", "sehr pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("pedantischtext1", "sehr pedantisch"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("pedantischCanvas", 1000, 40)
+             newCanvas("pedantischCanvas", 1000, 70)
              .add(0,0, getScale("pedantisch"))
              .print()
              ,
@@ -487,13 +487,13 @@ PennController.Template("uebung.csv", variable =>
              newScale("gebildet", 6)
              .button()
              .radio()
-             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("gebildetCanvas", 1000, 40)
+             newCanvas("gebildetCanvas", 1000, 70)
              .add(0,0, getScale("gebildet"))
              .print()
              ,
@@ -501,13 +501,13 @@ PennController.Template("uebung.csv", variable =>
              newScale("wortgewandt", 6)
              .button()
              .radio()
-             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("wortgewandttext1", "sehr wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("wortgewandttext1", "sehr wortgewandt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("wortgewandtCanvas", 1000, 40)
+             newCanvas("wortgewandtCanvas", 1000, 70)
              .add(0,0, getScale("wortgewandt"))
              .print()
              ,
@@ -515,13 +515,13 @@ PennController.Template("uebung.csv", variable =>
              newScale("formell", 6)
              .button()
              .radio()
-             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("formelltext1", "sehr formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("formellCanvas", 1000, 40)
+             newCanvas("formellCanvas", 1000, 70)
              .add(0,0, getScale("formell"))
              .print()
              ,
@@ -532,7 +532,7 @@ PennController.Template("uebung.csv", variable =>
              .disableClicks()
              ,
 
-             newCanvas("space", 1, 100)
+             newCanvas("space", 1, 60)
              .print()
 
              ,
@@ -667,10 +667,10 @@ PennController.Template("items.csv", variable =>
              //.settings.css("font-size", "18px")
              ,
 
-             newCanvas("canvas", 1000, 200)
+             newCanvas("canvas", 1000, 150)
              .add(0, 20, getText("sa"))
              .add(0, 40, getText("sb"))
-             .add(0, 160, getText("frage"))
+             .add(0, 100, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
              //.add(0, 280, getScale("entspannt"))
@@ -686,13 +686,13 @@ PennController.Template("items.csv", variable =>
              newScale("hoeflich", 6)
              .button()
              .radio()
-             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("hoeflichtext1", "sehr h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("hoeflichtext1", "sehr h&ouml;flich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("hoeflichCanvas", 1000, 40)
+             newCanvas("hoeflichCanvas", 1000, 70)
              .add(0,0, getScale("hoeflich"))
              .print()
              ,
@@ -700,13 +700,13 @@ PennController.Template("items.csv", variable =>
              newScale("freundlich", 6)
              .button()
              .radio()
-             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("freundlichtext1", "sehr freundlich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("freundlichCanvas", 1000, 40)
+             newCanvas("freundlichCanvas", 1000, 70)
              .add(0,0, getScale("freundlich"))
              .print()
              ,
@@ -714,13 +714,13 @@ PennController.Template("items.csv", variable =>
              newScale("entspannt", 6)
              .button()
              .radio()
-             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("entspannttext1", "sehr entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("entspannttext1", "sehr entspannt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("entspanntCanvas", 1000, 40)
+             newCanvas("entspanntCanvas", 1000, 70)
              .add(0,0, getScale("entspannt"))
              .print()
              ,
@@ -728,13 +728,13 @@ PennController.Template("items.csv", variable =>
              newScale("arrogant", 6)
              .button()
              .radio()
-             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("arroganttext1", "sehr arrogant"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("arrogantCanvas", 1000, 40)
+             newCanvas("arrogantCanvas", 1000, 70)
              .add(0,0, getScale("arrogant"))
              .print()
              ,
@@ -742,13 +742,13 @@ PennController.Template("items.csv", variable =>
              newScale("pedantisch", 6)
              .button()
              .radio()
-             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("pedantischtext1", "sehr pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("pedantischtext1", "sehr pedantisch"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("pedantischCanvas", 1000, 40)
+             newCanvas("pedantischCanvas", 1000, 70)
              .add(0,0, getScale("pedantisch"))
              .print()
              ,
@@ -756,13 +756,13 @@ PennController.Template("items.csv", variable =>
              newScale("gebildet", 6)
              .button()
              .radio()
-             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("gebildetCanvas", 1000, 40)
+             newCanvas("gebildetCanvas", 1000, 70)
              .add(0,0, getScale("gebildet"))
              .print()
              ,
@@ -770,13 +770,13 @@ PennController.Template("items.csv", variable =>
              newScale("wortgewandt", 6)
              .button()
              .radio()
-             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("wortgewandttext1", "sehr wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("wortgewandttext1", "sehr wortgewandt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("wortgewandtCanvas", 1000, 40)
+             newCanvas("wortgewandtCanvas", 1000, 70)
              .add(0,0, getScale("wortgewandt"))
              .print()
              ,
@@ -784,13 +784,13 @@ PennController.Template("items.csv", variable =>
              newScale("formell", 6)
              .button()
              .radio()
-             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("formelltext1", "sehr formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("formellCanvas", 1000, 40)
+             newCanvas("formellCanvas", 1000, 70)
              .add(0,0, getScale("formell"))
              .print()
              ,
@@ -801,7 +801,7 @@ PennController.Template("items.csv", variable =>
              .disableClicks()
              ,
 
-             newCanvas("space", 1, 100)
+             newCanvas("space", 1, 60)
              .print()
 
              ,
@@ -914,10 +914,10 @@ PennController.Template("fillers.csv", variable =>
              //.settings.css("font-size", "18px")
              ,
 
-             newCanvas("canvas", 1000, 200)
+             newCanvas("canvas", 1000, 150)
              .add(0, 20, getText("sa"))
              .add(0, 40, getText("sb"))
-             .add(0, 160, getText("frage"))
+             .add(0, 100, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
              //.add(0, 280, getScale("entspannt"))
@@ -933,13 +933,13 @@ PennController.Template("fillers.csv", variable =>
              newScale("hoeflich", 6)
              .button()
              .radio()
-             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("hoeflichtext1", "sehr h&ouml;flich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("hoeflichtext1", "&uuml;berhaupt nicht h&ouml;flich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("hoeflichtext1", "sehr h&ouml;flich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("hoeflichCanvas", 1000, 40)
+             newCanvas("hoeflichCanvas", 1000, 70)
              .add(0,0, getScale("hoeflich"))
              .print()
              ,
@@ -947,13 +947,13 @@ PennController.Template("fillers.csv", variable =>
              newScale("freundlich", 6)
              .button()
              .radio()
-             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("freundlichtext1", "sehr freundlich").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("freundlichtext1", "&uuml;berhaupt nicht freundlich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("freundlichtext1", "sehr freundlich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("freundlichCanvas", 1000, 40)
+             newCanvas("freundlichCanvas", 1000, 70)
              .add(0,0, getScale("freundlich"))
              .print()
              ,
@@ -961,13 +961,13 @@ PennController.Template("fillers.csv", variable =>
              newScale("entspannt", 6)
              .button()
              .radio()
-             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("entspannttext1", "sehr entspannt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("entspannttext1", "&uuml;berhaupt nicht entspannt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("entspannttext1", "sehr entspannt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("entspanntCanvas", 1000, 40)
+             newCanvas("entspanntCanvas", 1000, 70)
              .add(0,0, getScale("entspannt"))
              .print()
              ,
@@ -975,13 +975,13 @@ PennController.Template("fillers.csv", variable =>
              newScale("arrogant", 6)
              .button()
              .radio()
-             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("arroganttext1", "sehr arrogant").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("arroganttext1", "&uuml;berhaupt nicht arrogant").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("arroganttext1", "sehr arrogant"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("arrogantCanvas", 1000, 40)
+             newCanvas("arrogantCanvas", 1000, 70)
              .add(0,0, getScale("arrogant"))
              .print()
              ,
@@ -989,13 +989,13 @@ PennController.Template("fillers.csv", variable =>
              newScale("pedantisch", 6)
              .button()
              .radio()
-             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("pedantischtext1", "sehr pedantisch").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("pedantischtext1", "&uuml;berhaupt nicht pedantisch").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("pedantischtext1", "sehr pedantisch"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("pedantischCanvas", 1000, 40)
+             newCanvas("pedantischCanvas", 1000, 70)
              .add(0,0, getScale("pedantisch"))
              .print()
              ,
@@ -1003,13 +1003,13 @@ PennController.Template("fillers.csv", variable =>
              newScale("gebildet", 6)
              .button()
              .radio()
-             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("gebildettext1", "sehr gebildet").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("gebildettext1", "&uuml;berhaupt nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("gebildetCanvas", 1000, 40)
+             newCanvas("gebildetCanvas", 1000, 70)
              .add(0,0, getScale("gebildet"))
              .print()
              ,
@@ -1017,13 +1017,13 @@ PennController.Template("fillers.csv", variable =>
              newScale("wortgewandt", 6)
              .button()
              .radio()
-             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("wortgewandttext1", "sehr wortgewandt").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("wortgewandttext1", "&uuml;berhaupt nicht wortgewandt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("wortgewandttext1", "sehr wortgewandt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("wortgewandtCanvas", 1000, 40)
+             newCanvas("wortgewandtCanvas", 1000, 70)
              .add(0,0, getScale("wortgewandt"))
              .print()
              ,
@@ -1031,13 +1031,13 @@ PennController.Template("fillers.csv", variable =>
              newScale("formell", 6)
              .button()
              .radio()
-             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("formelltext1", "sehr formell").cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("formelltext1", "&uuml;berhaupt nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("formellCanvas", 1000, 40)
+             newCanvas("formellCanvas", 1000, 70)
              .add(0,0, getScale("formell"))
              .print()
              ,
@@ -1048,7 +1048,7 @@ PennController.Template("fillers.csv", variable =>
              .disableClicks()
              ,
 
-             newCanvas("space", 1, 100)
+             newCanvas("space", 1, 60)
              .print()
 
              ,
@@ -1163,7 +1163,7 @@ PennController("question",
               .print()
               ,
 
-              newCanvas("blank", 1, 10)
+              newCanvas("blank", 1, 20)
               .print()
 
               ,
@@ -1195,7 +1195,7 @@ PennController("other",
               .print()
               ,
 
-              newCanvas("blank", 1, 10)
+              newCanvas("blank", 1, 20)
               .print()
 
               ,
@@ -1208,7 +1208,7 @@ PennController("other",
               .print()
               ,
 
-              newCanvas("blank2", 1, 10)
+              newCanvas("blank2", 1, 20)
               .print()
 
               ,
