@@ -4,7 +4,7 @@ PennController.DebugOff()
 
 
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", shuffle(randomize("fillers"), randomize("items")) , "question", "other", "send", "end" )
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 3) , "question", "other", "send", "end" )
 
 
 
@@ -33,7 +33,7 @@ PennController("intro",
 
     )
 
-    .setOption("hideProgressBar", "true")
+    //.setOption("hideProgressBar", "true")
     ;
 
 
@@ -68,7 +68,7 @@ PennController("PersonalData",
 
                newDropDown("language", "")
                .settings.log("last")
-               .add( "Deutsch" , "Deutsch und andere Sprache(n) vor dem 5.Lebensjahr" , "andere" )
+               .add( "Deutsch" , "Deutsch und andere Sprache(n) vor dem 5. Lebensjahr" , "andere" )
 
                ,
 
@@ -310,7 +310,7 @@ PennController("PersonalData",
 
      )
 
-    .setOption("hideProgressBar", "true")
+    //.setOption("hideProgressBar", "true")
     .log( "gender" ,   getVar("gender"))
     .log( "age" ,      getVar("age"))
     .log( "language" , getVar("language"))
@@ -346,7 +346,7 @@ PennController("hinweise",
 
     )
 
-    .setOption("hideProgressBar", "true")
+    //.setOption("hideProgressBar", "true")
     ;
 
 
@@ -371,7 +371,7 @@ PennController("practice_start",
 
     )
 
-    .setOption("hideProgressBar", "true")
+    //.setOption("hideProgressBar", "true")
 
     ;
 
@@ -399,9 +399,9 @@ PennController.Template("uebung.csv", variable =>
              ,
 
              newCanvas("canvas", 1000, 150)
-             .add(0, 20, getText("sa"))
-             .add(0, 40, getText("sb"))
-             .add(0, 100, getText("frage"))
+             .add(0, 0, getText("sa"))
+             .add(0, 20, getText("sb"))
+             .add(0, 80, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
              //.add(0, 280, getScale("entspannt"))
@@ -603,7 +603,7 @@ PennController.Template("uebung.csv", variable =>
 
     )
 
-    .setOption("hideProgressBar", "true" )
+    //.setOption("hideProgressBar", "true" )
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
@@ -640,7 +640,7 @@ PennController("main_start",
 
     )
 
-    .setOption("hideProgressBar", "true")
+    //.setOption("hideProgressBar", "true")
 
     ;
 
@@ -668,9 +668,9 @@ PennController.Template("items.csv", variable =>
              ,
 
              newCanvas("canvas", 1000, 150)
-             .add(0, 20, getText("sa"))
-             .add(0, 40, getText("sb"))
-             .add(0, 100, getText("frage"))
+             .add(0, 0, getText("sa"))
+             .add(0, 20, getText("sb"))
+             .add(0, 80, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
              //.add(0, 280, getScale("entspannt"))
@@ -871,7 +871,7 @@ PennController.Template("items.csv", variable =>
 
     )
 
-    .setOption("hideProgressBar", "true" )
+    //.setOption("hideProgressBar", "true" )
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
@@ -915,9 +915,9 @@ PennController.Template("fillers.csv", variable =>
              ,
 
              newCanvas("canvas", 1000, 150)
-             .add(0, 20, getText("sa"))
-             .add(0, 40, getText("sb"))
-             .add(0, 100, getText("frage"))
+             .add(0, 0, getText("sa"))
+             .add(0, 20, getText("sb"))
+             .add(0, 80, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
              //.add(0, 280, getScale("entspannt"))
@@ -1118,7 +1118,7 @@ PennController.Template("fillers.csv", variable =>
 
     )
 
-    .setOption("hideProgressBar", "true" )
+    //.setOption("hideProgressBar", "true" )
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
@@ -1150,9 +1150,9 @@ PennController("question",
               ,
 
               newCanvas("questioncanvas", 1000, 200)
-              .add(0,20, getText("bspa"))
-              .add(0,40, getText("bspb"))
-              .add(0,160, getText("q"))
+              .add(0,0, getText("bspa"))
+              .add(0,20, getText("bspb"))
+              .add(0,140, getText("q"))
               .print()
               ,
 
@@ -1177,7 +1177,7 @@ PennController("question",
 
 
 )
-.setOption("hideProgressBar", "true")
+//.setOption("hideProgressBar", "true")
 .log( "gender"               , getVar("gender")         )
 .log( "age"                  , getVar("age")            )
 .log( "language"             , getVar("language")       )
@@ -1222,7 +1222,7 @@ PennController("other",
 
 
 )
-.setOption("hideProgressBar", "true")
+//.setOption("hideProgressBar", "true")
 .log( "gender"               , getVar("gender")         )
 .log( "age"                  , getVar("age")            )
 .log( "language"             , getVar("language")       )
@@ -1273,7 +1273,7 @@ PennController("break",
 
     )
 
-   .setOption("hideProgressBar", "true")
+   //.setOption("hideProgressBar", "true")
 ;
 
 
@@ -1306,4 +1306,4 @@ PennController("end",
 
 )
 
-    .setOption("hideProgressBar", "true")
+  //  .setOption("hideProgressBar", "true")
