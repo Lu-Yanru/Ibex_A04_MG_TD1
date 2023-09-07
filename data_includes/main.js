@@ -1,10 +1,10 @@
 PennController.ResetPrefix( null );
 //AddHost("https://amor.cms.hu-berlin.de/~idslfahm/ibex_bilder/PWI_BB/");
 PennController.DebugOff()
+var progressBarText = "Fortschritt";
 
 
-
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 3) , "question", "other", "send", "end" )
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 16) , "question", "other", "send", "end" )
 
 
 
@@ -235,7 +235,7 @@ PennController("PersonalData",
                      .and(getDropDown("language")
                        .test.selected("Deutsch")
                        .or(getDropDown("language")
-                         .test.selected("Deutsch und andere Sprache(n) vor dem 5.Lebensjahr")
+                         .test.selected("Deutsch und andere Sprache(n) vor dem 5. Lebensjahr")
 
                           )
                           ) //ende language scale
