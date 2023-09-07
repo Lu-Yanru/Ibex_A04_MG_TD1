@@ -1,4 +1,9 @@
 .PennController-Scale .option label {
     margin: 0em 1em;
-    font-size: 24px;
+    font-size: 18px;
+}
+.PennController-Scale .option radio {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
 }
