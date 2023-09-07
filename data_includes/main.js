@@ -398,7 +398,7 @@ PennController.Template("uebung.csv", variable =>
              //.settings.css("font-size", "18px")
              ,
 
-             newCanvas("canvas", 1000, 150)
+             newCanvas("canvas", 1000, 130)
              .add(0, 0, getText("sa"))
              .add(0, 20, getText("sb"))
              .add(0, 80, getText("frage"))
@@ -532,7 +532,7 @@ PennController.Template("uebung.csv", variable =>
              .disableClicks()
              ,
 
-             newCanvas("space", 1, 60)
+             newCanvas("space", 1, 50)
              .print()
 
              ,
@@ -667,7 +667,7 @@ PennController.Template("items.csv", variable =>
              //.settings.css("font-size", "18px")
              ,
 
-             newCanvas("canvas", 1000, 150)
+             newCanvas("canvas", 1000, 130)
              .add(0, 0, getText("sa"))
              .add(0, 20, getText("sb"))
              .add(0, 80, getText("frage"))
@@ -801,7 +801,7 @@ PennController.Template("items.csv", variable =>
              .disableClicks()
              ,
 
-             newCanvas("space", 1, 60)
+             newCanvas("space", 1, 50)
              .print()
 
              ,
@@ -914,7 +914,7 @@ PennController.Template("fillers.csv", variable =>
              //.settings.css("font-size", "18px")
              ,
 
-             newCanvas("canvas", 1000, 150)
+             newCanvas("canvas", 1000, 130)
              .add(0, 0, getText("sa"))
              .add(0, 20, getText("sb"))
              .add(0, 80, getText("frage"))
@@ -1048,7 +1048,7 @@ PennController.Template("fillers.csv", variable =>
              .disableClicks()
              ,
 
-             newCanvas("space", 1, 60)
+             newCanvas("space", 1, 50)
              .print()
 
              ,
