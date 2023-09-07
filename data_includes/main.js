@@ -153,7 +153,7 @@ PennController("PersonalData",
                .print()
                ,
 
-               newText("bundeslandtext", "Wo hast du 10 oder mehr Jahre gelebt?")
+               newText("bundeslandtext", "Wo hast du am l&auml;ngsten gelebt?")
                .settings.css("font-size", "18px")
                ,
 
