@@ -1,10 +1,10 @@
 .PennController-Scale .option label {
-    margin: 0em 1.5em;
+    margin: 0em 1em;
     font-size: 18px;
 }
 .PennController-Scale .option input[type=radio] {
   height: 18px;
   width: 18px;
   vertical-align: middle;
-  margin-right: 1px;
+  margin-right: 1em;
 }
