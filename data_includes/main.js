@@ -1204,7 +1204,6 @@ PennController("other",
               .log()
               .lines(0)
               .size(600, 200)
-              .center()
               .print()
               ,
 
