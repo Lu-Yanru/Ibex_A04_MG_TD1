@@ -1304,5 +1304,5 @@ PennController("end",
      .wait()
 
 )
-
+.setOption("countsForProgressBar", false);
   //  .setOption("hideProgressBar", "true")
