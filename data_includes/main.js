@@ -887,7 +887,6 @@ PennController.Template("items.csv", variable =>
     .log("subjgen"                 , variable.subj_gen )
     .log("obj"                   ,variable.obj)
     .log("objgen"                  , variable.obj_gen )
-    .log("objnum"                 , variable.obj_num )
     .log("mod"                 , variable.mod )
     .log("v"                    ,variable.v)
     )
