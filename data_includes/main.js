@@ -404,9 +404,9 @@ PennController.Template("uebung.csv", variable =>
              .add(0, 80, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
-             //.add(0, 280, getScale("entspannt"))
+             //.add(0, 280, getScale("locker"))
              //.add(0, 320, getScale("arrogant"))
-             //.add(0, 360, getScale("pedantisch"))
+             //.add(0, 360, getScale("pingelig"))
              //.add(0, 400, getScale("gebildet"))
              //.add(0, 440, getScale("wortgewandt"))
              //.add(0, 480, getScale("formell"))
@@ -442,17 +442,17 @@ PennController.Template("uebung.csv", variable =>
              .print()
              ,
 
-             newScale("entspannt", 6)
+             newScale("locker", 6)
              .button()
              .radio()
-             .before(newText("entspannttext1", "gar nicht entspannt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("entspannttext1", "sehr entspannt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("lockertext1", "gar nicht locker").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("lockertext1", "sehr locker"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("entspanntCanvas", 1000, 70)
-             .add(0,0, getScale("entspannt"))
+             newCanvas("lockerCanvas", 1000, 70)
+             .add(0,0, getScale("locker"))
              .print()
              ,
 
@@ -470,17 +470,17 @@ PennController.Template("uebung.csv", variable =>
              .print()
              ,
 
-             newScale("pedantisch", 6)
+             newScale("pingelig", 6)
              .button()
              .radio()
-             .before(newText("pedantischtext1", "gar nicht pedantisch").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("pedantischtext1", "sehr pedantisch"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("pedantischCanvas", 1000, 70)
-             .add(0,0, getScale("pedantisch"))
+             newCanvas("pingeligCanvas", 1000, 70)
+             .add(0,0, getScale("pingelig"))
              .print()
              ,
 
@@ -527,7 +527,7 @@ PennController.Template("uebung.csv", variable =>
              ,
 
              newSelector("shuffle") // shuffle the positions of the scales
-             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("lockerCanvas"), getCanvas("arrogantCanvas"), getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
              .shuffle()
              .disableClicks()
              ,
@@ -552,13 +552,13 @@ PennController.Template("uebung.csv", variable =>
             //          getCanvas("freundlichCanvas")
             //          .remove()
             //          ,
-            //          getCanvas("entspanntCanvas")
+            //          getCanvas("lockerCanvas")
             //          .remove()
             //          ,
             //          getCanvas("arrogantCanvas")
             //          .remove()
             //          ,
-            //          getCanvas("pedantischCanvas")
+            //          getCanvas("pingeligCanvas")
             //          .remove()
             //          ,
             //          getCanvas("gebildetCanvas")
@@ -582,9 +582,9 @@ PennController.Template("uebung.csv", variable =>
              .wait(getTimer("timeout").test.ended()
                   .or(getScale("hoeflich").test.selected()
                   .and(getScale("freundlich").test.selected()
-                  .and(getScale("entspannt").test.selected()
+                  .and(getScale("locker").test.selected()
                   .and(getScale("arrogant").test.selected()
-                  .and(getScale("pedantisch").test.selected()
+                  .and(getScale("pingelig").test.selected()
                   .and(getScale("gebildet").test.selected()
                   .and(getScale("wortgewandt").test.selected()
                   .and(getScale("formell").test.selected()
@@ -673,9 +673,9 @@ PennController.Template("items.csv", variable =>
              .add(0, 80, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
-             //.add(0, 280, getScale("entspannt"))
+             //.add(0, 280, getScale("locker"))
              //.add(0, 320, getScale("arrogant"))
-             //.add(0, 360, getScale("pedantisch"))
+             //.add(0, 360, getScale("pingelig"))
              //.add(0, 400, getScale("gebildet"))
              //.add(0, 440, getScale("wortgewandt"))
              //.add(0, 480, getScale("formell"))
@@ -711,17 +711,17 @@ PennController.Template("items.csv", variable =>
              .print()
              ,
 
-             newScale("entspannt", 6)
+             newScale("locker", 6)
              .button()
              .radio()
-             .before(newText("entspannttext1", "gar nicht entspannt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("entspannttext1", "sehr entspannt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("lockertext1", "gar nicht locker").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("lockertext1", "sehr locker"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("entspanntCanvas", 1000, 70)
-             .add(0,0, getScale("entspannt"))
+             newCanvas("lockerCanvas", 1000, 70)
+             .add(0,0, getScale("locker"))
              .print()
              ,
 
@@ -739,17 +739,17 @@ PennController.Template("items.csv", variable =>
              .print()
              ,
 
-             newScale("pedantisch", 6)
+             newScale("pingelig", 6)
              .button()
              .radio()
-             .before(newText("pedantischtext1", "gar nicht pedantisch").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("pedantischtext1", "sehr pedantisch"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("pedantischCanvas", 1000, 70)
-             .add(0,0, getScale("pedantisch"))
+             newCanvas("pingeligCanvas", 1000, 70)
+             .add(0,0, getScale("pingelig"))
              .print()
              ,
 
@@ -796,7 +796,7 @@ PennController.Template("items.csv", variable =>
              ,
 
              newSelector("shuffle") // shuffle the positions of the scales
-             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("lockerCanvas"), getCanvas("arrogantCanvas"), getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
              .shuffle()
              .disableClicks()
              ,
@@ -821,13 +821,13 @@ PennController.Template("items.csv", variable =>
                       getCanvas("freundlichCanvas")
                       .remove()
                       ,
-                      getCanvas("entspanntCanvas")
+                      getCanvas("lockerCanvas")
                       .remove()
                       ,
                       getCanvas("arrogantCanvas")
                       .remove()
                       ,
-                      getCanvas("pedantischCanvas")
+                      getCanvas("pingeligCanvas")
                       .remove(),
                       getCanvas("gebildetCanvas")
                       .remove()
@@ -850,9 +850,9 @@ PennController.Template("items.csv", variable =>
              .wait(getTimer("timeout").test.ended()
                   .or(getScale("hoeflich").test.selected()
                   .and(getScale("freundlich").test.selected()
-                  .and(getScale("entspannt").test.selected()
+                  .and(getScale("locker").test.selected()
                   .and(getScale("arrogant").test.selected()
-                  .and(getScale("pedantisch").test.selected()
+                  .and(getScale("pingelig").test.selected()
                   .and(getScale("gebildet").test.selected()
                   .and(getScale("wortgewandt").test.selected()
                   .and(getScale("formell").test.selected()
@@ -920,9 +920,9 @@ PennController.Template("fillers.csv", variable =>
              .add(0, 80, getText("frage"))
              //.add(0, 200, getScale("hoeflich"))
              //.add(0, 240, getScale("freundlich"))
-             //.add(0, 280, getScale("entspannt"))
+             //.add(0, 280, getScale("locker"))
              //.add(0, 320, getScale("arrogant"))
-             //.add(0, 360, getScale("pedantisch"))
+             //.add(0, 360, getScale("pingelig"))
              //.add(0, 400, getScale("gebildet"))
              //.add(0, 440, getScale("wortgewandt"))
              //.add(0, 480, getScale("formell"))
@@ -958,17 +958,17 @@ PennController.Template("fillers.csv", variable =>
              .print()
              ,
 
-             newScale("entspannt", 6)
+             newScale("locker", 6)
              .button()
              .radio()
-             .before(newText("entspannttext1", "gar nicht entspannt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("entspannttext1", "sehr entspannt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("lockertext1", "gar nicht locker").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("lockertext1", "sehr locker"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("entspanntCanvas", 1000, 70)
-             .add(0,0, getScale("entspannt"))
+             newCanvas("lockerCanvas", 1000, 70)
+             .add(0,0, getScale("locker"))
              .print()
              ,
 
@@ -986,17 +986,17 @@ PennController.Template("fillers.csv", variable =>
              .print()
              ,
 
-             newScale("pedantisch", 6)
+             newScale("pingelig", 6)
              .button()
              .radio()
-             .before(newText("pedantischtext1", "gar nicht pedantisch").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("pedantischtext1", "sehr pedantisch"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+             .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+             .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
              .log("first", "last")
              ,
 
-             newCanvas("pedantischCanvas", 1000, 70)
-             .add(0,0, getScale("pedantisch"))
+             newCanvas("pingeligCanvas", 1000, 70)
+             .add(0,0, getScale("pingelig"))
              .print()
              ,
 
@@ -1043,7 +1043,7 @@ PennController.Template("fillers.csv", variable =>
              ,
 
              newSelector("shuffle") // shuffle the positions of the scales
-             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("entspanntCanvas"), getCanvas("arrogantCanvas"), getCanvas("pedantischCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("lockerCanvas"), getCanvas("arrogantCanvas"), getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
              .shuffle()
              .disableClicks()
              ,
@@ -1068,13 +1068,13 @@ PennController.Template("fillers.csv", variable =>
                       getCanvas("freundlichCanvas")
                       .remove()
                       ,
-                      getCanvas("entspanntCanvas")
+                      getCanvas("lockerCanvas")
                       .remove()
                       ,
                       getCanvas("arrogantCanvas")
                       .remove()
                       ,
-                      getCanvas("pedantischCanvas")
+                      getCanvas("pingeligCanvas")
                       .remove(),
                       getCanvas("gebildetCanvas")
                       .remove()
@@ -1097,9 +1097,9 @@ PennController.Template("fillers.csv", variable =>
              .wait(getTimer("timeout").test.ended()
                   .or(getScale("hoeflich").test.selected()
                   .and(getScale("freundlich").test.selected()
-                  .and(getScale("entspannt").test.selected()
+                  .and(getScale("locker").test.selected()
                   .and(getScale("arrogant").test.selected()
-                  .and(getScale("pedantisch").test.selected()
+                  .and(getScale("pingelig").test.selected()
                   .and(getScale("gebildet").test.selected()
                   .and(getScale("wortgewandt").test.selected()
                   .and(getScale("formell").test.selected()
