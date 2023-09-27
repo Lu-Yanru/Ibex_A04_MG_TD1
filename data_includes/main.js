@@ -420,7 +420,7 @@ PennController.Template("uebung.csv", variable =>
              .before(newText("hoeflichtext1", "gar nicht h&ouml;flich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("hoeflichtext1", "sehr h&ouml;flich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("hoeflichCanvas", 1000, 70)
@@ -434,7 +434,7 @@ PennController.Template("uebung.csv", variable =>
              .before(newText("freundlichtext1", "gar nicht freundlich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("freundlichtext1", "sehr freundlich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("freundlichCanvas", 1000, 70)
@@ -448,7 +448,7 @@ PennController.Template("uebung.csv", variable =>
              .before(newText("lockertext1", "gar nicht locker").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("lockertext1", "sehr locker"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("lockerCanvas", 1000, 70)
@@ -462,7 +462,7 @@ PennController.Template("uebung.csv", variable =>
              .before(newText("arroganttext1", "gar nicht arrogant").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("arroganttext1", "sehr arrogant"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("arrogantCanvas", 1000, 70)
@@ -476,7 +476,7 @@ PennController.Template("uebung.csv", variable =>
              .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("pingeligCanvas", 1000, 70)
@@ -490,7 +490,7 @@ PennController.Template("uebung.csv", variable =>
              .before(newText("gebildettext1", "gar nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("gebildetCanvas", 1000, 70)
@@ -504,7 +504,7 @@ PennController.Template("uebung.csv", variable =>
              .before(newText("wortgewandttext1", "gar nicht wortgewandt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("wortgewandttext1", "sehr wortgewandt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("wortgewandtCanvas", 1000, 70)
@@ -518,7 +518,7 @@ PennController.Template("uebung.csv", variable =>
              .before(newText("formelltext1", "gar nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("formellCanvas", 1000, 70)
@@ -689,7 +689,7 @@ PennController.Template("items.csv", variable =>
              .before(newText("hoeflichtext1", "gar nicht h&ouml;flich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("hoeflichtext1", "sehr h&ouml;flich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("hoeflichCanvas", 1000, 70)
@@ -703,7 +703,7 @@ PennController.Template("items.csv", variable =>
              .before(newText("freundlichtext1", "gar nicht freundlich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("freundlichtext1", "sehr freundlich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("freundlichCanvas", 1000, 70)
@@ -717,7 +717,7 @@ PennController.Template("items.csv", variable =>
              .before(newText("lockertext1", "gar nicht locker").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("lockertext1", "sehr locker"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("lockerCanvas", 1000, 70)
@@ -731,7 +731,7 @@ PennController.Template("items.csv", variable =>
              .before(newText("arroganttext1", "gar nicht arrogant").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("arroganttext1", "sehr arrogant"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("arrogantCanvas", 1000, 70)
@@ -745,7 +745,7 @@ PennController.Template("items.csv", variable =>
              .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("pingeligCanvas", 1000, 70)
@@ -759,7 +759,7 @@ PennController.Template("items.csv", variable =>
              .before(newText("gebildettext1", "gar nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("gebildetCanvas", 1000, 70)
@@ -773,7 +773,7 @@ PennController.Template("items.csv", variable =>
              .before(newText("wortgewandttext1", "gar nicht wortgewandt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("wortgewandttext1", "sehr wortgewandt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("wortgewandtCanvas", 1000, 70)
@@ -787,7 +787,7 @@ PennController.Template("items.csv", variable =>
              .before(newText("formelltext1", "gar nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("formellCanvas", 1000, 70)
@@ -935,7 +935,7 @@ PennController.Template("fillers.csv", variable =>
              .before(newText("hoeflichtext1", "gar nicht h&ouml;flich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("hoeflichtext1", "sehr h&ouml;flich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("hoeflichCanvas", 1000, 70)
@@ -949,7 +949,7 @@ PennController.Template("fillers.csv", variable =>
              .before(newText("freundlichtext1", "gar nicht freundlich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("freundlichtext1", "sehr freundlich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("freundlichCanvas", 1000, 70)
@@ -963,7 +963,7 @@ PennController.Template("fillers.csv", variable =>
              .before(newText("lockertext1", "gar nicht locker").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("lockertext1", "sehr locker"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("lockerCanvas", 1000, 70)
@@ -977,7 +977,7 @@ PennController.Template("fillers.csv", variable =>
              .before(newText("arroganttext1", "gar nicht arrogant").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("arroganttext1", "sehr arrogant"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("arrogantCanvas", 1000, 70)
@@ -991,7 +991,7 @@ PennController.Template("fillers.csv", variable =>
              .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("pingeligCanvas", 1000, 70)
@@ -1005,7 +1005,7 @@ PennController.Template("fillers.csv", variable =>
              .before(newText("gebildettext1", "gar nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("gebildetCanvas", 1000, 70)
@@ -1019,7 +1019,7 @@ PennController.Template("fillers.csv", variable =>
              .before(newText("wortgewandttext1", "gar nicht wortgewandt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("wortgewandttext1", "sehr wortgewandt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("wortgewandtCanvas", 1000, 70)
@@ -1033,7 +1033,7 @@ PennController.Template("fillers.csv", variable =>
              .before(newText("formelltext1", "gar nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
              .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
              .labelsPosition("top")
-             .log("first", "last")
+             .log("last")
              ,
 
              newCanvas("formellCanvas", 1000, 70)
