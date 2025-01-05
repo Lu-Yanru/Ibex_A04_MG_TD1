@@ -940,11 +940,159 @@ PennController.Template("list2.csv", variable =>
     )
     ;
 
-///////////////////////// Fillers
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Fillers1
+
+
+    PennController.Template("fillers.csv", variable =>
+
+        PennController("fillers1",
+
+
+                 newText("sa", variable.sa)
+                 .settings.css("font-size", "18px")
+
+                 ,
+
+                 newText("sb", variable.sb)
+                 .settings.css("font-size", "18px")
+
+                 ,
+
+                 newText("frage", "Inwieweit w&uuml;rdest du <b>Person B</b> die folgenden Eigenschaften zuschreiben?")
+                 //.settings.css("font-size", "18px")
+                 ,
+
+                 newCanvas("canvas", 1000, 130)
+                 .add(0, 0, getText("sa"))
+                 .add(0, 20, getText("sb"))
+                 .add(0, 80, getText("frage"))
+                 .print()
+
+                 ,
+
+                 newScale("pingelig", 6)
+                 .button()
+                 .radio()
+                 .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+                 .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+                 .labelsPosition("top")
+                 .log("last")
+                 ,
+
+                 newCanvas("pingeligCanvas", 1000, 70)
+                 .add(0,0, getScale("pingelig"))
+                 .print()
+                 ,
+
+                 newScale("gebildet", 6)
+                 .button()
+                 .radio()
+                 .before(newText("gebildettext1", "gar nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+                 .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+                 .labelsPosition("top")
+                 .log("last")
+                 ,
+
+                 newCanvas("gebildetCanvas", 1000, 70)
+                 .add(0,0, getScale("gebildet"))
+                 .print()
+                 ,
+
+                 newScale("formell", 6)
+                 .button()
+                 .radio()
+                 .before(newText("formelltext1", "gar nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+                 .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+                 .labelsPosition("top")
+                 .log("last")
+                 ,
+
+                 newCanvas("formellCanvas", 1000, 70)
+                 .add(0,0, getScale("formell"))
+                 .print()
+                 ,
+
+                 newSelector("shuffle") // shuffle the positions of the scales
+                 .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("lockerCanvas"), getCanvas("arrogantCanvas"), getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+                 .shuffle()
+                 .disableClicks()
+                 ,
+
+                 newCanvas("space", 1, 50)
+                 .print()
+
+                 ,
+
+                 newText("faster", "Bitte schneller bewerten!")
+                 ,
+
+                 newTimer("timeout", 60000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
+                 .start()
+                 .log()
+                 .callback(getCanvas("canvas")
+                          .remove()
+                          ,
+                          getCanvas("pingeligCanvas")
+                          .remove()
+                          ,
+                          getCanvas("gebildetCanvas")
+                          .remove()
+                          ,
+                          getCanvas("formellCanvas")
+                          .remove()
+                          ,
+                        )
+                 .callback(getText("faster").print())
+                 ,
+
+                 newButton("weiter", "weiter")
+                 .settings.center()
+                 .settings.css("font-size", "20px")
+                 .log()
+                 .print()
+                 .wait(getTimer("timeout").test.ended()
+                      .or(getScale("pingelig").test.selected()
+                      .and(getScale("gebildet").test.selected()
+                      .and(getScale("formell").test.selected()
+                      )
+                      )
+                      )
+               )// cannot click weiter until all scales are selected or when the timer ended
+               .callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
+               ,
+
+
+        )
+
+        //.setOption("hideProgressBar", "true" )
+        .log( "gender"               , getVar("gender")         )
+        .log( "age"                  , getVar("age")            )
+        .log( "language"             , getVar("language")       )
+        .log("education"            , getVar("education"))
+        .log("bundesland"           , getVar("bundesland"))
+        .log("ort",        getVar("ort"))
+        .log( "browser"              , getVar("browser")        )
+        .log("itemnr"                , variable.item_nr       )
+        .log( "condition"            , variable.cond       )
+        .log( "conddrop"            , variable.cond_drop       )
+        .log("condarg"              , variable.cond_arg    )
+        .log("subj"                 , variable.subj )
+        .log("subjgen"                 , variable.subj_gen )
+        .log("obj"                   ,variable.obj)
+        .log("objgen"                  , variable.obj_gen )
+        .log("mod"                 , variable.mod )
+        .log("v"                    ,variable.v)
+        )
+        ;
+
+
+
+///////////////////////// Fillers2
 
 PennController.Template("fillers.csv", variable =>
 
-    PennController("fillers",
+    PennController("fillers2",
 
 
              newText("sa", variable.sa)
@@ -957,7 +1105,7 @@ PennController.Template("fillers.csv", variable =>
 
              ,
 
-             newText("frage", "Inwieweit w&uuml;rdest du <b>Person B</b> die folgenden Eigenschaften zuschreiben?")
+             newText("frage", "Inwieweit w&uuml;rdest du die folgenden Merkmale verwenden, um die <b>Beziehung</b> von Person B zu Person A zu beschreiben?")
              //.settings.css("font-size", "18px")
              ,
 
@@ -1033,9 +1181,8 @@ PennController.Template("fillers.csv", variable =>
              .log()
              .print()
              .wait(getTimer("timeout").test.ended()
-                  .or(.and(getScale("freundlich").test.selected()
+                  .or(getScale("freundlich").test.selected()
                   .and(getScale("respektvoll").test.selected()
-                  )
                   )
                   )
            )// cannot click weiter until all scales are selected or when the timer ended
