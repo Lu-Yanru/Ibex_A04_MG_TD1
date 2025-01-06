@@ -1,0 +1,17 @@
+filler_nr,sa,sb,cond,control
+F1,A: Gehst du heute Abend zur Party?,B: Ich gehe als Pirat.,filler,NA
+F2,A: Hast du schon Pläne fürs Wochenende?,B: Wir können gerne zusammen was machen.,filler,freundlich
+F3,A: Kannst du kochen?,"B: Ja, Rührei und so.",filler,informell_entspannt
+F4,A: Ist Maria gerade in der Stadt?,B: Sie kommt erst am Wochenende.,filler,NA
+F5,A: Welche Musik hörst du am liebsten?,B: Ich mag Pop-Musik sehr gerne.,filler,NA
+F6,A: Wann soll ich heute Abend da sein?,B: Das Essen beginnt um Punkt acht.,filler,pedantisch
+F7,A: Hat Paul irgendwelche Allergien?,B: Das muss ich ihn fragen.,filler,NA
+F8,A: Wohin fährst du dieses Jahr in den Urlaub?,B: Nach Schweden wahrscheinlich.,filler,NA
+F9,A: Hast du die Blumen schon gegossen?,B: Gleich.,filler,unfreundlich_informell
+F10,A: Ist dein Telefon kaputt?,B: Es ist mir ins Klo gefallen.,filler,NA
+F11,A: Wo liegt Myanmar?,B: Soll ich googlen?,filler,NA
+F12,A: Trinkst du Alkohol?,"B: Nein, im Moment nicht.",filler,NA
+F13,A: Haben Sie die Unterlagen vergessen?,"B: Nein, Herr Schmitt bringt sie zu Ihnen.",filler,gebildet
+F14,A: Bist du Peter?,"B: Ja, warum?",filler,NA
+F15,A: Ist Peter mit Bad putzen dran?,"B: Ich dachte, Peter muss die Küche machen.",filler,NA
+F16,A: Hat Erika dir das Buch zurückgegeben?,"B: Nein, noch nicht.",filler,NA

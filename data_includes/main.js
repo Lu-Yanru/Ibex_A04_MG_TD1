@@ -7,9 +7,9 @@ var progressBarText = "Fortschritt";
 
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 16) , "question", "other", "send", "end" )
 // counterbalancing: personality -> relation
-//PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start1", randomize("block1") , "break", "practice2_start1", randomize("practice2"), "block2_start1", randomize("block2"), "send", "end" )
+//PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start1", sepWithN("break", shuffle(randomize("fillers1"), randomize("block1"), 17) , "break", "practice2_start1", randomize("practice2"), "block2_start1", sepWithN("break", shuffle(randomize("fillers2"), randomize("block2"), 17), "send", "end" )
 // counterbalancing: relation -> personality
-PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start2", randomize("block2") , "break", "practice2_start2", randomize("practice1"), "block1_start2", randomize("block1"), "send", "end" )
+PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start2", sepWithN("break", shuffle(randomize("fillers2"), randomize("block2"), 17) , "break", "practice2_start2", randomize("practice1"), "block1_start2", sepWithN("break", shuffle(randomize("fillers1"), randomize("block1"), 17), "send", "end" )
 
 
 
@@ -1094,7 +1094,7 @@ PennController.Template("list2.csv", variable =>
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Fillers1
 
 
-    PennController.Template("fillers.csv", variable =>
+    PennController.Template("fillers1.csv", variable =>
 
         PennController("fillers1",
 
@@ -1238,7 +1238,7 @@ PennController.Template("list2.csv", variable =>
 
 ///////////////////////// Fillers2
 
-PennController.Template("fillers.csv", variable =>
+PennController.Template("fillers2.csv", variable =>
 
     PennController("fillers2",
 
