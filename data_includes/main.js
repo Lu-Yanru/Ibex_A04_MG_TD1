@@ -1127,7 +1127,7 @@ PennController.Template("fillers.csv", variable =>
 
              ,
 
-             newText("frage", "Inwieweit w&uuml;rdest du die folgenden Merkmale verwenden, um die <b>Beziehung</b> von Person B zu Person A zu beschreiben?")
+             newText("frage", "Inwieweit w&uuml;rdest du die folgenden Eigenschaften verwenden, um die <b>Beziehung</b> von Person B zu Person A zu beschreiben?")
              //.settings.css("font-size", "18px")
              ,
 
