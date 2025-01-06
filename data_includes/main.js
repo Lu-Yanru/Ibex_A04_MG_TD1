@@ -7,9 +7,9 @@ var progressBarText = "Fortschritt";
 
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 16) , "question", "other", "send", "end" )
 // counterbalancing: personality -> relation
-//PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start", randomize("block1") , "break", "practice2_start1", randomize("practice2"), "block2_start", randomize("block2"), "send", "end" )
+//PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start1", randomize("block1") , "break", "practice2_start1", randomize("practice2"), "block2_start1", randomize("block2"), "send", "end" )
 // counterbalancing: relation -> personality
-PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start", randomize("block2") , "break", "practice2_start2", randomize("practice1"), "block1_start", randomize("block1"), "send", "end" )
+PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start2", randomize("block2") , "break", "practice2_start2", randomize("practice1"), "block1_start2", randomize("block1"), "send", "end" )
 
 
 
@@ -727,9 +727,9 @@ PennController.Template("uebung1.csv", variable =>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Main
 
-PennController("block1_start",
+PennController("block1_start1",
 
-              newHtml("block1_start", "block1_start.html")
+              newHtml("block1_start1", "block1_start1.html")
               .print()
 
               ,
@@ -751,10 +751,34 @@ PennController("block1_start",
     ;
 
 
+    PennController("block1_start2",
 
-        PennController("block2_start",
+                  newHtml("block1_start2", "block1_start2.html")
+                  .print()
 
-                      newHtml("block2_start", "block2_start.html")
+                  ,
+                  newCanvas("space1", 1, 160)
+                  .print()
+
+                  ,
+                  newButton("weiter", "weiter")
+                  .settings.center()
+                  .settings.css("font-size", "20px")
+                  .print()
+                  .wait()
+
+
+        )
+
+        //.setOption("hideProgressBar", "true")
+
+        ;
+
+
+
+        PennController("block2_start1",
+
+                      newHtml("block2_start1", "block2_start1.html")
                       .print()
 
                       ,
@@ -774,6 +798,29 @@ PennController("block1_start",
             //.setOption("hideProgressBar", "true")
 
             ;
+
+            PennController("block2_start2",
+
+                          newHtml("block2_start2", "block2_start2.html")
+                          .print()
+
+                          ,
+                          newCanvas("space1", 1, 160)
+                          .print()
+
+                          ,
+                          newButton("weiter", "weiter")
+                          .settings.center()
+                          .settings.css("font-size", "20px")
+                          .print()
+                          .wait()
+
+
+                )
+
+                //.setOption("hideProgressBar", "true")
+
+                ;
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Main block1
 
