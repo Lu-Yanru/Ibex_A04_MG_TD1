@@ -6,7 +6,7 @@ var progressBarText = "Fortschritt";
 
 
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 16) , "question", "other", "send", "end" )
-PennController.Sequence("init", "main_start", randomize("block1") , "break", randomize("block2"), "send", "end" )
+PennController.Sequence("init", "block1_start", randomize("block1") , "break", "block2_start", randomize("block2"), "send", "end" )
 
 
 
@@ -623,9 +623,9 @@ PennController.Template("uebung.csv", variable =>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Main
 
-PennController("main_start",
+PennController("block1_start",
 
-              newHtml("main_start", "main_start.html")
+              newHtml("block1_start", "block1_start.html")
               .print()
 
               ,
@@ -667,6 +667,28 @@ PennController("main_start",
 
         ;
 
+        PennController("block2_start",
+
+                      newHtml("block2_start", "block2_start.html")
+                      .print()
+
+                      ,
+                      newCanvas("space1", 1, 160)
+                      .print()
+
+                      ,
+                      newButton("weiter", "weiter")
+                      .settings.center()
+                      .settings.css("font-size", "20px")
+                      .print()
+                      .wait()
+
+
+            )
+
+            //.setOption("hideProgressBar", "true")
+
+            ;
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Main block1
 
