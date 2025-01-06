@@ -1,4 +1,4 @@
-item_nr,sa,sb,cond,cond_drop,cond_pro,obj,obj_gen,mod,v
+item_nr,sa,sb,cond,cond_drop,cond_pron,obj,obj_gen,mod,v
 I1,A: Was ist mit der Zeitschrift?,B: Kann ich Ihnen morgen zurückgeben. ,drop_sie,drop,sie,,,,
 I1,A: Was ist mit der Zeitschrift?,B: Die kann ich dir morgen zurückgeben.,full_du,full,du,,,,
 I2,A: Was ist mit dem Buch?,B: Soll ich dir morgen vorbeibringen. ,drop_du,drop,du,,,,

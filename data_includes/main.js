@@ -6,7 +6,10 @@ var progressBarText = "Fortschritt";
 
 
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 16) , "question", "other", "send", "end" )
-PennController.Sequence("init", "block1_start", randomize("block1") , "break", "block2_start", randomize("block2"), "send", "end" )
+// counterbalancing: personality -> relation
+PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start", randomize("block1") , "break", "practice2_start1", randomize("practice2"), "block2_start", randomize("block2"), "send", "end" )
+// counterbalancing: relation -> personality
+//PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start", randomize("block2") , "break", "practice2_start2", randomize("practice1"), "block1_start", randomize("block1"), "send", "end" )
 
 
 
@@ -14,7 +17,7 @@ PennController.Sequence("init", "block1_start", randomize("block1") , "break", "
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Introduction HTML
 
 
-PennController("intro",
+PennController("intro1",
 
              newHtml("intro", "example_intro.html")
              .print()
@@ -37,6 +40,30 @@ PennController("intro",
 
     //.setOption("hideProgressBar", "true")
     ;
+
+    PennController("intro2",
+
+                 newHtml("intro", "example_intro.html")
+                 .print()
+
+                 ,
+
+                 newCanvas("space1", 1, 125)
+                 .print()
+
+                 ,
+
+                 newButton("weiter", "weiter")
+                 .center()
+                 .settings.css("font-size", "20px")
+                 .print()
+                 .wait()
+
+
+        )
+
+        //.setOption("hideProgressBar", "true")
+        ;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// demographic info
@@ -357,7 +384,7 @@ PennController("hinweise",
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Start_Practice
 
 
-PennController("practice_start",
+PennController("practice1_start1",
 
 
               newHtml("practice_one_start", "practice_one_start.html")
@@ -378,12 +405,33 @@ PennController("practice_start",
     ;
 
 
+    PennController("practice2_start1",
+
+
+                  newHtml("practice_two_start", "practice_two_start.html")
+                  .print()
+                  ,
+
+                  newButton("weiter", "weiter")
+                  .settings.center()
+                  .settings.css("font-size", "20px")
+                  .print()
+                  .wait()
+
+
+        )
+
+        //.setOption("hideProgressBar", "true")
+
+        ;
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice
 
 
-PennController.Template("uebung.csv", variable =>
+PennController.Template("uebung1.csv", variable =>
 
-    PennController("practice",
+    PennController("practice1",
 
 
              newText("sa", variable.sa)
@@ -404,72 +452,8 @@ PennController.Template("uebung.csv", variable =>
              .add(0, 0, getText("sa"))
              .add(0, 20, getText("sb"))
              .add(0, 80, getText("frage"))
-             //.add(0, 200, getScale("hoeflich"))
-             //.add(0, 240, getScale("freundlich"))
-             //.add(0, 280, getScale("locker"))
-             //.add(0, 320, getScale("arrogant"))
-             //.add(0, 360, getScale("pingelig"))
-             //.add(0, 400, getScale("gebildet"))
-             //.add(0, 440, getScale("wortgewandt"))
-             //.add(0, 480, getScale("formell"))
              .print()
 
-             ,
-
-             newScale("hoeflich", 6)
-             .button()
-             .radio()
-             .before(newText("hoeflichtext1", "gar nicht h&ouml;flich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("hoeflichtext1", "sehr h&ouml;flich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsPosition("top")
-             .log("last")
-             ,
-
-             newCanvas("hoeflichCanvas", 1000, 70)
-             .add(0,0, getScale("hoeflich"))
-             .print()
-             ,
-
-             newScale("freundlich", 6)
-             .button()
-             .radio()
-             .before(newText("freundlichtext1", "gar nicht freundlich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("freundlichtext1", "sehr freundlich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsPosition("top")
-             .log("last")
-             ,
-
-             newCanvas("freundlichCanvas", 1000, 70)
-             .add(0,0, getScale("freundlich"))
-             .print()
-             ,
-
-             newScale("locker", 6)
-             .button()
-             .radio()
-             .before(newText("lockertext1", "gar nicht locker").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("lockertext1", "sehr locker"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsPosition("top")
-             .log("last")
-             ,
-
-             newCanvas("lockerCanvas", 1000, 70)
-             .add(0,0, getScale("locker"))
-             .print()
-             ,
-
-             newScale("arrogant", 6)
-             .button()
-             .radio()
-             .before(newText("arroganttext1", "gar nicht arrogant").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("arroganttext1", "sehr arrogant"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsPosition("top")
-             .log("last")
-             ,
-
-             newCanvas("arrogantCanvas", 1000, 70)
-             .add(0,0, getScale("arrogant"))
-             .print()
              ,
 
              newScale("pingelig", 6)
@@ -500,20 +484,6 @@ PennController.Template("uebung.csv", variable =>
              .print()
              ,
 
-             newScale("wortgewandt", 6)
-             .button()
-             .radio()
-             .before(newText("wortgewandttext1", "gar nicht wortgewandt").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("wortgewandttext1", "sehr wortgewandt"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsPosition("top")
-             .log("last")
-             ,
-
-             newCanvas("wortgewandtCanvas", 1000, 70)
-             .add(0,0, getScale("wortgewandt"))
-             .print()
-             ,
-
              newScale("formell", 6)
              .button()
              .radio()
@@ -529,7 +499,7 @@ PennController.Template("uebung.csv", variable =>
              ,
 
              newSelector("shuffle") // shuffle the positions of the scales
-             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("lockerCanvas"), getCanvas("arrogantCanvas"), getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+             .add(getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("formellCanvas"))
              .shuffle()
              .disableClicks()
              ,
@@ -548,25 +518,10 @@ PennController.Template("uebung.csv", variable =>
              //.callback(getCanvas("canvas")
             //          .remove()
             //          ,
-            //          getCanvas("hoeflichCanvas")
-            //          .remove()
-            //          ,
-            //          getCanvas("freundlichCanvas")
-            //          .remove()
-            //          ,
-            //          getCanvas("lockerCanvas")
-            //          .remove()
-            //          ,
-            //          getCanvas("arrogantCanvas")
-            //          .remove()
-            //          ,
             //          getCanvas("pingeligCanvas")
             //          .remove()
             //          ,
             //          getCanvas("gebildetCanvas")
-            //          .remove()
-            //          ,
-            //          getCanvas("wortgewandtCanvas")
             //          .remove()
             //          ,
             //          getCanvas("formellCanvas")
@@ -582,19 +537,9 @@ PennController.Template("uebung.csv", variable =>
              .log()
              .print()
              .wait(getTimer("timeout").test.ended()
-                  .or(getScale("hoeflich").test.selected()
-                  .and(getScale("freundlich").test.selected()
-                  .and(getScale("locker").test.selected()
-                  .and(getScale("arrogant").test.selected()
-                  .and(getScale("pingelig").test.selected()
+                  .or(getScale("pingelig").test.selected()
                   .and(getScale("gebildet").test.selected()
-                  .and(getScale("wortgewandt").test.selected()
                   .and(getScale("formell").test.selected()
-                  )
-                  )
-                  )
-                  )
-                  )
                   )
                   )
                   )
@@ -618,6 +563,123 @@ PennController.Template("uebung.csv", variable =>
     .log( "control"            , variable.control       )
     )
     ;
+
+
+    PennController.Template("uebung2.csv", variable =>
+
+        PennController("practice2",
+
+
+                 newText("sa", variable.sa)
+                 .settings.css("font-size", "18px")
+
+                 ,
+
+                 newText("sb", variable.sb)
+                 .settings.css("font-size", "18px")
+
+                 ,
+
+                 newText("frage", "Inwieweit w&uuml;rdest du die folgenden Eigenschaften verwenden, um die <b>Beziehung</b> von Person B zu Person A zu beschreiben?")
+                 //.settings.css("font-size", "18px")
+                 ,
+
+                 newCanvas("canvas", 1000, 130)
+                 .add(0, 0, getText("sa"))
+                 .add(0, 20, getText("sb"))
+                 .add(0, 80, getText("frage"))
+                 .print()
+
+                 ,
+
+                 newScale("freundlich", 6)
+                 .button()
+                 .radio()
+                 .before(newText("freundlichtext1", "gar nicht freundlich").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+                 .after(newText("freundlichtext1", "sehr freundlich"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+                 .labelsPosition("top")
+                 .log("last")
+                 ,
+
+                 newCanvas("freundlichCanvas", 1000, 70)
+                 .add(0,0, getScale("freundlich"))
+                 .print()
+                 ,
+
+                 newScale("respektvoll", 6)
+                 .button()
+                 .radio()
+                 .before(newText("respektvolltext1", "gar nicht respektvoll").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
+                 .after(newText("respektvolltext1", "sehr respektvoll"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
+                 .labelsPosition("top")
+                 .log("last")
+                 ,
+
+                 newCanvas("respektvollCanvas", 1000, 70)
+                 .add(0,0, getScale("respektvoll"))
+                 .print()
+                 ,
+
+                 newSelector("shuffle") // shuffle the positions of the scales
+                 .add(getCanvas("freundlichCanvas"), getCanvas("respektvollCanvas"))
+                 .shuffle()
+                 .disableClicks()
+                 ,
+
+                 newCanvas("space", 1, 50)
+                 .print()
+
+                 ,
+
+                 newText("faster", "Bitte schneller bewerten!")
+                 ,
+
+                 newTimer("timeout", 60000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
+                 .start()
+                 .log()
+                 //.callback(getCanvas("canvas")
+                //          .remove()
+                //          ,
+                //          getCanvas("freundlichCanvas")
+                //          .remove()
+                //          ,
+                //          getCanvas("respektvollCanvas")
+                //          .remove()
+                //          ,
+                //        )
+                 .callback(getText("faster").print())
+                 ,
+
+                 newButton("weiter", "weiter")
+                 .settings.center()
+                 .settings.css("font-size", "20px")
+                 .log()
+                 .print()
+                 .wait(getTimer("timeout").test.ended()
+                      .or(getScale("freundlich").test.selected()
+                      .and(getScale("respektvoll").test.selected()
+                      )
+                      )
+               )// cannot click weiter until all scales are selected or when the timer ended
+               .callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
+               ,
+
+
+        )
+
+        //.setOption("hideProgressBar", "true" )
+        .log( "gender"               , getVar("gender")         )
+        .log( "age"                  , getVar("age")            )
+        .log( "language"             , getVar("language")       )
+        .log("education"            , getVar("education"))
+        .log("bundesland"           , getVar("bundesland"))
+        .log("ort",        getVar("ort"))
+        .log( "browser"              , getVar("browser")        )
+        .log("uebungnr"                , variable.uebung_nr       )
+        .log( "condition"            , variable.cond       )
+        .log( "control"            , variable.control       )
+        )
+        ;
 
 
 
@@ -647,25 +709,6 @@ PennController("block1_start",
     ;
 
 
-    PennController("practice_start",
-
-
-                  newHtml("practice_one_start", "practice_one_start.html")
-                  .print()
-                  ,
-
-                  newButton("weiter", "weiter")
-                  .settings.center()
-                  .settings.css("font-size", "20px")
-                  .print()
-                  .wait()
-
-
-        )
-
-        //.setOption("hideProgressBar", "true")
-
-        ;
 
         PennController("block2_start",
 
@@ -763,7 +806,7 @@ PennController("block1_start",
                  ,
 
                  newSelector("shuffle") // shuffle the positions of the scales
-                 .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("lockerCanvas"), getCanvas("arrogantCanvas"), getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+                 .add(getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("formellCanvas"))
                  .shuffle()
                  .disableClicks()
                  ,
@@ -825,9 +868,7 @@ PennController("block1_start",
         .log("itemnr"                , variable.item_nr       )
         .log( "condition"            , variable.cond       )
         .log( "conddrop"            , variable.cond_drop       )
-        .log("condarg"              , variable.cond_arg    )
-        .log("subj"                 , variable.subj )
-        .log("subjgen"                 , variable.subj_gen )
+        .log("condarg"              , variable.cond_pron    )
         .log("obj"                   ,variable.obj)
         .log("objgen"                  , variable.obj_gen )
         .log("mod"                 , variable.mod )
@@ -854,7 +895,7 @@ PennController.Template("list2.csv", variable =>
 
              ,
 
-             newText("frage", "Inwieweit w&uuml;rdest du die folgenden Merkmale verwenden, um die <b>Beziehung</b> von Person B zu Person A zu beschreiben?")
+             newText("frage", "Inwieweit w&uuml;rdest du die folgenden Eigenschaften verwenden, um die <b>Beziehung</b> von Person B zu Person A zu beschreiben?")
              //.settings.css("font-size", "18px")
              ,
 
@@ -895,7 +936,7 @@ PennController.Template("list2.csv", variable =>
              ,
 
              newSelector("shuffle") // shuffle the positions of the scales
-             .add(getCanvas("hoeflichCanvas"), getCanvas("freundlichCanvas"), getCanvas("lockerCanvas"), getCanvas("arrogantCanvas"), getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("wortgewandtCanvas"), getCanvas("formellCanvas"))
+             .add(getCanvas("freundlichCanvas"), getCanvas("respektvollCanvas"))
              .shuffle()
              .disableClicks()
              ,
@@ -952,9 +993,7 @@ PennController.Template("list2.csv", variable =>
     .log("itemnr"                , variable.item_nr       )
     .log( "condition"            , variable.cond       )
     .log( "conddrop"            , variable.cond_drop       )
-    .log("condarg"              , variable.cond_arg    )
-    .log("subj"                 , variable.subj )
-    .log("subjgen"                 , variable.subj_gen )
+    .log("condarg"              , variable.cond_pron    )
     .log("obj"                   ,variable.obj)
     .log("objgen"                  , variable.obj_gen )
     .log("mod"                 , variable.mod )
@@ -1098,9 +1137,7 @@ PennController.Template("list2.csv", variable =>
         .log("itemnr"                , variable.item_nr       )
         .log( "condition"            , variable.cond       )
         .log( "conddrop"            , variable.cond_drop       )
-        .log("condarg"              , variable.cond_arg    )
-        .log("subj"                 , variable.subj )
-        .log("subjgen"                 , variable.subj_gen )
+        .log("condarg"              , variable.cond_pron    )
         .log("obj"                   ,variable.obj)
         .log("objgen"                  , variable.obj_gen )
         .log("mod"                 , variable.mod )
