@@ -7,9 +7,9 @@ var progressBarText = "Fortschritt";
 
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 16) , "question", "other", "send", "end" )
 // counterbalancing: personality -> relation
-PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start", randomize("block1") , "break", "practice2_start1", randomize("practice2"), "block2_start", randomize("block2"), "send", "end" )
+//PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start", randomize("block1") , "break", "practice2_start1", randomize("practice2"), "block2_start", randomize("block2"), "send", "end" )
 // counterbalancing: relation -> personality
-//PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start", randomize("block2") , "break", "practice2_start2", randomize("practice1"), "block1_start", randomize("block1"), "send", "end" )
+PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start", randomize("block2") , "break", "practice2_start2", randomize("practice1"), "block1_start", randomize("block1"), "send", "end" )
 
 
 
@@ -19,7 +19,7 @@ PennController.Sequence("init", "intro1", "practice1_start1", randomize("practic
 
 PennController("intro1",
 
-             newHtml("intro", "example_intro.html")
+             newHtml("intro", "example_intro1.html")
              .print()
 
              ,
@@ -43,7 +43,7 @@ PennController("intro1",
 
     PennController("intro2",
 
-                 newHtml("intro", "example_intro.html")
+                 newHtml("intro", "example_intro2.html")
                  .print()
 
                  ,
@@ -387,7 +387,7 @@ PennController("hinweise",
 PennController("practice1_start1",
 
 
-              newHtml("practice_one_start", "practice_one_start.html")
+              newHtml("practice_one_start1", "practice_one_start1.html")
               .print()
               ,
 
@@ -405,10 +405,10 @@ PennController("practice1_start1",
     ;
 
 
-    PennController("practice2_start1",
+    PennController("practice1_start2",
 
 
-                  newHtml("practice_two_start", "practice_two_start.html")
+                  newHtml("practice_one_start2", "practice_one_start2.html")
                   .print()
                   ,
 
@@ -424,6 +424,48 @@ PennController("practice1_start1",
         //.setOption("hideProgressBar", "true")
 
         ;
+
+
+    PennController("practice2_start1",
+
+
+                  newHtml("practice_two_start1", "practice_two_start1.html")
+                  .print()
+                  ,
+
+                  newButton("weiter", "weiter")
+                  .settings.center()
+                  .settings.css("font-size", "20px")
+                  .print()
+                  .wait()
+
+
+        )
+
+        //.setOption("hideProgressBar", "true")
+
+        ;
+
+
+        PennController("practice2_start2",
+
+
+                      newHtml("practice_two_start2", "practice_two_start2.html")
+                      .print()
+                      ,
+
+                      newButton("weiter", "weiter")
+                      .settings.center()
+                      .settings.css("font-size", "20px")
+                      .print()
+                      .wait()
+
+
+            )
+
+            //.setOption("hideProgressBar", "true")
+
+            ;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice
