@@ -8,9 +8,9 @@ var progressBarText = "Fortschritt";
 //PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 16) , "question", "other", "send", "end" )
 // list1
 // counterbalancing: personality -> relation
-//PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start1", shuffle(randomize("fillers1"), randomize("block1")) , "break", "practice2_start1", randomize("practice2"), "block2_start1", shuffle(randomize("fillers2"), randomize("block2")), "send", "end" )
+//PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start1", shuffle(randomize("fillers1"), randomize("list1-block1")) , "break", "practice2_start1", randomize("practice2"), "block2_start1", shuffle(randomize("fillers2"), randomize("list1-block2")), "send", "end" )
 // counterbalancing: relation -> personality
-PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start2", shuffle(randomize("fillers2"), randomize("block2")) , "break", "practice2_start2", randomize("practice1"), "block1_start2", shuffle(randomize("fillers1"), randomize("block1")), "send", "end" )
+PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start2", shuffle(randomize("fillers2"), randomize("list1-block2")) , "break", "practice2_start2", randomize("practice1"), "block1_start2", shuffle(randomize("fillers1"), randomize("list1-block1")), "send", "end" )
 
 
 
@@ -829,7 +829,7 @@ PennController("block1_start1",
 //// list 1 block1
     PennController.Template("list1-1.csv", variable =>
 
-        PennController("block1",
+        PennController("list1-block1",
 
 
                  newText("sa", variable.sa)
@@ -972,7 +972,7 @@ PennController("block1_start1",
 //// list 1 block2
 PennController.Template("list1-2.csv", variable =>
 
-    PennController("block2",
+    PennController("list1-block2",
 
 
              newText("sa", variable.sa)
@@ -1098,7 +1098,7 @@ PennController.Template("list1-2.csv", variable =>
 //// list 2 block1
         PennController.Template("list2-1.csv", variable =>
 
-            PennController("block1",
+            PennController("list2-block1",
 
 
                      newText("sa", variable.sa)
@@ -1241,7 +1241,7 @@ PennController.Template("list1-2.csv", variable =>
 //// list 2 block2
     PennController.Template("list2-2.csv", variable =>
 
-        PennController("block2",
+        PennController("list2-block2",
 
 
                  newText("sa", variable.sa)
@@ -1367,7 +1367,7 @@ PennController.Template("list1-2.csv", variable =>
 //// list 3 block1
         PennController.Template("list3-1.csv", variable =>
 
-                PennController("block1",
+                PennController("list3-block1",
 
 
                          newText("sa", variable.sa)
@@ -1510,7 +1510,7 @@ PennController.Template("list1-2.csv", variable =>
 //// list 3 block2
         PennController.Template("list3-2.csv", variable =>
 
-            PennController("block2",
+            PennController("list3-block2",
 
 
                      newText("sa", variable.sa)
@@ -1636,7 +1636,7 @@ PennController.Template("list1-2.csv", variable =>
 //// list 4 block1
                 PennController.Template("list4-1.csv", variable =>
 
-                    PennController("block1",
+                    PennController("list4-block1",
 
 
                              newText("sa", variable.sa)
@@ -1779,7 +1779,7 @@ PennController.Template("list1-2.csv", variable =>
 //// list 4 block2
             PennController.Template("list4-2.csv", variable =>
 
-                PennController("block2",
+                PennController("list4-block2",
 
 
                          newText("sa", variable.sa)
