@@ -1,0 +1,9 @@
+item_nr,sa,sb,cond,cond_drop,cond_pron,obj,obj_gen,mod,v,block
+I2,A: Was ist mit dem Buch?,B: Das kann ich Ihnen empfehlen.,full_sie,full,sie,Buch,n,können,empfehlen,relation
+I3,A: Was ist mit dem Garten?,B: Das muss ich dir gleich zeigen. ,full_du,full,du,Garten,m,müssen,zeigen,relation
+I5,A: Was ist mit der Mail?,B: Muss ich dir morgen schicken. ,drop_du,drop,du,Mail,f,müssen,schicken,relation
+I8,A: Was ist mit der Eintrittskarte?,B: Muss ich Ihnen morgen vorbeibringen. ,drop_sie,drop,sie,Eintrittskarte,f,müssen,vorbeibringen,relation
+I9,A: Was ist mit dem Oberarzt?,B: Muss ich dir später vorstellen.,drop_du,drop,du,Oberarzt,m,müssen,vorstellen,relation
+I11,A: Was ist mit dem Antrag?,B: Den muss ich dir morgen nachreichen.,full_du,full,du,Antrag,m,müssen,nachreichen,relation
+I12,A: Was ist mit dem Stift?,B: Kann ich Ihnen bis morgen ausleihen. ,drop_sie,drop,sie,Stift,m,können,ausleihen,relation
+I14,A: Was ist mit der Küche?,B: Die kann ich Ihnen abkaufen. ,full_sie,full,sie,Küche,f,können,abkaufen,relation

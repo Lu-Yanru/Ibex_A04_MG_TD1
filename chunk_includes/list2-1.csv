@@ -1,0 +1,9 @@
+item_nr,sa,sb,cond,cond_drop,cond_pron,obj,obj_gen,mod,v,block
+I1,A: Was ist mit der Zeitschrift?,B: Muss ich Ihnen morgen zurückgeben. ,drop_sie,drop,sie,Zeitschrift,f,müssen,zrückgeben,person
+I2,A: Was ist mit dem Buch?,B: Kann ich dir empfehlen. ,drop_du,drop,du,Buch,n,können,empfehlen,person
+I7,A: Was ist mit dem Kaffee? ,B: Den kann ich Ihnen gleich bringen?,full_sie,full,sie,Kaffee,m,können,bringen,person
+I8,A: Was ist mit der Eintrittskarte?,B: Die muss ich dir morgen vorbeibringen.,full_du,full,du,Eintrittskarte,f,müssen,vorbeibringen,person
+I10,A: Was ist mit dem Ergebnis?,B: Kann ich dir gleich mitteilen.,drop_du,drop,du,Ergebnis,n,können,mitteilen,person
+I12,A: Was ist mit dem Stift?,B: Den kann ich dir bis morgen ausleihen. ,full_du,full,du,Stift,m,können,ausleihen,person
+I13,A: Was ist mit dem Geschirr?,B: Kann ich Ihnen überlassen. ,drop_sie,drop,sie,Geschirr,n,können,überlassen,person
+I15,Was ist mit dem Formular?,B: Das kann ich Ihnen gleich ausfüllen.,full_sie,full,sie,Formular,n,können,ausfüllen,person
