@@ -5,5 +5,5 @@ I6,A: Was ist mit dem Artikel?,B: Den kann ich Ihnen später weiterleiten.,full_
 I7,A: Was ist mit dem Kaffee? ,B: Den kann ich dir gleich bringen?,full_du,full,du,Kaffee,m,können,bringen,person
 I10,A: Was ist mit dem Ergebnis?,B: Das kann ich Ihnen gleich mitteilen.,full_sie,full,sie,Ergebnis,n,können,mitteilen,person
 I13,A: Was ist mit dem Geschirr?,B: Kann ich dir überlassen.,drop_du,drop,du,Geschirr,n,können,überlassen,person
-I15,Was ist mit dem Formular?,B: Das kann ich dir gleich ausfüllen.,full_du,full,du,Formular,n,können,ausfüllen,person
+I15,A: Was ist mit dem Formular?,B: Das kann ich dir gleich ausfüllen.,full_du,full,du,Formular,n,können,ausfüllen,person
 I16,A: Was ist mit dem Film?,B: Muss ich Ihnen gleich vorspielen. ,drop_sie,drop,sie,Film,m,müssen,vorspielen,person
