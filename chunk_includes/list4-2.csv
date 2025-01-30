@@ -10,7 +10,7 @@ I16,A: Was ist mit dem Film?,B: Muss ich dir gleich vorspielen. ,drop_du,drop,du
 I1,A: Was ist mit der Zeitschrift?,B: Die muss ich Ihnen morgen zurückgeben.,full_sie,full,sie,Zeitschrift,f,müssen,zrückgeben,relation
 I4,A: Was ist mit dem Spiel?,B: Muss ich dir noch erklären.,drop_du,drop,du,Spiel,n,müssen,erklären,relation
 I6,A: Was ist mit dem Artikel?,B: Den kann ich dir später weiterleiten.,full_du,full,du,Artikel,m,können,weiterleiten,relation
-I7,A: Was ist mit dem Kaffee? ,B: Kann ich Ihnen gleich bringen?,drop_sie,drop,sie,Kaffee,m,können,bringen,relation
+I7,A: Was ist mit dem Kaffee? ,B: Kann ich Ihnen gleich bringen.,drop_sie,drop,sie,Kaffee,m,können,bringen,relation
 I10,A: Was ist mit dem Ergebnis?,B: Das kann ich dir gleich mitteilen.,full_du,full,du,Ergebnis,n,können,mitteilen,relation
 I12,A: Was ist mit dem Stift?,B: Kann ich dir bis morgen ausleihen. ,drop_du,drop,du,Stift,m,können,ausleihen,relation
 I13,A: Was ist mit dem Geschirr?,B: Die kann ich Ihnen überlassen.,full_sie,full,sie,Geschirr,n,können,überlassen,relation
