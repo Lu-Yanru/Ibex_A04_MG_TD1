@@ -4,13 +4,26 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "Fortschritt";
 
-
-//PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", randomize("practice"), "main_start", sepWithN("break", shuffle(randomize("fillers"), randomize("items")), 16) , "question", "other", "send", "end" )
 // list1
 // counterbalancing: personality -> relation
-//PennController.Sequence("init", "intro1", "practice1_start1", randomize("practice1"), "block1_start1", shuffle(randomize("fillers1"), randomize("list1-block1")) , "break", "practice2_start1", randomize("practice2"), "block2_start1", shuffle(randomize("fillers2"), randomize("list1-block2")), "send", "end" )
+PennController.Sequence("init", "intro1", "PersonalData", "hinweise", "practice1_start1", randomize("practice1"), "block1_start1", shuffle(randomize("fillers1"), randomize("list1-block1")) , "break", "practice2_start1", randomize("practice2"), "block2_start1", shuffle(randomize("fillers2"), randomize("list1-block2")), "send", "end" )
 // counterbalancing: relation -> personality
-PennController.Sequence("init", "intro2", "practice1_start2", randomize("practice2"), "block2_start2", shuffle(randomize("fillers2"), randomize("list1-block2")) , "break", "practice2_start2", randomize("practice1"), "block1_start2", shuffle(randomize("fillers1"), randomize("list1-block1")), "send", "end" )
+//PennController.Sequence("init", "intro2", "PersonalData", "hinweise", "practice1_start2", randomize("practice2"), "block2_start2", shuffle(randomize("fillers2"), randomize("list1-block2")) , "break", "practice2_start2", randomize("practice1"), "block1_start2", shuffle(randomize("fillers1"), randomize("list1-block1")), "send", "end" )
+// list2
+// counterbalancing: personality -> relation
+//PennController.Sequence("init", "intro1", "PersonalData", "hinweise", "practice1_start1", randomize("practice1"), "block1_start1", shuffle(randomize("fillers1"), randomize("list2-block1")) , "break", "practice2_start1", randomize("practice2"), "block2_start1", shuffle(randomize("fillers2"), randomize("list2-block2")), "send", "end" )
+// counterbalancing: relation -> personality
+//PennController.Sequence("init", "intro2", "PersonalData", "hinweise", "practice1_start2", randomize("practice2"), "block2_start2", shuffle(randomize("fillers2"), randomize("list2-block2")) , "break", "practice2_start2", randomize("practice1"), "block1_start2", shuffle(randomize("fillers1"), randomize("list2-block1")), "send", "end" )
+// list3
+// counterbalancing: personality -> relation
+//PennController.Sequence("init", "intro1", "PersonalData", "hinweise", "practice1_start1", randomize("practice1"), "block1_start1", shuffle(randomize("fillers1"), randomize("list3-block1")) , "break", "practice2_start1", randomize("practice2"), "block2_start1", shuffle(randomize("fillers2"), randomize("list3-block2")), "send", "end" )
+// counterbalancing: relation -> personality
+//PennController.Sequence("init", "intro2", "PersonalData", "hinweise", "practice1_start2", randomize("practice2"), "block2_start2", shuffle(randomize("fillers2"), randomize("list3-block2")) , "break", "practice2_start2", randomize("practice1"), "block1_start2", shuffle(randomize("fillers1"), randomize("list3-block1")), "send", "end" )
+// list4
+// counterbalancing: personality -> relation
+//PennController.Sequence("init", "intro1", "PersonalData", "hinweise", "practice1_start1", randomize("practice1"), "block1_start1", shuffle(randomize("fillers1"), randomize("list4-block1")) , "break", "practice2_start1", randomize("practice2"), "block2_start1", shuffle(randomize("fillers2"), randomize("list4-block2")), "send", "end" )
+// counterbalancing: relation -> personality
+//PennController.Sequence("init", "intro2", "PersonalData", "hinweise", "practice1_start2", randomize("practice2"), "block2_start2", shuffle(randomize("fillers2"), randomize("list4-block2")) , "break", "practice2_start2", randomize("practice1"), "block1_start2", shuffle(randomize("fillers1"), randomize("list4-block1")), "send", "end" )
 
 
 
