@@ -172,7 +172,7 @@ PennController("PersonalData",
 
                newCanvas("agecanvas", 600, 35)
                .add(0, 20, getText("agetext"))
-               .add(350, 23, getDropDown("age"))
+               .add(350, 23, getTextInput("age"))
                .print()
 
                ,
